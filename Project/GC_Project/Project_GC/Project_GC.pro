@@ -32,8 +32,9 @@ HEADERS  += \
 
 FORMS    +=
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/'../../../../../../../../../Program Files/Assimp/lib/x86/' -lassimp
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/'../../../../../../../../../Program Files/Assimp/lib/x86/' -lassimpd
+
+
+win32: LIBS += -L$$PWD/'../../../../../../../../../Program Files/Assimp/lib/x64/' -lassimp
 
 INCLUDEPATH += $$PWD/'../../../../../../../../../Program Files/Assimp/include'
 DEPENDPATH += $$PWD/'../../../../../../../../../Program Files/Assimp/include'
