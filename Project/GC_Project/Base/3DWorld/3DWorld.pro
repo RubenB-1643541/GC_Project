@@ -31,7 +31,8 @@ SOURCES += main.cpp\
     HeadLamp.cpp \
     Point3D.cpp \
     Vector3D.cpp \
-    openglview.cpp
+    openglview.cpp \
+    modelrenderer.cpp
 
 HEADERS  += displaywindow.h \
     Camera.h \
@@ -39,6 +40,7 @@ HEADERS  += displaywindow.h \
     HeadLamp.h \
     Point3D.h \
     Vector3D.h \
-    openglview.h
+    openglview.h \
+    modelrenderer.h
 
 FORMS    += displaywindow.ui
