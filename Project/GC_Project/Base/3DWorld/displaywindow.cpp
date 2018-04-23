@@ -7,7 +7,8 @@ namespace __3DWorld__ {
 DisplayWindow::DisplayWindow(QWidget *parent) :
     QMainWindow(parent) {
     _open_gl_view = new OpenGLView();
-    setCentralWidget(_open_gl_view);
+    this->setCentralWidget(_open_gl_view);
+    this->setMinimumSize(1280, 720);
 }
 
 DisplayWindow::~DisplayWindow() {
