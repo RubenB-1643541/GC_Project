@@ -1,8 +1,10 @@
 #include <QApplication>
 #include "modelloader.h"
+#include "modelrender.h"
 
 int main(int argc, char *argv[])
 {
-    ModelLoader * loader = new ModelLoader;
+    ModelRender render = new ModelRender();
+    render.show();
 
 }

@@ -24,11 +24,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp \
-    modelloader.cpp
+    modelloader.cpp \
+    modelrender.cpp
 
 HEADERS  += \
     modelloader.h \
-    modeldata.h
+    modeldata.h \
+    modelrender.h
 
 FORMS    +=
 
