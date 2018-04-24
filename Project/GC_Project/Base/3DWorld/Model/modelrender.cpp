@@ -1,10 +1,11 @@
 #include "modelrender.h"
 
-ModelRender::ModelRender() : _vbo(QOpenGLBuffer::VertexBuffer), _nbo(QOpenGLBuffer::VertexBuffer),_ibo(QOpenGLBuffer::IndexBuffer)
+ModelRender::ModelRender(QOpenGLWidget widget) : _vbo(QOpenGLBuffer::VertexBuffer), _nbo(QOpenGLBuffer::VertexBuffer),_ibo(QOpenGLBuffer::IndexBuffer),
+    _widget(widget)
 {
 
 }
-
+/*
 void ModelRender::initializeGL() {
     QOpenGLFunctions::initializeOpenGLFunctions();
     CreateShaderProgram();
@@ -33,12 +34,12 @@ void ModelRender::paintGL() {
     _vertrex_object.release();
     update();
 }
-
+*/
 void ModelRender::ResizeGL() {
     glViewport(0, 0, w, h);
     _projection.setToIdentity();
     _projection.perspective(60.0f, (float)w/h, .3f, 1000);
-    update();
+    _widget.update();
 }
 
 void ModelRender::CreateShaderProgram() {

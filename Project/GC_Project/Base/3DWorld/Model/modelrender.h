@@ -1,29 +1,29 @@
-#ifndef MODELRENDERER_H
-#define MODELRENDERER_H
+#ifndef MODELRENDER_H
+#define MODELRENDER_H
 
-#include <C:/Users/super/Documents/ComputerGraphics/Project/GC_Project/Project/GC_Project/Project_GC/modelloader.h>
-
-#include <QOpenGLBuffer>
+#include "modelloader.h"
+#include "modeldata.h"
+#include <QOpenGLWidget>
+#include <QMatrix4x4>
 #include <QOpenGLShaderProgram>
 #include <QOpenGLVertexArrayObject>
+#include <QOpenGLBuffer>
+#include <QOpenGLFunctions>
 
 
-#include
 
-
-class ModelRenderer
+class ModelRender : QOpenGLFunctions
 {
 public:
-    ModelRenderer();
-    void LoadModel(String path);
-    void Draw();
-
-
-private:
-    void DrawMeshFromNode(const Node *node);
+    ModelRender(QOpenGLWidget widget);
     void CreateShaderProgram();
     void ResizeGL();
     void CreateGeometry();
+
+    void Draw();
+
+private:
+    void DrawMeshFromNode(const Node *node);
     void DrawNode(const QMatrix4x4 model, const Node *node, QMatrix4x4 parent);
 
     ModelLoader _loader;
@@ -34,7 +34,9 @@ private:
     QOpenGLBuffer _vbo;
     QOpenGLBuffer _nbo;
     QOpenGLBuffer _ibo;
-    GLsizei _cnt;    ModelRenderer();
+    GLsizei _cnt;
+    QOpenGLWidget _widget;
+
 };
 
-#endif // MODELRENDERER_H
+#endif // MODELRENDER_H

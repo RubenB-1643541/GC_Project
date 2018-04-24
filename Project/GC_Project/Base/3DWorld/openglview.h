@@ -6,7 +6,7 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
-#include "Camera.h";
+#include "Camera.h"
 #include "CameraKeyHandler.h"
 #include "HeadLamp.h"
 

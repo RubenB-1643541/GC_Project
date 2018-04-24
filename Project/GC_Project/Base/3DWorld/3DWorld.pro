@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     Point3D.cpp \
     Vector3D.cpp \
     openglview.cpp \
-    modelrenderer.cpp
+    Model/modelloader.cpp \
+    Model/modelrender.cpp
 
 HEADERS  += displaywindow.h \
     Camera.h \
@@ -41,6 +42,15 @@ HEADERS  += displaywindow.h \
     Point3D.h \
     Vector3D.h \
     openglview.h \
-    modelrenderer.h
+    Model/modeldata.h \
+    Model/modelloader.h \
+    Model/modelrender.h
 
 FORMS    += displaywindow.ui
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/'../../../../../../../../../../Program Files/Assimp/lib/x64/' -lassimp
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/'../../../../../../../../../../Program Files/Assimp/lib/x64/' -lassimpd
+else:unix: LIBS += -L$$PWD/'../../../../../../../../../../Program Files/Assimp/lib/x64/' -lassimp
+
+INCLUDEPATH += $$PWD/'../../../../../../../../../../Program Files/Assimp/include'
+DEPENDPATH += $$PWD/'../../../../../../../../../../Program Files/Assimp/include'
