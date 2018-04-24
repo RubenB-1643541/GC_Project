@@ -2,6 +2,8 @@
 #define MODELLOADER_H
 
 #include "modeldata.h"
+#include "modelobject.h"
+using namespace __3DWorld__;
 #include <QString>
 #include <QVector>
 #include <QMatrix4x4>
@@ -15,7 +17,8 @@ public:
     ModelLoader();
     bool Load(QString pathToFile);
     void GetBufferData(QVector<float> **vertices, QVector<float> ** normals, QVector<unsigned int> **indices);
-
+    ModelObject * GetBufferData(ModelObject * obj);
+    ModelObject * GetNodeData(ModelObject * obj);
     QSharedPointer<Node> GetNodeData() {return m_rootNode;}
 
 private:

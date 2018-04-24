@@ -10,8 +10,10 @@
 #include "Camera.h"
 #include "CameraKeyHandler.h"
 #include "HeadLamp.h"
-#include "modelrenderer.h"
+//#include "Model/modelrender.h"
 
+
+class ModelRender;
 namespace __3DWorld__ {
 
 /**
@@ -35,7 +37,7 @@ public:
     ////////////////////////////////////////////////////////
     /// Rendering
     ////////////////////////////////////////////////////////
-    void addModelRenderer(ModelRenderer* renderer);
+    void addModelRenderer(ModelRender* renderer);
 
     ////////////////////////////////////////////////////////
     /// KeyEvents
@@ -57,7 +59,7 @@ private:
     CameraKeyHandler* _camera_key_handler;
     HeadLamp* _headlamp;
 
-    QVector<ModelRenderer*> _model_renderers;
+    QVector<ModelRender*> _model_renderers;
 
     ////////////////////////////////////////////////////////
     /// Static

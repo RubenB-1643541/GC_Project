@@ -1,4 +1,5 @@
 #include "openglview.h"
+#include "Model/modelrender.h"
 #include <QDebug>
 
 namespace __3DWorld__ {
@@ -77,8 +78,8 @@ void OpenGLView::paintGL() {
     updateCamera();
 
     // Draw Models
-    for (ModelRenderer* renderer: _model_renderers) {
-        renderer->draw();
+    for (ModelRender* renderer: _model_renderers) {
+        renderer->Draw();
     }
 
     // begin Test
@@ -99,7 +100,7 @@ void OpenGLView::paintGL() {
 ////////////////////////////////////////////////////////
 /// Rending
 ////////////////////////////////////////////////////////
-void OpenGLView::addModelRenderer(ModelRenderer *renderer) {
+void OpenGLView::addModelRenderer(ModelRender *renderer) {
     _model_renderers.append(renderer);
     return;
 }

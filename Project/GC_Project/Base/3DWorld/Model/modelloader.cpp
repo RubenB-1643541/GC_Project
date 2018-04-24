@@ -63,6 +63,16 @@ void ModelLoader::GetBufferData(QVector<float> **vertices, QVector<float> **norm
     *indices = &m_indices;
 }
 
+ModelObject * ModelLoader::GetBufferData(ModelObject * obj) {
+    obj->SetData(&m_vertices, &m_normals, &m_indices);
+    return obj;
+}
+
+ModelObject * ModelLoader::GetNodeData(ModelObject * obj) {
+    obj->SetNode(m_rootNode);
+    return obj;
+}
+
 QSharedPointer<MaterialInfo> ModelLoader::ProcessMaterial(aiMaterial * material) {
     QSharedPointer<MaterialInfo> mater(new MaterialInfo);
 

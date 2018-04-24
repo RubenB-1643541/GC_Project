@@ -32,14 +32,12 @@ SOURCES += main.cpp\
     Point3D.cpp \
     Vector3D.cpp \
     openglview.cpp \
-<<<<<<< HEAD
+    model.cpp \
+    modelobject.cpp \
     Model/modelloader.cpp \
     Model/modelrender.cpp
-=======
-    modelrenderer.cpp \
     model.cpp \
-    modelobject.cpp
->>>>>>> e5b155356c787fcc13f16169166407118eb39c99
+
 
 HEADERS  += displaywindow.h \
     Camera.h \
@@ -48,21 +46,19 @@ HEADERS  += displaywindow.h \
     Point3D.h \
     Vector3D.h \
     openglview.h \
-<<<<<<< HEAD
+    model.h \
+    modelobject.h \
     Model/modeldata.h \
     Model/modelloader.h \
     Model/modelrender.h
-=======
-    modelrenderer.h \
     model.h \
-    modelobject.h
->>>>>>> e5b155356c787fcc13f16169166407118eb39c99
+
 
 FORMS    += displaywindow.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/'../../../../../../../../../../Program Files/Assimp/lib/x64/' -lassimp
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/'../../../../../../../../../../Program Files/Assimp/lib/x64/' -lassimpd
-else:unix: LIBS += -L$$PWD/'../../../../../../../../../../Program Files/Assimp/lib/x64/' -lassimp
+
+
+win32: LIBS += -L$$PWD/'../../../../../../../../../../Program Files/Assimp/lib/x64/' -lassimp
 
 INCLUDEPATH += $$PWD/'../../../../../../../../../../Program Files/Assimp/include'
 DEPENDPATH += $$PWD/'../../../../../../../../../../Program Files/Assimp/include'

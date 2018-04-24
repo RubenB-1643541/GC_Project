@@ -1,9 +1,8 @@
 #include "modelrender.h"
 
-ModelRender::ModelRender(QOpenGLWidget widget) : _vbo(QOpenGLBuffer::VertexBuffer), _nbo(QOpenGLBuffer::VertexBuffer),_ibo(QOpenGLBuffer::IndexBuffer),
-    _widget(widget)
+ModelRender::ModelRender(QOpenGLWidget* widget) : _vbo(QOpenGLBuffer::VertexBuffer), _nbo(QOpenGLBuffer::VertexBuffer), _ibo(QOpenGLBuffer::IndexBuffer)
 {
-
+    _widget = widget;
 }
 /*
 void ModelRender::initializeGL() {
@@ -34,21 +33,22 @@ void ModelRender::paintGL() {
     _vertrex_object.release();
     update();
 }
-*/
+
 void ModelRender::ResizeGL() {
     glViewport(0, 0, w, h);
     _projection.setToIdentity();
     _projection.perspective(60.0f, (float)w/h, .3f, 1000);
     _widget.update();
 }
-
+*/
 void ModelRender::CreateShaderProgram() {
 
 }
 
 void ModelRender::CreateGeometry() {
-    if(!m_loader.Load("velociraptor_mesh_materials.dae")) {
-        qDebug() << "ModelLoader failed to load model" << m_pgm.log();
+    /*
+    if(!_loader.Load("velociraptor_mesh_materials.dae")) {
+        qDebug() << "ModelLoader failed to load model" << _shaders.log();
         exit(1);
     }
 
@@ -57,6 +57,14 @@ void ModelRender::CreateGeometry() {
     QVector<float> *n;
     QVector<uint> *i;
     _loader.GetBufferData(&v, &n, &i);
+    */
+    QVector<float> *v;
+    QVector<float> *n;
+    QVector<uint> *i;
+
+    v = _obj->GetVertices();
+    n = _obj->GetNormals();
+    i = _obj->GetIndices();
 
     _vertrex_object.create();
     _vertrex_object.bind();
@@ -104,8 +112,7 @@ void ModelRender::Draw() {
     model.translate(-0.2f, 0.0f, .5f);
     model.rotate(55.0f, 0.0f, 1.0f, 0.0f);
     
-    DrawNode(model, _loader.GetNodeData().data(), QMatrix4x4());
-    
+    DrawNode(model, _obj->GetNode().data(), QMatrix4x4());
 }
 
 void ModelRender::DrawMeshFromNode(const Node *node) {
@@ -125,4 +132,11 @@ void ModelRender::DrawMeshFromNode(const Node *node) {
         glDrawElements(GL_TRIANGLES, m.indexCount, GL_UNSIGNED_INT, (const GLvoid*) (m.indexOffset * sizeof(GLuint)));
     }
     
+}
+
+void ModelRender::LoadModel(QString path) {
+    _loader.Load(path);
+    _obj = new ModelObject();
+    _loader.GetBufferData(_obj);
+    _loader.GetNodeData(_obj);
 }

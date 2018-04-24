@@ -1,5 +1,6 @@
 #include "displaywindow.h"
 #include "ui_displaywindow.h"
+#include "Model/modelrender.h"
 #include <QDebug>
 
 namespace __3DWorld__ {
