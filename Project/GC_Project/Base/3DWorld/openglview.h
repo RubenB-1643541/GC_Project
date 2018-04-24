@@ -5,10 +5,12 @@
 #include <QTimer>
 #include <gl/GL.h>
 #include <gl/GLU.h>
+#include <QKeyEvent>
 
 #include "Camera.h"
 #include "CameraKeyHandler.h"
 #include "HeadLamp.h"
+#include "modelrenderer.h"
 
 namespace __3DWorld__ {
 
@@ -31,6 +33,11 @@ public:
     void paintGL();
 
     ////////////////////////////////////////////////////////
+    /// Rendering
+    ////////////////////////////////////////////////////////
+    void addModelRenderer(ModelRenderer* renderer);
+
+    ////////////////////////////////////////////////////////
     /// KeyEvents
     ////////////////////////////////////////////////////////
     void keyPressEvent(QKeyEvent* event);
@@ -41,11 +48,21 @@ private:
     ////////////////////////////////////////////////////////
     void updateCamera();
 
+    ////////////////////////////////////////////////////////
+    /// Member Variables
+    ////////////////////////////////////////////////////////
     QTimer* _timer;
 
     Camera* _camera;
     CameraKeyHandler* _camera_key_handler;
     HeadLamp* _headlamp;
+
+    QVector<ModelRenderer*> _model_renderers;
+
+    ////////////////////////////////////////////////////////
+    /// Static
+    ////////////////////////////////////////////////////////
+    static const int TIMER_INTERVAL = 16;
 };
 
 }
