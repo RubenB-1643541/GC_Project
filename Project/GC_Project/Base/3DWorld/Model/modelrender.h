@@ -11,7 +11,6 @@
 #include <QOpenGLVertexArrayObject>
 #include <QOpenGLBuffer>
 #include <QOpenGLFunctions>
-#include "openglview.h"
 
 namespace __3DWorld__ {
 

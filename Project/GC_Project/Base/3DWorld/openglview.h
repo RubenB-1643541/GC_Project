@@ -10,12 +10,10 @@
 #include "Camera.h"
 #include "CameraKeyHandler.h"
 #include "HeadLamp.h"
-//#include "Model/modelrender.h"
-
-
+#include "Model/modelrender.h"
 
 namespace __3DWorld__ {
-class ModelRender;
+
 /**
  * @author Wald Habets
  * @brief The OpenGLView class

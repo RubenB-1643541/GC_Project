@@ -29,9 +29,9 @@ void HeadLamp::openGlRender(GLenum light) {
     };
     if(_is_enabled) {
         glEnable(light);
-        glLightfv (light, GL_POSITION, gl_position);
-        glLightfv (light, GL_SPOT_CUTOFF, gl_spot_cutoff);
-        glLightfv (light, GL_DIFFUSE, gl_diffuse);
+        glLightfv(light, GL_POSITION, gl_position);
+        glLightfv(light, GL_SPOT_CUTOFF, gl_spot_cutoff);
+        glLightfv(light, GL_DIFFUSE, gl_diffuse);
     } else {
         glDisable(light);
     }

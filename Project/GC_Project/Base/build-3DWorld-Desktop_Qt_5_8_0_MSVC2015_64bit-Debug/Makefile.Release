@@ -361,7 +361,7 @@ release\moc_displaywindow.cpp: C:\Qt\5.8\msvc2015_64\include\QtWidgets\QMainWind
 		..\3DWorld\displaywindow.h \
 		release\moc_predefs.h \
 		C:\Qt\5.8\msvc2015_64\bin\moc.exe
-	C:\Qt\5.8\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/5.8/msvc2015_64/mkspecs/win32-msvc2015 -IC:/Users/super/Documents/ComputerGraphics/Project/GC_Project/Project/GC_Project/Base/3DWorld -I"C:/Program Files/Assimp/include" -IC:/Qt/5.8/msvc2015_64/include -IC:/Qt/5.8/msvc2015_64/include/QtWidgets -IC:/Qt/5.8/msvc2015_64/include/QtGui -IC:/Qt/5.8/msvc2015_64/include/QtANGLE -IC:/Qt/5.8/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10240.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\\winrt" ..\3DWorld\displaywindow.h -o release\moc_displaywindow.cpp
+	C:\Qt\5.8\msvc2015_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/5.8/msvc2015_64/mkspecs/win32-msvc2015 -I"C:/Users/Wald Habets/Documents/_Repo's/GC_Project/Project/GC_Project/Base/3DWorld" -I"C:/Program Files/Assimp/include" -IC:/Qt/5.8/msvc2015_64/include -IC:/Qt/5.8/msvc2015_64/include/QtWidgets -IC:/Qt/5.8/msvc2015_64/include/QtGui -IC:/Qt/5.8/msvc2015_64/include/QtANGLE -IC:/Qt/5.8/msvc2015_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\INCLUDE" -I"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\ATLMFC\INCLUDE" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.10240.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\\shared" -I"C:\Program Files (x86)\Windows Kits\8.1\include\\um" -I"C:\Program Files (x86)\Windows Kits\8.1\include\\winrt" ..\3DWorld\displaywindow.h -o release\moc_displaywindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -651,36 +651,6 @@ release\displaywindow.obj: ..\3DWorld\displaywindow.cpp ../3DWorld/displaywindow
 		../3DWorld/CameraKeyHandler.h \
 		../3DWorld/HeadLamp.h \
 		ui_displaywindow.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\QVariant \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QAction \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qaction.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qactiongroup.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QApplication \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qapplication.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qcoreapplication.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qeventloop.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qguiapplication.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QButtonGroup \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qbuttongroup.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QHeaderView \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qheaderview.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractitemview.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qframe.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qabstractitemmodel.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qitemselectionmodel.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractitemdelegate.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qstyleoption.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractspinbox.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qvalidator.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qregularexpression.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qslider.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractslider.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qstyle.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qtabbar.h \
-		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qrubberband.h \
 		../3DWorld/Model/modelrender.h \
 		../3DWorld/Model/modelloader.h \
 		../3DWorld/Model/modeldata.h \
