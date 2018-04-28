@@ -3,6 +3,7 @@
 
 #include "modelloader.h"
 #include "modeldata.h"
+#include "shaders.h"
 #include <QOpenGLWidget>
 #include <QMatrix4x4>
 #include <QOpenGLShaderProgram>
@@ -20,6 +21,9 @@ public:
     void Draw();
     void SetModel(ModelObject * obj) {_obj = obj;}
     void LoadModel(QString path);
+    void Initialize();
+    void Paint();
+    void Resize(int w, int h);
 
 private:
     void DrawMeshFromNode(const Node *node);
@@ -27,7 +31,6 @@ private:
     void CreateShaderProgram();
     void ResizeGL();
     void CreateGeometry();
-
 
     ModelLoader _loader;
     QMatrix4x4 _projection;

@@ -46,6 +46,10 @@ void OpenGLView::initializeGL() {
     // 87CEEB
     glClearColor(0.53, 0.81, 0.92 ,1.0f);
 
+    for (ModelRender* renderer: _model_renderers) {
+        renderer->Initialize();
+    }
+
     _timer->start(TIMER_INTERVAL);
     return;
 }
@@ -67,6 +71,9 @@ void OpenGLView::resizeGL(int w, int h) {
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+    for (ModelRender* renderer: _model_renderers) {
+        renderer->Resize(w, h);
+    }
     return;
 }
 
@@ -79,7 +86,7 @@ void OpenGLView::paintGL() {
 
     // Draw Models
     for (ModelRender* renderer: _model_renderers) {
-        renderer->Draw();
+        renderer->Paint();
     }
 
     // begin Test

@@ -50,7 +50,8 @@ HEADERS  += displaywindow.h \
     modelobject.h \
     Model/modeldata.h \
     Model/modelloader.h \
-    Model/modelrender.h
+    Model/modelrender.h \
+    shaders.h
     model.h \
 
 

@@ -42,7 +42,18 @@ void ModelRender::ResizeGL() {
 }
 */
 void ModelRender::CreateShaderProgram() {
-
+    if ( !_shaders.addShaderFromSourceCode( QOpenGLShader::Vertex, vertexShader)) {
+        qDebug() << "Error in vertex shader:" << _shaders.log();
+        exit(1);
+    }
+    if ( !_shaders.addShaderFromSourceCode( QOpenGLShader::Fragment, fragmentShader)) {
+        qDebug() << "Error in fragment shader:" << _shaders.log();
+        exit(1);
+    }
+    if ( !_shaders.link() ) {
+        qDebug() << "Error linking shader program:" << _shaders.log();
+        exit(1);
+    }
 }
 
 void ModelRender::CreateGeometry() {
@@ -111,7 +122,7 @@ void ModelRender::Draw() {
     QMatrix4x4 model;
     model.translate(-0.2f, 0.0f, .5f);
     model.rotate(55.0f, 0.0f, 1.0f, 0.0f);
-    
+    //Initialize();
     DrawNode(model, _obj->GetNode().data(), QMatrix4x4());
 }
 
@@ -140,3 +151,41 @@ void ModelRender::LoadModel(QString path) {
     _loader.GetBufferData(_obj);
     _loader.GetNodeData(_obj);
 }
+
+void ModelRender::Initialize() {
+    QOpenGLFunctions::initializeOpenGLFunctions();
+    CreateShaderProgram();
+    _shaders.bind();
+
+    _shaders.setUniformValue("light.position",   QVector4D( -1.0f,  1.0f, 1.0f, 1.0f ));
+    _shaders.setUniformValue("light.intensity",  QVector3D(  1.0f,  1.0f, 1.0f  ));
+
+    CreateGeometry();
+    _view.setToIdentity();
+    _view.lookAt(QVector3D(0.0f, 0.0f, 1.2f),    // Camera Position
+                 QVector3D(0.0f, 0.0f, 0.0f),    // Point camera looks towards
+                 QVector3D(0.0f, 1.0f, 0.0f));
+
+    glEnable(GL_DEPTH_TEST);
+
+    glClearColor(.9f, .9f, .93f ,1.0f);
+}
+
+void ModelRender::Paint() {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    _shaders.bind();
+    _vertrex_object.bind();
+    Draw();
+    _vertrex_object.release();
+    _widget->update();
+}
+
+void ModelRender::Resize(int w, int h) {
+    glViewport(0, 0, w, h);
+    _projection.setToIdentity();
+    _projection.perspective(60.0f, (float)w/h, .3f, 1000);
+    _widget->update();
+}
+
+
