@@ -1,5 +1,7 @@
 #include "modelloader.h"
 
+namespace __3DWorld__ {
+
 ModelLoader::ModelLoader()
 {
 
@@ -185,4 +187,6 @@ void ModelLoader::ProcessNode(const aiScene *scene, aiNode *node, Node *parentNo
         newNode.nodes.push_back(Node());
         ProcessNode(scene, node->mChildren[ich], parentNode, newNode.nodes[ich]);
     }
+}
+
 }

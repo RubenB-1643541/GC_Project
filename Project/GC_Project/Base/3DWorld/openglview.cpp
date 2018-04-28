@@ -47,6 +47,7 @@ void OpenGLView::initializeGL() {
     glClearColor(0.53, 0.81, 0.92 ,1.0f);
 
     for (ModelRender* renderer: _model_renderers) {
+        renderer->SetView(_camera->getLooksAt(), _camera->getPosition());
         renderer->Initialize();
     }
 
@@ -86,6 +87,7 @@ void OpenGLView::paintGL() {
 
     // Draw Models
     for (ModelRender* renderer: _model_renderers) {
+        renderer->SetView(_camera->getLooksAt(), _camera->getPosition());
         renderer->Paint();
     }
 

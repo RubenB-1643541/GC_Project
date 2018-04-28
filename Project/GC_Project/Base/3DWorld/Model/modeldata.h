@@ -7,6 +7,8 @@
 #include <QSharedPointer>
 #include <QMatrix4x4>
 
+namespace __3DWorld__ {
+
 struct MaterialInfo {
     QString name;
     QVector3D ambient;
@@ -35,6 +37,6 @@ struct Node
     QVector<Node> nodes;
 };
 
-
+}
 
 #endif // MODELDATA_H

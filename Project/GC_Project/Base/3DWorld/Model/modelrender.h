@@ -4,6 +4,7 @@
 #include "modelloader.h"
 #include "modeldata.h"
 #include "shaders.h"
+#include "Point3D.h"
 #include <QOpenGLWidget>
 #include <QMatrix4x4>
 #include <QOpenGLShaderProgram>
@@ -12,7 +13,7 @@
 #include <QOpenGLFunctions>
 #include "openglview.h"
 
-
+namespace __3DWorld__ {
 
 class ModelRender : QOpenGLFunctions
 {
@@ -24,6 +25,7 @@ public:
     void Initialize();
     void Paint();
     void Resize(int w, int h);
+    void SetView(Point3D lookat, Point3D position);
 
 private:
     void DrawMeshFromNode(const Node *node);
@@ -45,5 +47,7 @@ private:
     ModelObject * _obj;
 
 };
+
+}
 
 #endif // MODELRENDER_H

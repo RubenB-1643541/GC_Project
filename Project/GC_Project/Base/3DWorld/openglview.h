@@ -13,9 +13,9 @@
 //#include "Model/modelrender.h"
 
 
-class ModelRender;
-namespace __3DWorld__ {
 
+namespace __3DWorld__ {
+class ModelRender;
 /**
  * @author Wald Habets
  * @brief The OpenGLView class
@@ -59,7 +59,7 @@ private:
     CameraKeyHandler* _camera_key_handler;
     HeadLamp* _headlamp;
 
-    QVector<ModelRender*> _model_renderers;
+    QVector<ModelRender *> _model_renderers;
 
     ////////////////////////////////////////////////////////
     /// Static

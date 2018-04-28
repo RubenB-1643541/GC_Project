@@ -3,13 +3,14 @@
 
 #include "modeldata.h"
 #include "modelobject.h"
-using namespace __3DWorld__;
 #include <QString>
 #include <QVector>
 #include <QMatrix4x4>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <assimp/Importer.hpp>
+
+namespace __3DWorld__ {
 
 class ModelLoader
 {
@@ -38,5 +39,7 @@ private:
     QSharedPointer<Node> m_rootNode;
 
 };
+
+}
 
 #endif // MODELLOADER_H
