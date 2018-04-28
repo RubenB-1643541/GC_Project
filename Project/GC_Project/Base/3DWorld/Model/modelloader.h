@@ -3,13 +3,15 @@
 
 #include "modeldata.h"
 #include "modelobject.h"
-using namespace __3DWorld__;
 #include <QString>
 #include <QVector>
 #include <QMatrix4x4>
+#include <assimp/material.h>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <assimp/Importer.hpp>
+
+using namespace __3DWorld__;
 
 class ModelLoader
 {

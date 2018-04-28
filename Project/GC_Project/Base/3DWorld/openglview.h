@@ -10,10 +10,8 @@
 #include "Camera.h"
 #include "CameraKeyHandler.h"
 #include "HeadLamp.h"
-//#include "Model/modelrender.h"
+#include "Model/modelrender.h"
 
-
-class ModelRender;
 namespace __3DWorld__ {
 
 /**
@@ -56,6 +54,7 @@ private:
     QTimer* _timer;
 
     Camera* _camera;
+    QMatrix4x4 _cam_view;
     CameraKeyHandler* _camera_key_handler;
     HeadLamp* _headlamp;
 

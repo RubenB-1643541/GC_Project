@@ -1,5 +1,5 @@
 #include "openglview.h"
-#include "Model/modelrender.h"
+//#include "Model/modelrender.h"
 #include <QDebug>
 
 namespace __3DWorld__ {
@@ -46,6 +46,8 @@ void OpenGLView::initializeGL() {
     // 87CEEB
     glClearColor(0.53, 0.81, 0.92 ,1.0f);
 
+    _cam_view.setToIdentity();
+
     for (ModelRender* renderer: _model_renderers) {
         renderer->Initialize();
     }
@@ -86,7 +88,7 @@ void OpenGLView::paintGL() {
 
     // Draw Models
     for (ModelRender* renderer: _model_renderers) {
-        renderer->Paint();
+        renderer->Paint(_cam_view);
     }
 
     // begin Test
@@ -152,10 +154,10 @@ void OpenGLView::updateCamera() {
     _camera_key_handler->updateCamera();
     Point3D p = _camera->getPosition();
     Point3D l = _camera->getLooksAt();
-    gluLookAt(
-        p.x(), p.y(), p.z(),
-        l.x(), l.y(), l.z(),
-        0.0, 0.1, 0.0
+    _cam_view.lookAt(
+        QVector3D(p.x(), p.y(), p.z()),
+        QVector3D(l.x(), l.y(), l.z()),
+        QVector3D(0.0, 0.1, 0.0)
     );
     _headlamp->setPosition(p);
     _headlamp->openGlRender(GL_LIGHT1);

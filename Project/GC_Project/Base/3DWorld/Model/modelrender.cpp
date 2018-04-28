@@ -104,9 +104,9 @@ void ModelRender::CreateGeometry() {
     _vertrex_object.release();
 }
 
-void ModelRender::DrawNode(const QMatrix4x4 model, const Node *node, QMatrix4x4 parent) {
+void ModelRender::DrawNode(QMatrix4x4 cam_view, const QMatrix4x4 model, const Node *node, QMatrix4x4 parent) {
     QMatrix4x4 local = parent * node->transformation;
-    QMatrix4x4 mv = _view * model * local;
+    QMatrix4x4 mv = cam_view * model * local;
     
     _shaders.setUniformValue("MV", mv);
     _shaders.setUniformValue("N", mv.normalMatrix());
@@ -114,16 +114,16 @@ void ModelRender::DrawNode(const QMatrix4x4 model, const Node *node, QMatrix4x4 
     DrawMeshFromNode(node);
 
     for(int i = 0; i < node->nodes.size(); ++i) {
-        DrawNode(model, &node->nodes[i], local);
+        DrawNode(cam_view, model, &node->nodes[i], local);
     }    
 }
 
-void ModelRender::Draw() {
+void ModelRender::Draw(QMatrix4x4 cam_view) {
     QMatrix4x4 model;
     model.translate(-0.2f, 0.0f, .5f);
     model.rotate(55.0f, 0.0f, 1.0f, 0.0f);
     //Initialize();
-    DrawNode(model, _obj->GetNode().data(), QMatrix4x4());
+    DrawNode(cam_view, model, _obj->GetNode().data(), QMatrix4x4());
 }
 
 void ModelRender::DrawMeshFromNode(const Node *node) {
@@ -161,22 +161,22 @@ void ModelRender::Initialize() {
     _shaders.setUniformValue("light.intensity",  QVector3D(  1.0f,  1.0f, 1.0f  ));
 
     CreateGeometry();
-    _view.setToIdentity();
+    /*_view.setToIdentity();
     _view.lookAt(QVector3D(0.0f, 0.0f, 1.2f),    // Camera Position
                  QVector3D(0.0f, 0.0f, 0.0f),    // Point camera looks towards
                  QVector3D(0.0f, 1.0f, 0.0f));
 
-    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_DEPTH_TEST);*/
 
     glClearColor(.9f, .9f, .93f ,1.0f);
 }
 
-void ModelRender::Paint() {
+void ModelRender::Paint(QMatrix4x4 cam_view) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     _shaders.bind();
     _vertrex_object.bind();
-    Draw();
+    Draw(cam_view);
     _vertrex_object.release();
     _widget->update();
 }

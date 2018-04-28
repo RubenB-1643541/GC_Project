@@ -58,8 +58,7 @@ HEADERS  += displaywindow.h \
 FORMS    += displaywindow.ui
 
 
+LIBS += -L"C:/Program Files/Assimp/lib/x64/" -lassimp
 
-win32: LIBS += -L$$PWD/'../../../../../../../../../../Program Files/Assimp/lib/x64/' -lassimp
-
-INCLUDEPATH += $$PWD/'../../../../../../../../../../Program Files/Assimp/include'
-DEPENDPATH += $$PWD/'../../../../../../../../../../Program Files/Assimp/include'
+INCLUDEPATH += "C:/Program Files/Assimp/include"
+DEPENDPATH += "C:/Program Files/Assimp/include"
