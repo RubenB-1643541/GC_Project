@@ -15,6 +15,10 @@ DisplayWindow::DisplayWindow(QWidget *parent) :
     render2->LoadModel("Models/Bench/bench.obj", new Point3D(-26, 1.37, 10), new Point3D(0, 10, 0), 0.4);
     _open_gl_view->addModelRenderer(render2);
 
+    ModelRender * render3 = new ModelRender();
+    render3->LoadModel("Models/Spider/spider.obj", new Point3D(1,1.3,-2), new Point3D(0,0,70), 0.05);
+    _open_gl_view->addModelRenderer(render3);
+
     this->setCentralWidget(_open_gl_view);
     this->setMinimumSize(1280, 720);
 }

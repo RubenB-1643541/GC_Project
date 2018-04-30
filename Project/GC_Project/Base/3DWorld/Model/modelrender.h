@@ -12,6 +12,8 @@
 #include <QOpenGLBuffer>
 #include <QOpenGLFunctions>
 
+//http://ogldev.atspace.co.uk/www/tutorial22/tutorial22.html
+
 namespace __3DWorld__ {
 
 class ModelRender : QOpenGLFunctions
