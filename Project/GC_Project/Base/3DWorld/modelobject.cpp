@@ -4,9 +4,18 @@ namespace __3DWorld__ {
 
 ModelObject::ModelObject() {
     _position = new Point3D();
+    _rotation = new Point3D();
+    _size = 1;
 }
 
 ModelObject::ModelObject(Point3D * position) : _position(position) {
+    _rotation = new Point3D();
+    _size = 1;
+}
+
+ModelObject::ModelObject(Point3D * position, Point3D * rotation) :
+    _position(position), _rotation(rotation) {
+    _size = 1;
 
 }
 

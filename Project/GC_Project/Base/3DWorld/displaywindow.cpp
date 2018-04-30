@@ -9,10 +9,10 @@ DisplayWindow::DisplayWindow(QWidget *parent) :
     QMainWindow(parent) {
     _open_gl_view = new OpenGLView();
     ModelRender * render = new ModelRender();
-    render->LoadModel("Models/Bobomb/bobomb battlefeild.obj", new Point3D(0, -10, 0));
+    render->LoadModel("Models/Bobomb/bobomb battlefeild.obj", new Point3D(0, -10, 0), new Point3D(0,0,0), 1);
     _open_gl_view->addModelRenderer(render);
     ModelRender * render2 = new ModelRender();
-    render2->LoadModel("Models/Bench/bench.obj", new Point3D(-10, 2, 25));
+    render2->LoadModel("Models/Bench/bench.obj", new Point3D(-26, 1.37, 10), new Point3D(0, 10, 0), 0.4);
     _open_gl_view->addModelRenderer(render2);
 
     this->setCentralWidget(_open_gl_view);

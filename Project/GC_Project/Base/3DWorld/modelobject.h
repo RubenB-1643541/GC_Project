@@ -11,6 +11,7 @@ class ModelObject {
 public:
     ModelObject();
     ModelObject(Point3D * position);
+    ModelObject(Point3D * position, Point3D * rotation);
     ModelObject(QVector<float> *vertices, QVector<float> * normals, QVector<unsigned int> *indices);
     void SetData(QVector<float> *vertices, QVector<float> * normals, QVector<unsigned int> *indices);
     void SetNode(QSharedPointer<Node> node);
@@ -20,12 +21,18 @@ public:
     QVector<unsigned int> * GetIndices() {return _indices;}
     void SetPosition(Point3D * position) { _position = position;}
     Point3D * GetPosition() {return _position;}
+    void SetRotation(Point3D * rotation) {_rotation = rotation;}
+    Point3D * GetRotation() {return _rotation;}
+    void SetSize(float size) {_size = size;}
+    float GetSize() {return _size;}
 private:
     QVector<float> * _vertices;
     QVector<float> * _normals;
     QVector<unsigned int> * _indices;
     QSharedPointer<Node> _head_node;
     Point3D * _position;
+    Point3D * _rotation;
+    float _size;
 };
 
 }
