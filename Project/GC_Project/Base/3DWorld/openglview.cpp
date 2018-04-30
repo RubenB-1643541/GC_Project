@@ -1,5 +1,4 @@
 #include "openglview.h"
-#include "Model/modelrender.h"
 #include <QDebug>
 
 namespace __3DWorld__ {
