@@ -92,12 +92,14 @@ void OpenGLView::paintGL() {
 
     // begin Test
     // Draw Object
+    /*
     GLfloat diff [] = { 0.7f , 0.5f , 0.0f };
     glMaterialfv (GL_FRONT, GL_DIFFUSE, diff);
     GLUquadricObj* quadric = gluNewQuadric();
     gluQuadricDrawStyle(quadric, GLU_FILL);
     gluSphere(quadric, 3.0, 25, 25),
     gluDeleteQuadric(quadric);
+    */
     // end Test
 
     glMatrixMode(GL_MODELVIEW);

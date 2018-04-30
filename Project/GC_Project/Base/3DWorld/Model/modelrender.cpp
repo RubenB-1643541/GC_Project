@@ -2,9 +2,9 @@
 
 namespace __3DWorld__ {
 
-ModelRender::ModelRender(QOpenGLWidget* widget) : _vbo(QOpenGLBuffer::VertexBuffer), _nbo(QOpenGLBuffer::VertexBuffer), _ibo(QOpenGLBuffer::IndexBuffer)
+ModelRender::ModelRender() : _vbo(QOpenGLBuffer::VertexBuffer), _nbo(QOpenGLBuffer::VertexBuffer), _ibo(QOpenGLBuffer::IndexBuffer)
 {
-    _widget = widget;
+
 }
 
 void ModelRender::CreateShaderProgram() {
@@ -23,18 +23,7 @@ void ModelRender::CreateShaderProgram() {
 }
 
 void ModelRender::CreateGeometry() {
-    /*
-    if(!_loader.Load("velociraptor_mesh_materials.dae")) {
-        qDebug() << "ModelLoader failed to load model" << _shaders.log();
-        exit(1);
-    }
 
-    // Get the loaded model data from the model-loader: (v)ertices, (n)ormals, and (i)ndices
-    QVector<float> *v;
-    QVector<float> *n;
-    QVector<uint> *i;
-    _loader.GetBufferData(&v, &n, &i);
-    */
     QVector<float> *v;
     QVector<float> *n;
     QVector<uint> *i;
@@ -88,7 +77,6 @@ void ModelRender::Draw() {
     QMatrix4x4 model;
     model.translate(-0.2f, 0.0f, .5f);
     model.rotate(55.0f, 0.0f, 1.0f, 0.0f);
-    //Initialize();
     DrawNode(model, _obj->GetNode().data(), QMatrix4x4());
 }
 
@@ -127,40 +115,21 @@ void ModelRender::Initialize() {
     _shaders.setUniformValue("light.intensity",  QVector3D(  1.0f,  1.0f, 1.0f  ));
 
     CreateGeometry();
-<<<<<<< HEAD
-    /*
-    _view.setToIdentity();
-    _view.lookAt(QVector3D(0.0f, 0.0f, 1.2f),    // Camera Position
-                 QVector3D(0.0f, 0.0f, 0.0f),    // Point camera looks towards
-                 QVector3D(0.0f, 1.0f, 0.0f));
-    */
-    //glEnable(GL_DEPTH_TEST);
-
-    //glClearColor(.9f, .9f, .93f ,1.0f);
-=======
->>>>>>> 07aa19dc1a6cd0ccd6a11dec1c5802a92799efec
 }
 
 void ModelRender::Paint() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     _shaders.bind();
     _vertrex_object.bind();
     Draw();
     _vertrex_object.release();
-    //_widget->update();
 }
 
 void ModelRender::Resize(int w, int h) {
-    //glViewport(0, 0, w, h);
-    //_projection.setToIdentity();
-
     _projection.perspective(80.0f, (float)w/h, .3f, 1000);//80 en 1000 hebben invloed op de hoek
-    //_widget->update();
 }
 
 void ModelRender::SetView(Point3D lookat, Point3D position) {
     _view.setToIdentity();
-
     _view.lookAt(QVector3D(position.x(), position.y(), position.z()),
                  QVector3D(lookat.x(), lookat.y(), lookat.z()),
                  QVector3D(0.0f, 1.0f, 0.0f));

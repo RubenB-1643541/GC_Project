@@ -17,7 +17,7 @@ namespace __3DWorld__ {
 class ModelRender : QOpenGLFunctions
 {
 public:
-    ModelRender(QOpenGLWidget * widget);
+    ModelRender();
     void Draw();
     void SetModel(ModelObject * obj) {_obj = obj;}
     void LoadModel(QString path);
@@ -42,7 +42,6 @@ private:
     QOpenGLBuffer _nbo;
     QOpenGLBuffer _ibo;
     GLsizei _cnt;
-    QOpenGLWidget * _widget;
     ModelObject * _obj;
 
 };
