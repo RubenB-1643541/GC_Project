@@ -21,6 +21,7 @@ public:
     void Draw();
     void SetModel(ModelObject * obj) {_obj = obj;}
     void LoadModel(QString path);
+    void LoadModel(QString path, Point3D * position);
     void Initialize();
     void Paint();
     void Resize(int w, int h);

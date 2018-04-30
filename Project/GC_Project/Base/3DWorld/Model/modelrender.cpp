@@ -75,7 +75,7 @@ void ModelRender::DrawNode(const QMatrix4x4 model, const Node *node, QMatrix4x4 
 
 void ModelRender::Draw() {
     QMatrix4x4 model;
-    model.translate(-0.2f, 0.0f, .5f);
+    model.translate(_obj->GetPosition()->x(), _obj->GetPosition()->y(), _obj->GetPosition()->z());
     model.rotate(55.0f, 0.0f, 1.0f, 0.0f);
     DrawNode(model, _obj->GetNode().data(), QMatrix4x4());
 }
@@ -104,6 +104,11 @@ void ModelRender::LoadModel(QString path) {
     _obj = new ModelObject();
     _loader.GetBufferData(_obj);
     _loader.GetNodeData(_obj);
+}
+
+void ModelRender::LoadModel(QString path, Point3D * position) {
+    LoadModel(path);
+    _obj->SetPosition(position);
 }
 
 void ModelRender::Initialize() {

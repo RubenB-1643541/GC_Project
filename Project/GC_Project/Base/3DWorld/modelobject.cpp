@@ -3,6 +3,10 @@
 namespace __3DWorld__ {
 
 ModelObject::ModelObject() {
+    _position = new Point3D();
+}
+
+ModelObject::ModelObject(Point3D * position) : _position(position) {
 
 }
 
