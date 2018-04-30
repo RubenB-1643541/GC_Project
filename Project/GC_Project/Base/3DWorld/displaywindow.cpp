@@ -9,12 +9,12 @@ DisplayWindow::DisplayWindow(QWidget *parent) :
     QMainWindow(parent) {
     _open_gl_view = new OpenGLView();
     ModelRender * render = new ModelRender(_open_gl_view);
-    render->LoadModel("bobomb battlefeild.obj");
-
-    ModelRender * render2 = new ModelRender(_open_gl_view);
-    render2->LoadModel("spider.obj");
-    _open_gl_view->addModelRenderer(render2);
+    render->LoadModel("Models/Bobomb/bobomb battlefeild.obj");
     _open_gl_view->addModelRenderer(render);
+    ModelRender * render2 = new ModelRender(_open_gl_view);
+    render2->LoadModel("Models/Bench/bench.obj");
+    _open_gl_view->addModelRenderer(render2);
+
     this->setCentralWidget(_open_gl_view);
     this->setMinimumSize(1280, 720);
 }

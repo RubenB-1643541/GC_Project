@@ -169,9 +169,9 @@ void ModelRender::Initialize() {
                  QVector3D(0.0f, 0.0f, 0.0f),    // Point camera looks towards
                  QVector3D(0.0f, 1.0f, 0.0f));
     */
-    glEnable(GL_DEPTH_TEST);
+    //glEnable(GL_DEPTH_TEST);
 
-    glClearColor(.9f, .9f, .93f ,1.0f);
+    //glClearColor(.9f, .9f, .93f ,1.0f);
 }
 
 void ModelRender::Paint() {
