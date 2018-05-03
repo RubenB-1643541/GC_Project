@@ -7,6 +7,9 @@ namespace __3DWorld__ {
 /// Construction
 ////////////////////////////////////////////////////////
 OpenGLView::OpenGLView() : QOpenGLWidget() {
+    this->setMouseTracking(true);
+    this->setCursor(Qt::BlankCursor);
+
     // Timer for updating view
     _timer = new QTimer();
     connect(_timer, SIGNAL(timeout()), this, SLOT(update()));
@@ -15,6 +18,8 @@ OpenGLView::OpenGLView() : QOpenGLWidget() {
 
     // Camera
     _camera = new Camera();
+    _mouse_dx = 0;
+    _mouse_dy = 0;
     _camera_key_handler = new CameraKeyHandler(_camera);
     _headlamp = new HeadLamp();
 
@@ -82,6 +87,7 @@ void OpenGLView::paintGL() {
     glPushMatrix();
 
     // Update Camera
+    updateCamMouseRotation();
     updateCamera();
 
     // Draw Models
@@ -145,11 +151,26 @@ void OpenGLView::keyReleaseEvent(QKeyEvent* event) {
     else if (event->text() == 'd') { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Right); }
     return;
 }
+void OpenGLView::mouseMoveEvent(QMouseEvent *event) {
+    // Todo Camera not smooth enough
+    QPoint pos = event->pos();
+    _mouse_dx = (width() / 2) - pos.x(); qDebug() << "dx" << _mouse_dx;
+    _mouse_dy = (height() / 2) - pos.y(); qDebug() << "dy" << _mouse_dy;
+
+
+
+    // set cursor back to center
+    this->cursor().setPos(mapToGlobal(QPoint(
+        width() / 2,
+        height() / 2
+    )));
+}
 
 ////////////////////////////////////////////////////////
 /// Update
 ////////////////////////////////////////////////////////
 void OpenGLView::updateCamera() {
+    updateCamMouseRotation();
     _camera_key_handler->updateCamera();
     Point3D p = _camera->getPosition();
     Point3D l = _camera->getLooksAt();
@@ -161,6 +182,21 @@ void OpenGLView::updateCamera() {
     _headlamp->setPosition(p);
     _headlamp->openGlRender(GL_LIGHT1);
     return;
+}
+void OpenGLView::updateCamMouseRotation() {
+    if (_mouse_dy > 0) {
+        //qDebug() << "up";
+        _camera->rotateUpDown(0.017);
+    } else if (_mouse_dy < 0) {
+        //qDebug() << "down";
+        _camera->rotateUpDown(-0.017);
+    }
+
+    if (_mouse_dx > 0) {
+        _camera->rotateLeftRight(0.017);
+    } else if (_mouse_dx < 0) {
+        _camera->rotateLeftRight(-0.017);
+    }
 }
 
 }

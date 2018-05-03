@@ -42,11 +42,13 @@ public:
     ////////////////////////////////////////////////////////
     void keyPressEvent(QKeyEvent* event);
     void keyReleaseEvent(QKeyEvent* event);
+    void mouseMoveEvent(QMouseEvent *event);
 private:
     ////////////////////////////////////////////////////////
     /// Update
     ////////////////////////////////////////////////////////
     void updateCamera();
+    void updateCamMouseRotation();
 
     ////////////////////////////////////////////////////////
     /// Member Variables
@@ -54,6 +56,8 @@ private:
     QTimer* _timer;
 
     Camera* _camera;
+    QPoint _prev_mouse_pos;
+    int _mouse_dx, _mouse_dy;
     CameraKeyHandler* _camera_key_handler;
     HeadLamp* _headlamp;
 
