@@ -95,6 +95,18 @@ void ModelRender::DrawMeshFromNode(const Node *node) {
             _shaders.setUniformValue("material.Ks", m.material->specular);
             _shaders.setUniformValue("material.shininess", m.material->shininess);
         }
+        /*
+        int width, height;
+        unsigned char * pixels = SOIL_load_image("Models/Bobomb/1B46C8C_c.bmp", &width, &height, 0, SOIL_LOAD_RGB);
+        glGenTextures(1, &_texture);
+        glBindTexture(GL_TEXTURE_2D, _texture);
+        glTexImage2D(GL_TEXTURE_2D, 0, (GLint)1024, (GLsizei)1024, (GLsizei) 1024, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*)pixels);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+*/
         glDrawElements(GL_TRIANGLES, m.indexCount, GL_UNSIGNED_INT, (const GLvoid*) (m.indexOffset * sizeof(GLuint)));
     }
     
@@ -128,7 +140,7 @@ void ModelRender::Initialize() {
 
     _shaders.setUniformValue("light.position",   QVector4D( -1.0f,  1.0f, 1.0f, 1.0f ));
     _shaders.setUniformValue("light.intensity",  QVector3D(  1.0f,  1.0f, 1.0f  ));
-
+    InitializeTextures();
     CreateGeometry();
 }
 
@@ -148,6 +160,24 @@ void ModelRender::SetView(Point3D lookat, Point3D position) {
     _view.lookAt(QVector3D(position.x(), position.y(), position.z()),
                  QVector3D(lookat.x(), lookat.y(), lookat.z()),
                  QVector3D(0.0f, 1.0f, 0.0f));
+}
+//https://open.gl/textures
+void ModelRender::InitializeTextures() {
+
+    /*
+    float pixels[] = {
+        0.0f, 0.0f, 0.0f,   1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,   0.0f, 0.0f, 0.0f
+    };
+    glGenTextures(1, &_texture);
+    glBindTexture(GL_TEXTURE_2D, _texture);
+    glTexImage2D(GL_TEXTURE_2D, 0, (GLint)1024, (GLsizei)1024, (GLsizei) 1024, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*)pixels);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+    */
 }
 
 }

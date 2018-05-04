@@ -32,13 +32,14 @@ void OpenGLView::initializeGL() {
     /// - Shaders
 
     // enable
+    /*
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     GLfloat light_position [] = {0.1f, 0.1f, 0.1f, 0.1f};
     GLfloat light_diffuse []={ 1.0, 1.0, 1.0, 1.0 };
     glLightfv (GL_LIGHT0, GL_POSITION, light_position);
     glLightfv (GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-
+    */
     glEnable(GL_DEPTH_TEST);
 
     // background color

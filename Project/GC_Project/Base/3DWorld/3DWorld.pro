@@ -61,3 +61,6 @@ win32: LIBS += -L"C:/Program Files/Assimp/lib/x64/" -lassimp
 
 INCLUDEPATH += "C:/Program Files/Assimp/include"
 DEPENDPATH += "C:/Program Files/Assimp/include"
+
+
+

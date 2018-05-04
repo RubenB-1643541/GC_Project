@@ -12,6 +12,8 @@
 #include <QOpenGLBuffer>
 #include <QOpenGLFunctions>
 
+#include <soil/Simple OpenGL Image Library/src/SOIL.h>
+
 //http://ogldev.atspace.co.uk/www/tutorial22/tutorial22.html
 
 namespace __3DWorld__ {
@@ -37,6 +39,7 @@ private:
     void CreateShaderProgram();
     void ResizeGL();
     void CreateGeometry();
+    void InitializeTextures();
 
     ModelLoader _loader;
     QMatrix4x4 _projection;
@@ -48,6 +51,7 @@ private:
     QOpenGLBuffer _ibo;
     GLsizei _cnt;
     ModelObject * _obj;
+    GLuint _texture;
 
 };
 
