@@ -35,7 +35,7 @@ SOURCES += main.cpp\
     model.cpp \
     modelobject.cpp \
     Model/modelloader.cpp \
-    Model/modelrender.cpp
+    Model/modelrender.cpp \
     model.cpp \
 
 
@@ -51,7 +51,7 @@ HEADERS  += displaywindow.h \
     Model/modeldata.h \
     Model/modelloader.h \
     Model/modelrender.h \
-    shaders.h
+    shaders.h \
     model.h \
 
 
@@ -63,4 +63,7 @@ INCLUDEPATH += "C:/Program Files/Assimp/include"
 DEPENDPATH += "C:/Program Files/Assimp/include"
 
 
+win32: LIBS += -L$$PWD/'soil/Simple OpenGL Image Library/lib/' -lSOIL
 
+INCLUDEPATH += $$PWD/'soil/Simple OpenGL Image Library/src'
+DEPENDPATH += $$PWD/'soil/Simple OpenGL Image Library/src'

@@ -95,7 +95,7 @@ void ModelRender::DrawMeshFromNode(const Node *node) {
             _shaders.setUniformValue("material.Ks", m.material->specular);
             _shaders.setUniformValue("material.shininess", m.material->shininess);
         }
-        /*
+
         int width, height;
         unsigned char * pixels = SOIL_load_image("Models/Bobomb/1B46C8C_c.bmp", &width, &height, 0, SOIL_LOAD_RGB);
         glGenTextures(1, &_texture);
@@ -106,7 +106,7 @@ void ModelRender::DrawMeshFromNode(const Node *node) {
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-*/
+
         glDrawElements(GL_TRIANGLES, m.indexCount, GL_UNSIGNED_INT, (const GLvoid*) (m.indexOffset * sizeof(GLuint)));
     }
     

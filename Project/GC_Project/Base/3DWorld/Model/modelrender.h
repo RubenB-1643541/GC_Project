@@ -12,7 +12,7 @@
 #include <QOpenGLBuffer>
 #include <QOpenGLFunctions>
 
-#include <soil/Simple OpenGL Image Library/src/SOIL.h>
+#include <SOIL.h>
 
 //http://ogldev.atspace.co.uk/www/tutorial22/tutorial22.html
 
