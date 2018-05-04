@@ -36,7 +36,9 @@ SOURCES += main.cpp\
     modelobject.cpp \
     Model/modelloader.cpp \
     Model/modelrender.cpp \
-    CameraMouseHandler.cpp
+    CameraMouseHandler.cpp \
+    pausescreen.cpp \
+    qssfile.cpp
     model.cpp \
 
 
@@ -53,13 +55,19 @@ HEADERS  += displaywindow.h \
     Model/modelloader.h \
     Model/modelrender.h \
     shaders.h \
-    CameraMouseHandler.h
+    CameraMouseHandler.h \
+    pausescreen.h \
+    qssfile.h
     model.h \
 
 
-FORMS    += displaywindow.ui
+FORMS    += displaywindow.ui \
+    pausescreen.ui
 
 win32: LIBS += -L"C:/Program Files/Assimp/lib/x64/" -lassimp
 
 INCLUDEPATH += "C:/Program Files/Assimp/include"
 DEPENDPATH += "C:/Program Files/Assimp/include"
+
+RESOURCES += \
+    stylesheets.qrc

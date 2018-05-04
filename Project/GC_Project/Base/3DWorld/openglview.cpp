@@ -123,6 +123,7 @@ void OpenGLView::addModelRenderer(ModelRender *renderer) {
 /// KeyEvents
 ////////////////////////////////////////////////////////
 void OpenGLView::keyPressEvent(QKeyEvent* event) {
+    // Todo change shift to different key -> caps != lower case
     if (event->isAutoRepeat()) { return; }
     else if (event->key() == Qt::Key_Up)     { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Up); }
     else if (event->key() == Qt::Key_Down)   { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Down); }
@@ -135,6 +136,7 @@ void OpenGLView::keyPressEvent(QKeyEvent* event) {
     else if (event->text() == 'q') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Left); }
     else if (event->text() == 'd') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Right); }
     else if (event->text() == 'l') { _headlamp->toggle(); }
+    else if (event->key() == Qt::Key_Escape) { emit escapePressed(); }
     return;
 }
 void OpenGLView::keyReleaseEvent(QKeyEvent* event) {

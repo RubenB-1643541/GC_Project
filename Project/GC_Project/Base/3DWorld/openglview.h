@@ -20,6 +20,7 @@ namespace __3DWorld__ {
  * @brief The OpenGLView class
  */
 class OpenGLView : public QOpenGLWidget {
+    Q_OBJECT
 public:
     ////////////////////////////////////////////////////////
     /// Construction
@@ -44,6 +45,8 @@ public:
     void keyPressEvent(QKeyEvent* event);
     void keyReleaseEvent(QKeyEvent* event);
     void mouseMoveEvent(QMouseEvent *event);
+signals:
+    void escapePressed();
 private:
     ////////////////////////////////////////////////////////
     /// Update
