@@ -21,6 +21,7 @@ OpenGLView::OpenGLView() : QOpenGLWidget() {
     _mouse_dx = 0;
     _mouse_dy = 0;
     _camera_key_handler = new CameraKeyHandler(_camera);
+    _camera_mouse_handler = new CameraMouseHandler(_camera);
     _headlamp = new HeadLamp();
 
     return;
@@ -87,7 +88,6 @@ void OpenGLView::paintGL() {
     glPushMatrix();
 
     // Update Camera
-    updateCamMouseRotation();
     updateCamera();
 
     // Draw Models
@@ -128,8 +128,8 @@ void OpenGLView::keyPressEvent(QKeyEvent* event) {
     else if (event->key() == Qt::Key_Down)   { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Down); }
     else if (event->key() == Qt::Key_Left)   { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Left); }
     else if (event->key() == Qt::Key_Right)  { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Right); }
-    else if (event->text() == 'a') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Up); }
-    else if (event->text() == 'e') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Down); }
+    else if (event->key() == Qt::Key_Space)  { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Up); }
+    else if (event->key() == Qt::Key_Shift)  { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Down); }
     else if (event->text() == 'z') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Forward); }
     else if (event->text() == 's') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Back); }
     else if (event->text() == 'q') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Left); }
@@ -143,8 +143,8 @@ void OpenGLView::keyReleaseEvent(QKeyEvent* event) {
     else if (event->key() == Qt::Key_Down)   { _camera_key_handler->keyUp(CameraKeyHandler::Key::Rotate_Down); }
     else if (event->key() == Qt::Key_Left)   { _camera_key_handler->keyUp(CameraKeyHandler::Key::Rotate_Left); }
     else if (event->key() == Qt::Key_Right)  { _camera_key_handler->keyUp(CameraKeyHandler::Key::Rotate_Right); }
-    else if (event->text() == 'a') { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Up); }
-    else if (event->text() == 'e') { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Down); }
+    else if (event->key() == Qt::Key_Space)  { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Up); }
+    else if (event->key() == Qt::Key_Shift)  { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Down); }
     else if (event->text() == 'z') { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Forward); }
     else if (event->text() == 's') { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Back); }
     else if (event->text() == 'q') { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Left); }
@@ -152,12 +152,10 @@ void OpenGLView::keyReleaseEvent(QKeyEvent* event) {
     return;
 }
 void OpenGLView::mouseMoveEvent(QMouseEvent *event) {
-    // Todo Camera not smooth enough
-    QPoint pos = event->pos();
-    _mouse_dx = (width() / 2) - pos.x(); qDebug() << "dx" << _mouse_dx;
-    _mouse_dy = (height() / 2) - pos.y(); qDebug() << "dy" << _mouse_dy;
-
-
+    _camera_mouse_handler->registerMouseMovement(
+        QPoint((width() / 2), (height() / 2)),      // screen center
+        event->pos()                                // new pos
+    );
 
     // set cursor back to center
     this->cursor().setPos(mapToGlobal(QPoint(
@@ -170,7 +168,7 @@ void OpenGLView::mouseMoveEvent(QMouseEvent *event) {
 /// Update
 ////////////////////////////////////////////////////////
 void OpenGLView::updateCamera() {
-    updateCamMouseRotation();
+    _camera_mouse_handler->updateCamera();
     _camera_key_handler->updateCamera();
     Point3D p = _camera->getPosition();
     Point3D l = _camera->getLooksAt();
@@ -181,22 +179,8 @@ void OpenGLView::updateCamera() {
     );
     _headlamp->setPosition(p);
     _headlamp->openGlRender(GL_LIGHT1);
-    return;
-}
-void OpenGLView::updateCamMouseRotation() {
-    if (_mouse_dy > 0) {
-        //qDebug() << "up";
-        _camera->rotateUpDown(0.017);
-    } else if (_mouse_dy < 0) {
-        //qDebug() << "down";
-        _camera->rotateUpDown(-0.017);
-    }
 
-    if (_mouse_dx > 0) {
-        _camera->rotateLeftRight(0.017);
-    } else if (_mouse_dx < 0) {
-        _camera->rotateLeftRight(-0.017);
-    }
+    return;
 }
 
 }

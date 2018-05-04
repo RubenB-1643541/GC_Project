@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     model.cpp \
     modelobject.cpp \
     Model/modelloader.cpp \
-    Model/modelrender.cpp
+    Model/modelrender.cpp \
+    CameraMouseHandler.cpp
     model.cpp \
 
 
@@ -51,7 +52,8 @@ HEADERS  += displaywindow.h \
     Model/modeldata.h \
     Model/modelloader.h \
     Model/modelrender.h \
-    shaders.h
+    shaders.h \
+    CameraMouseHandler.h
     model.h \
 
 

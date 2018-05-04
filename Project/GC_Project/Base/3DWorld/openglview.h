@@ -9,6 +9,7 @@
 
 #include "Camera.h"
 #include "CameraKeyHandler.h"
+#include "CameraMouseHandler.h"
 #include "HeadLamp.h"
 #include "Model/modelrender.h"
 
@@ -48,7 +49,6 @@ private:
     /// Update
     ////////////////////////////////////////////////////////
     void updateCamera();
-    void updateCamMouseRotation();
 
     ////////////////////////////////////////////////////////
     /// Member Variables
@@ -59,6 +59,7 @@ private:
     QPoint _prev_mouse_pos;
     int _mouse_dx, _mouse_dy;
     CameraKeyHandler* _camera_key_handler;
+    CameraMouseHandler* _camera_mouse_handler;
     HeadLamp* _headlamp;
 
     QVector<ModelRender *> _model_renderers;

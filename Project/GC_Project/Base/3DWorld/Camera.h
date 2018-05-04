@@ -6,6 +6,8 @@
 
 namespace __3DWorld__ {
 
+const double DEG_90_IN_RAD = 1.570796;
+
 /**
  * @author Wald Habets
  * @brief
@@ -70,9 +72,14 @@ public:
 
     void setPosition(const Point3D& point);
     void setLooksAt(const Point3D& point);
+
+    void setMaxUpDownRotationAt90(bool is_set);
 private:
     Point3D _p_position;
     Point3D _p_looks_at;
+
+    bool _max_up_down_at_90;
+    double _r_current_up_down_radians;
 
     Vector3D _v_looks_at;
     Vector3D _v_up;
