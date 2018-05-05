@@ -10,15 +10,19 @@
 #include <assimp/Importer.hpp>
 
 #include "Point3D.h"
+#include "Vector3D.h"
 
 namespace __3DWorld__ {
 
 struct MLVertex {
     Point3D position;
+    Point3D normal;
 };
 struct MLMesh {
     unsigned int num_vertices;
+    unsigned int num_faces;
     std::vector<MLVertex> vertices;
+    std::vector<unsigned int> indices;
 };
 
 class ModelLoader

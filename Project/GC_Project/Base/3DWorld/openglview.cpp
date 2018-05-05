@@ -39,18 +39,20 @@ void OpenGLView::initializeGL() {
 
     // enable
     glEnable(GL_LIGHTING);
+    glEnable(GL_COLOR_MATERIAL);
+    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+    glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE);
+    glEnable(GL_LIGHT0);
 
     // Global lighting
-    GLfloat global_ambient[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    //*
+    GLfloat global_ambient[] = { 0.4, 0.4, 0.4, 1 };
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
 
-    // light diffuse
-    glEnable(GL_LIGHT0);
-    GLfloat light_position [] = {0.0f, 0.0f, 0.9f, 0.1f};
-    GLfloat light_diffuse []={ 1.0, 1.0, 1.0, 1.0 };
-    glLightfv (GL_LIGHT0, GL_POSITION, light_position);
-    glLightfv (GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-
+    GLfloat diffuse[] = { 1, 1, 1, 1 };
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+    GLfloat light_position[] = { 1, 1, 1, 1 };
+    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 
     glEnable(GL_DEPTH_TEST);
 
@@ -107,16 +109,20 @@ void OpenGLView::paintGL() {
     }
 
     // begin Test
+    /*
     glPushMatrix();
 
     GLfloat diffuse[] = {0.54f, 0.89f, 0.63f, 1.0f};
     glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
 
     glShadeModel(GL_SMOOTH);
-
+    // */
     // Draw Object
-    /*GLfloat diff [] = { 0.7f , 0.5f , 0.0f };
-    glMaterialfv (GL_FRONT, GL_DIFFUSE, diff);*/
+    /*
+    GLfloat diff [] = { 0.7f , 0.5f , 0.0f };
+    glMaterialfv (GL_FRONT, GL_DIFFUSE, diff);
+    // */
+    /*
     GLUquadricObj* quadric = gluNewQuadric();
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     //gluQuadricDrawStyle(quadric, GLU_FILL);
@@ -124,6 +130,7 @@ void OpenGLView::paintGL() {
     gluDeleteQuadric(quadric);
 
     glPopMatrix();
+    // */
     // end Test
 
     PrimitiveModel model;
