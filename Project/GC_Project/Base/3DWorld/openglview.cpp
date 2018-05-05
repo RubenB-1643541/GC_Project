@@ -61,10 +61,10 @@ void OpenGLView::initializeGL() {
     glClearColor(0.53, 0.81, 0.92 ,1.0f);
 
 
-    for (ModelRender* renderer: _model_renderers) {
+    //for (ModelRender* renderer: _model_renderers) {
         //renderer->SetView(_camera->getLooksAt(), _camera->getPosition());
         //renderer->Initialize();
-    }
+    //}
 
 
     _timer->start(TIMER_INTERVAL);
@@ -85,10 +85,10 @@ void OpenGLView::resizeGL(int w, int h) {
         /* near clipping */ 1.0,
         /* far clipping  */ 1000.0
     );
-
-    for (ModelRender* renderer: _model_renderers) {
+    //for (ModelRender* renderer: _model_renderers) {
         //renderer->Resize(w, h);
-    }
+    //}
+
 
     return;
 }
@@ -97,16 +97,17 @@ void OpenGLView::paintGL() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glMatrixMode(GL_MODELVIEW);
+
     glPushMatrix();
 
     // Update Camera
     updateCamera();
 
     // Draw Models
-    for (ModelRender* renderer: _model_renderers) {
+    //for (ModelRender* renderer: _model_renderers) {
         //renderer->SetView(_camera->getLooksAt(), _camera->getPosition());
         //renderer->Paint();
-    }
+    //}
 
     // begin Test
     /*
@@ -133,8 +134,12 @@ void OpenGLView::paintGL() {
     // */
     // end Test
 
-    PrimitiveModel model;
-    model.draw(ShadingMode::SMOOTH, FrameMode::FILL);
+    for(ModelRenderer * renderer : _model_renderers) {
+        renderer->draw(ShadingMode::SMOOTH, FrameMode::FILL);
+    }
+
+    //PrimitiveModel model;
+    //model.draw(ShadingMode::SMOOTH, FrameMode::FILL);
 
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
@@ -144,9 +149,9 @@ void OpenGLView::paintGL() {
 ////////////////////////////////////////////////////////
 /// Rending
 ////////////////////////////////////////////////////////
-void OpenGLView::addModelRenderer(ModelRender *renderer) {
+
+void OpenGLView::addModelRenderer(ModelRenderer *renderer) {
     _model_renderers.append(renderer);
-    return;
 }
 
 ////////////////////////////////////////////////////////

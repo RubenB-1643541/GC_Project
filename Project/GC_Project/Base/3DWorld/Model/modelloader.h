@@ -1,7 +1,6 @@
 #ifndef MODELLOADER_H
 #define MODELLOADER_H
 
-#include "modelobject.h"
 #include <QString>
 #include <QVector>
 #include <QMatrix4x4>

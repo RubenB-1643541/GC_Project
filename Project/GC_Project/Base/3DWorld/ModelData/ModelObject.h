@@ -1,15 +1,18 @@
-#ifndef PRIMITIVEMODEL_H
-#define PRIMITIVEMODEL_H
+#ifndef MODEL_OBJECT
+#define MODEL_OBJECT
 
-#include "Model/modeldata.h"
 #include "Model/modelloader.h"
-#include "modelobject.h"
 
 #include <windows.h> // Needed to compile gl.h
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
 namespace __3DWorld__ {
+
+/**
+ * @author Wald Habets
+ * @brief
+ */
 
 enum ShadingMode {
     FLAT = GL_FLAT,
@@ -20,18 +23,18 @@ enum FrameMode {
     FILL = GL_FILL
 };
 
-class PrimitiveModel {
+class ModelObject {
 public:
-    PrimitiveModel();
+    ModelObject(QString Path);
     void draw(ShadingMode s_mode, FrameMode f_mode);
+
+
 private:
 
-    ModelObject* _obj;
     ModelLoader _loader;
 
     std::vector<MLMesh> _meshes;
 };
-
 }
 
-#endif // PRIMITIVEMODEL_H
+#endif MODEL_OBJECT

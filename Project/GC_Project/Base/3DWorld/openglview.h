@@ -11,8 +11,7 @@
 #include "CameraKeyHandler.h"
 #include "CameraMouseHandler.h"
 #include "HeadLamp.h"
-#include "Model/modelrender.h"
-#include "PrimitiveModel.h"
+#include "ModelData/ModelRenderer.h"
 
 namespace __3DWorld__ {
 
@@ -38,7 +37,7 @@ public:
     ////////////////////////////////////////////////////////
     /// Rendering
     ////////////////////////////////////////////////////////
-    void addModelRenderer(ModelRender* renderer);
+    void addModelRenderer(ModelRenderer* renderer);
 
     ////////////////////////////////////////////////////////
     /// KeyEvents
@@ -66,7 +65,7 @@ private:
     CameraMouseHandler* _camera_mouse_handler;
     HeadLamp* _headlamp;
 
-    QVector<ModelRender *> _model_renderers;
+    QVector<ModelRenderer *> _model_renderers;
 
     ////////////////////////////////////////////////////////
     /// Static

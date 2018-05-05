@@ -1,6 +1,5 @@
 #include "displaywindow.h"
 #include "ui_displaywindow.h"
-#include "Model/modelrender.h"
 #include <QDebug>
 
 namespace __3DWorld__ {
@@ -24,14 +23,15 @@ DisplayWindow::DisplayWindow(QWidget *parent) :
     connect(_open_gl_view, SIGNAL(escapePressed()), this, SLOT(setPauseScreen()));
     connect(_pause_screen, SIGNAL(continueButtonPressed()), this, SLOT(setOpenGLView()));
 
-    // Models
-    ModelRender * render = new ModelRender(_open_gl_view);
-    render->LoadModel("bobomb battlefeild.obj");
+    ModelObject * temp_model1 = new ModelObject("Models/Bobomb/bobomb battlefeild.obj");
+    ModelRenderer * renderer1 = new ModelRenderer(temp_model1);
+    _open_gl_view->addModelRenderer(renderer1);
 
-    ModelRender * render2 = new ModelRender(_open_gl_view);
-    render2->LoadModel("spider.obj");
-    _open_gl_view->addModelRenderer(render2);
-    _open_gl_view->addModelRenderer(render);
+
+    ModelObject * temp_model2 = new ModelObject("Models/Spider/spider.obj");
+    ModelRenderer * renderer2 = new ModelRenderer(temp_model2);
+    _open_gl_view->addModelRenderer(renderer2);
+
 }
 
 DisplayWindow::~DisplayWindow() {

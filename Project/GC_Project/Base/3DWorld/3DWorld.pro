@@ -35,11 +35,12 @@ SOURCES += main.cpp\
     model.cpp \
     modelobject.cpp \
     Model/modelloader.cpp \
-    Model/modelrender.cpp \
     CameraMouseHandler.cpp \
     pausescreen.cpp \
     qssfile.cpp \
-    PrimitiveModel.cpp
+    ModelData/Model.cpp \
+    ModelData/ModelObject.cpp \
+    ModelData/ModelRenderer.cpp
     model.cpp \
 
 
@@ -54,12 +55,12 @@ HEADERS  += displaywindow.h \
     modelobject.h \
     Model/modeldata.h \
     Model/modelloader.h \
-    Model/modelrender.h \
-    shaders.h \
     CameraMouseHandler.h \
     pausescreen.h \
     qssfile.h \
-    PrimitiveModel.h
+    ModelData/Model.h \
+    ModelData/ModelObject.h \
+    ModelData/ModelRenderer.h
     model.h \
 
 
