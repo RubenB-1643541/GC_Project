@@ -39,11 +39,18 @@ void OpenGLView::initializeGL() {
 
     // enable
     glEnable(GL_LIGHTING);
+
+    // Global lighting
+    GLfloat global_ambient[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
+
+    // light diffuse
     glEnable(GL_LIGHT0);
-    GLfloat light_position [] = {0.1f, 0.1f, 0.1f, 0.1f};
+    GLfloat light_position [] = {0.0f, 0.0f, 0.9f, 0.1f};
     GLfloat light_diffuse []={ 1.0, 1.0, 1.0, 1.0 };
     glLightfv (GL_LIGHT0, GL_POSITION, light_position);
     glLightfv (GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+
 
     glEnable(GL_DEPTH_TEST);
 
@@ -51,10 +58,12 @@ void OpenGLView::initializeGL() {
     // 87CEEB
     glClearColor(0.53, 0.81, 0.92 ,1.0f);
 
+
     for (ModelRender* renderer: _model_renderers) {
-        renderer->SetView(_camera->getLooksAt(), _camera->getPosition());
-        renderer->Initialize();
+        //renderer->SetView(_camera->getLooksAt(), _camera->getPosition());
+        //renderer->Initialize();
     }
+
 
     _timer->start(TIMER_INTERVAL);
     return;
@@ -75,15 +84,16 @@ void OpenGLView::resizeGL(int w, int h) {
         /* far clipping  */ 1000.0
     );
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
     for (ModelRender* renderer: _model_renderers) {
-        renderer->Resize(w, h);
+        //renderer->Resize(w, h);
     }
+
     return;
 }
 
 void OpenGLView::paintGL() {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
 
@@ -92,19 +102,32 @@ void OpenGLView::paintGL() {
 
     // Draw Models
     for (ModelRender* renderer: _model_renderers) {
-        renderer->SetView(_camera->getLooksAt(), _camera->getPosition());
-        renderer->Paint();
+        //renderer->SetView(_camera->getLooksAt(), _camera->getPosition());
+        //renderer->Paint();
     }
 
     // begin Test
+    glPushMatrix();
+
+    GLfloat diffuse[] = {0.54f, 0.89f, 0.63f, 1.0f};
+    glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
+
+    glShadeModel(GL_SMOOTH);
+
     // Draw Object
-    GLfloat diff [] = { 0.7f , 0.5f , 0.0f };
-    glMaterialfv (GL_FRONT, GL_DIFFUSE, diff);
+    /*GLfloat diff [] = { 0.7f , 0.5f , 0.0f };
+    glMaterialfv (GL_FRONT, GL_DIFFUSE, diff);*/
     GLUquadricObj* quadric = gluNewQuadric();
-    gluQuadricDrawStyle(quadric, GLU_FILL);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    //gluQuadricDrawStyle(quadric, GLU_FILL);
     gluSphere(quadric, 3.0, 25, 25),
     gluDeleteQuadric(quadric);
+
+    glPopMatrix();
     // end Test
+
+    PrimitiveModel model;
+    model.draw(ShadingMode::SMOOTH, FrameMode::FILL);
 
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();

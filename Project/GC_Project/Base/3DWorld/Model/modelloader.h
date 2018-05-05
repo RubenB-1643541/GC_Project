@@ -1,7 +1,6 @@
 #ifndef MODELLOADER_H
 #define MODELLOADER_H
 
-#include "modeldata.h"
 #include "modelobject.h"
 #include <QString>
 #include <QVector>
@@ -10,34 +9,31 @@
 #include <assimp/postprocess.h>
 #include <assimp/Importer.hpp>
 
+#include "Point3D.h"
+
 namespace __3DWorld__ {
+
+struct MLVertex {
+    Point3D position;
+};
+struct MLMesh {
+    unsigned int num_vertices;
+    std::vector<MLVertex> vertices;
+};
 
 class ModelLoader
 {
 public:
     ModelLoader();
-    bool Load(QString pathToFile);
-    void GetBufferData(QVector<float> **vertices, QVector<float> ** normals, QVector<unsigned int> **indices);
-    ModelObject * GetBufferData(ModelObject * obj);
-    ModelObject * GetNodeData(ModelObject * obj);
-    QSharedPointer<Node> GetNodeData() {return m_rootNode;}
-
+    void load(std::string path);
+    std::vector<MLMesh> getMeshes() { return _meshes; }
 private:
-    QSharedPointer<MaterialInfo> ProcessMaterial(aiMaterial *mater);
-    QSharedPointer<Mesh> ProcessMesh(aiMesh *mesh);
-    void ProcessNode(const aiScene *scene, aiNode *node, Node *parentNode, Node &newNode);
-
-    void TransformToUnitCoordinates();
-    void FindObjectDimensions(Node *node, QMatrix4x4 transformation, QVector3D &minDimension, QVector3D &maxDimension);
-
-    QVector<float> m_vertices;
-    QVector<float> m_normals;
-    QVector<unsigned int> m_indices;
-
-    QVector<QSharedPointer<MaterialInfo> > m_materials;
-    QVector<QSharedPointer<Mesh> > m_meshes;
-    QSharedPointer<Node> m_rootNode;
-
+    /*  Model Data  */
+    std::vector<MLMesh> _meshes;
+    /*  Functions   */
+    void loadModel(std::string path);
+    void processNode(aiNode *node, const aiScene *scene);
+    MLMesh processMesh(aiMesh *mesh, const aiScene *scene);
 };
 
 }

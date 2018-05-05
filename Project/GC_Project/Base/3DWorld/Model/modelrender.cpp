@@ -112,10 +112,10 @@ void ModelRender::DrawMeshFromNode(const Node *node) {
 }
 
 void ModelRender::LoadModel(QString path) {
-    _loader.Load(path);
+    /*_loader.load(path);
     _obj = new ModelObject();
     _loader.GetBufferData(_obj);
-    _loader.GetNodeData(_obj);
+    _loader.GetNodeData(_obj);*/
 }
 
 void ModelRender::Initialize() {

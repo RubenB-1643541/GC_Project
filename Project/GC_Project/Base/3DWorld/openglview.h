@@ -12,6 +12,7 @@
 #include "CameraMouseHandler.h"
 #include "HeadLamp.h"
 #include "Model/modelrender.h"
+#include "PrimitiveModel.h"
 
 namespace __3DWorld__ {
 

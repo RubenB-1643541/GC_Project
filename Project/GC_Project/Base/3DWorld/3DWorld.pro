@@ -38,7 +38,8 @@ SOURCES += main.cpp\
     Model/modelrender.cpp \
     CameraMouseHandler.cpp \
     pausescreen.cpp \
-    qssfile.cpp
+    qssfile.cpp \
+    PrimitiveModel.cpp
     model.cpp \
 
 
@@ -57,7 +58,8 @@ HEADERS  += displaywindow.h \
     shaders.h \
     CameraMouseHandler.h \
     pausescreen.h \
-    qssfile.h
+    qssfile.h \
+    PrimitiveModel.h
     model.h \
 
 
