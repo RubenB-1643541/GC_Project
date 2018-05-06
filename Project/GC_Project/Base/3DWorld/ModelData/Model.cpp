@@ -3,7 +3,10 @@
 namespace __3DWorld__ {
 
 Model::Model() {
-
+    _position = Point3D(0, 0, 0);
+    _angle = 0;
+    _rotation = Point3D(0, 0, 0);
+    _size = 1;
 }
 
 void Model::setModelObj(ModelObject *obj) {
@@ -14,6 +17,7 @@ void Model::setModelObj(ModelObject *obj) {
 void Model::draw(GLenum s_mode, GLenum f_mode) {
 
     glPushMatrix();
+    setPosition();
     glMateriali(GL_FRONT, GL_SHININESS, 20);
 
     glShadeModel(s_mode);                       // Type of shader (flat, smooth)
@@ -29,10 +33,25 @@ void Model::draw(GLenum s_mode, GLenum f_mode) {
     glPopMatrix();
 }
 
-void Model::move(Point3D point) {
-    glMatrixMode(GL_PROJECTION);
-    glTranslatef(point.x(), point.y(), point.z());
+void Model::move(Point3D position) {
+    _position = position;
 
+
+}
+
+void Model::rotate(float angle, Point3D vertex) {
+    _angle = angle;
+    _rotation = vertex;
+}
+
+void Model::scale(float size) {
+    _size = size;
+}
+
+void Model::setPosition() {
+    glTranslatef(_position.x(), _position.y(), _position.z());
+    glRotatef(_angle, _rotation.x(), _rotation.y(), _rotation.z());
+    glScalef(_size, _size, _size);
 }
 
 }
