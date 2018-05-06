@@ -11,6 +11,7 @@ public:
     void update();
 
 private:
+    int _timer;
 
 
 };

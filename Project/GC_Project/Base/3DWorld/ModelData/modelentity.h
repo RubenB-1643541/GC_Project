@@ -10,6 +10,7 @@ public:
     ModelEntity(Model * model);
     virtual void update() = 0;
     void moveTo(Point3D position);
+    void move(Point3D(direction), int distance);
     void rotateTo(float angle, Point3D rotation);
     void sizeTo(float size);
 

@@ -45,8 +45,6 @@ void Model::draw(GLenum s_mode, GLenum f_mode) {
 
 void Model::move(Point3D position) {
     _position = position;
-
-
 }
 
 void Model::rotate(float angle, Point3D vertex) {

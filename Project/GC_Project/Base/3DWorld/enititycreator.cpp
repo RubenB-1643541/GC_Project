@@ -24,7 +24,9 @@ void EntityCreator::createOverWordl() {
 void EntityCreator::createSpider() {
     ModelObject * spider_model_obj = new ModelObject("Models/Spider/spider.obj");
     Model * spider_model = new Model(spider_model_obj, TYPE::DYNAMIC);
-    spider_model->scale(0.1);
+    spider_model->scale(0.05);
+    spider_model->rotate(180, Point3D(0, 1, 0));
+    spider_model->move(Point3D(21, 25.5, 7));
     ModelRenderer * spider_renderer = new ModelRenderer(spider_model);
     _view->addModelRenderer(spider_renderer);
 

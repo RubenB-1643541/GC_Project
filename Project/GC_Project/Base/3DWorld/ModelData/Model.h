@@ -23,6 +23,7 @@ public:
     void move(Point3D position);
     void rotate(float angle, Point3D vertex);
     void scale(float size);
+    Point3D getPosition() {return _position;}
 private:
 
     void setPosition();
