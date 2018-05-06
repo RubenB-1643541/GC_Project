@@ -1,0 +1,13 @@
+QWidget#PauseScreen {
+	background-color: #524C40;
+}
+QPushButton {
+	font-size: 22px;
+	font-weight: 600;
+	background-color: #BD985C;
+	color: white;
+}
+QPushButton:hover {
+	background-color: #fba81e;
+	color: white;
+}

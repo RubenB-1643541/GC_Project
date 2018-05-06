@@ -6,13 +6,17 @@ namespace __3DWorld__ {
 ////////////////////////////////////////////////////////
 /// Construction
 ////////////////////////////////////////////////////////
-OpenGLView::OpenGLView() : QOpenGLWidget() {
+OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
     this->setMouseTracking(true);
     this->setCursor(Qt::BlankCursor);
 
     // Timer for updating view
     _timer = new QTimer();
     connect(_timer, SIGNAL(timeout()), this, SLOT(update()));
+
+    _settings = settings;
+    _settings->addView(this);
+    update();
 
     setFocusPolicy(Qt::StrongFocus);
 
@@ -23,6 +27,11 @@ OpenGLView::OpenGLView() : QOpenGLWidget() {
     _camera_key_handler = new CameraKeyHandler(_camera);
     _camera_mouse_handler = new CameraMouseHandler(_camera);
     _headlamp = new HeadLamp();
+
+    // eventueel eigen file formaat
+    // met models en hun meta data (rotatie, schalering, etc...
+    // dan file parsen en zo models toevoegen
+    addModelRenderer(new ModelRenderer("bobomb battlefeild.obj"));
 
     return;
 }
@@ -45,13 +54,10 @@ void OpenGLView::initializeGL() {
     glEnable(GL_LIGHT0);
 
     // Global lighting
-    //*
-    GLfloat global_ambient[] = { 0.4, 0.4, 0.4, 1 };
-    glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
 
-    GLfloat diffuse[] = { 1, 1, 1, 1 };
+    GLfloat diffuse[] = { 1.0, 0.5, 0.0, 0.5 };     // orange
     glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-    GLfloat light_position[] = { 1, 1, 1, 1 };
+    GLfloat light_position[] = { 1, 1000, 1, 1 };
     glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 
     glEnable(GL_DEPTH_TEST);
@@ -59,13 +65,6 @@ void OpenGLView::initializeGL() {
     // background color
     // 87CEEB
     glClearColor(0.53, 0.81, 0.92 ,1.0f);
-
-
-    for (ModelRender* renderer: _model_renderers) {
-        //renderer->SetView(_camera->getLooksAt(), _camera->getPosition());
-        //renderer->Initialize();
-    }
-
 
     _timer->start(TIMER_INTERVAL);
     return;
@@ -86,10 +85,6 @@ void OpenGLView::resizeGL(int w, int h) {
         /* far clipping  */ 1000.0
     );
 
-    for (ModelRender* renderer: _model_renderers) {
-        //renderer->Resize(w, h);
-    }
-
     return;
 }
 
@@ -103,38 +98,12 @@ void OpenGLView::paintGL() {
     updateCamera();
 
     // Draw Models
-    for (ModelRender* renderer: _model_renderers) {
-        //renderer->SetView(_camera->getLooksAt(), _camera->getPosition());
-        //renderer->Paint();
+    for (ModelRenderer* renderer: _model_renderers) {
+        renderer->draw(
+            _shading_mode,
+            _render_mode
+        );
     }
-
-    // begin Test
-    /*
-    glPushMatrix();
-
-    GLfloat diffuse[] = {0.54f, 0.89f, 0.63f, 1.0f};
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, diffuse);
-
-    glShadeModel(GL_SMOOTH);
-    // */
-    // Draw Object
-    /*
-    GLfloat diff [] = { 0.7f , 0.5f , 0.0f };
-    glMaterialfv (GL_FRONT, GL_DIFFUSE, diff);
-    // */
-    /*
-    GLUquadricObj* quadric = gluNewQuadric();
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    //gluQuadricDrawStyle(quadric, GLU_FILL);
-    gluSphere(quadric, 3.0, 25, 25),
-    gluDeleteQuadric(quadric);
-
-    glPopMatrix();
-    // */
-    // end Test
-
-    PrimitiveModel model;
-    model.draw(ShadingMode::SMOOTH, FrameMode::FILL);
 
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
@@ -144,7 +113,7 @@ void OpenGLView::paintGL() {
 ////////////////////////////////////////////////////////
 /// Rending
 ////////////////////////////////////////////////////////
-void OpenGLView::addModelRenderer(ModelRender *renderer) {
+void OpenGLView::addModelRenderer(ModelRenderer *renderer) {
     _model_renderers.append(renderer);
     return;
 }
@@ -155,12 +124,12 @@ void OpenGLView::addModelRenderer(ModelRender *renderer) {
 void OpenGLView::keyPressEvent(QKeyEvent* event) {
     // Todo change shift to different key -> caps != lower case
     if (event->isAutoRepeat()) { return; }
-    else if (event->key() == Qt::Key_Up)     { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Up); }
-    else if (event->key() == Qt::Key_Down)   { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Down); }
-    else if (event->key() == Qt::Key_Left)   { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Left); }
-    else if (event->key() == Qt::Key_Right)  { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Right); }
-    else if (event->key() == Qt::Key_Space)  { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Up); }
-    else if (event->key() == Qt::Key_Shift)  { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Down); }
+    else if (event->key() == Qt::Key_Up)    { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Up); }
+    else if (event->key() == Qt::Key_Down)  { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Down); }
+    else if (event->key() == Qt::Key_Left)  { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Left); }
+    else if (event->key() == Qt::Key_Right) { _camera_key_handler->keyDown(CameraKeyHandler::Key::Rotate_Right); }
+    else if (event->key() == Qt::Key_Space) { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Up); }
+    else if (event->key() == Qt::Key_Alt)   { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Down); }
     else if (event->text() == 'z') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Forward); }
     else if (event->text() == 's') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Back); }
     else if (event->text() == 'q') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Left); }
@@ -171,12 +140,12 @@ void OpenGLView::keyPressEvent(QKeyEvent* event) {
 }
 void OpenGLView::keyReleaseEvent(QKeyEvent* event) {
     if (event->isAutoRepeat()) { return; }
-    else if (event->key() == Qt::Key_Up)     { _camera_key_handler->keyUp(CameraKeyHandler::Key::Rotate_Up); }
-    else if (event->key() == Qt::Key_Down)   { _camera_key_handler->keyUp(CameraKeyHandler::Key::Rotate_Down); }
-    else if (event->key() == Qt::Key_Left)   { _camera_key_handler->keyUp(CameraKeyHandler::Key::Rotate_Left); }
-    else if (event->key() == Qt::Key_Right)  { _camera_key_handler->keyUp(CameraKeyHandler::Key::Rotate_Right); }
-    else if (event->key() == Qt::Key_Space)  { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Up); }
-    else if (event->key() == Qt::Key_Shift)  { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Down); }
+    else if (event->key() == Qt::Key_Up)    { _camera_key_handler->keyUp(CameraKeyHandler::Key::Rotate_Up); }
+    else if (event->key() == Qt::Key_Down)  { _camera_key_handler->keyUp(CameraKeyHandler::Key::Rotate_Down); }
+    else if (event->key() == Qt::Key_Left)  { _camera_key_handler->keyUp(CameraKeyHandler::Key::Rotate_Left); }
+    else if (event->key() == Qt::Key_Right) { _camera_key_handler->keyUp(CameraKeyHandler::Key::Rotate_Right); }
+    else if (event->key() == Qt::Key_Space) { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Up); }
+    else if (event->key() == Qt::Key_Alt)   { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Down); }
     else if (event->text() == 'z') { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Forward); }
     else if (event->text() == 's') { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Back); }
     else if (event->text() == 'q') { _camera_key_handler->keyUp(CameraKeyHandler::Key::Strafe_Left); }
@@ -194,6 +163,14 @@ void OpenGLView::mouseMoveEvent(QMouseEvent *event) {
         width() / 2,
         height() / 2
     )));
+}
+
+////////////////////////////////////////////////////////
+/// settings
+////////////////////////////////////////////////////////
+void OpenGLView::update() {
+    _shading_mode = _settings->getShadingMode();
+    _render_mode = _settings->getRenderMode();
 }
 
 ////////////////////////////////////////////////////////

@@ -34,12 +34,14 @@ SOURCES += main.cpp\
     openglview.cpp \
     model.cpp \
     modelobject.cpp \
-    Model/modelloader.cpp \
-    Model/modelrender.cpp \
     CameraMouseHandler.cpp \
     pausescreen.cpp \
     qssfile.cpp \
-    PrimitiveModel.cpp
+    SettingsScreen.cpp \
+    KeyBindsScreen.cpp \
+    Settings.cpp \
+    ModelRenderer.cpp \
+    modelloader.cpp
     model.cpp \
 
 
@@ -53,18 +55,22 @@ HEADERS  += displaywindow.h \
     model.h \
     modelobject.h \
     Model/modeldata.h \
-    Model/modelloader.h \
-    Model/modelrender.h \
-    shaders.h \
     CameraMouseHandler.h \
     pausescreen.h \
     qssfile.h \
-    PrimitiveModel.h
+    SettingsScreen.h \
+    KeyBindsScreen.h \
+    Settings.h \
+    mvc.hpp \
+    ModelRenderer.h \
+    modelloader.h
     model.h \
 
 
 FORMS    += displaywindow.ui \
-    pausescreen.ui
+    pausescreen.ui \
+    SettingsScreen.ui \
+    KeyBindsScreen.ui
 
 win32: LIBS += -L"C:/Program Files/Assimp/lib/x64/" -lassimp
 
@@ -72,4 +78,6 @@ INCLUDEPATH += "C:/Program Files/Assimp/include"
 DEPENDPATH += "C:/Program Files/Assimp/include"
 
 RESOURCES += \
-    stylesheets.qrc
+    resources.qrc
+
+DISTFILES +=

@@ -1,0 +1,17 @@
+QWidget#KeyBindsScreen {
+	background-color: #524C40;
+}
+QLabel {
+	color: white;
+	font-size: 18px;
+}
+QPushButton {
+	font-size: 22px;
+	font-weight: 600;
+	background-color: #BD985C;
+	color: white;
+}
+QPushButton:hover {
+	background-color: #fba81e;
+	color: white;
+}

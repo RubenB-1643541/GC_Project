@@ -11,8 +11,9 @@
 #include "CameraKeyHandler.h"
 #include "CameraMouseHandler.h"
 #include "HeadLamp.h"
-#include "Model/modelrender.h"
-#include "PrimitiveModel.h"
+#include "ModelRenderer.h"
+#include "Settings.h"
+#include "mvc.hpp"
 
 namespace __3DWorld__ {
 
@@ -20,13 +21,15 @@ namespace __3DWorld__ {
  * @author Wald Habets
  * @brief The OpenGLView class
  */
-class OpenGLView : public QOpenGLWidget {
+class OpenGLView :
+public QOpenGLWidget,
+public ViewInterface {
     Q_OBJECT
 public:
     ////////////////////////////////////////////////////////
     /// Construction
     ////////////////////////////////////////////////////////
-    OpenGLView();
+    OpenGLView(Settings* settings);
 
     ////////////////////////////////////////////////////////
     /// QOpenGLWidget reimplementations
@@ -38,7 +41,7 @@ public:
     ////////////////////////////////////////////////////////
     /// Rendering
     ////////////////////////////////////////////////////////
-    void addModelRenderer(ModelRender* renderer);
+    void addModelRenderer(ModelRenderer* renderer);
 
     ////////////////////////////////////////////////////////
     /// KeyEvents
@@ -46,6 +49,11 @@ public:
     void keyPressEvent(QKeyEvent* event);
     void keyReleaseEvent(QKeyEvent* event);
     void mouseMoveEvent(QMouseEvent *event);
+
+    ////////////////////////////////////////////////////////
+    /// settings
+    ////////////////////////////////////////////////////////
+    void update();
 signals:
     void escapePressed();
 private:
@@ -58,6 +66,9 @@ private:
     /// Member Variables
     ////////////////////////////////////////////////////////
     QTimer* _timer;
+    Settings* _settings;
+    GLenum _shading_mode;
+    GLenum _render_mode;
 
     Camera* _camera;
     QPoint _prev_mouse_pos;
@@ -66,7 +77,7 @@ private:
     CameraMouseHandler* _camera_mouse_handler;
     HeadLamp* _headlamp;
 
-    QVector<ModelRender *> _model_renderers;
+    QVector<ModelRenderer *> _model_renderers;
 
     ////////////////////////////////////////////////////////
     /// Static

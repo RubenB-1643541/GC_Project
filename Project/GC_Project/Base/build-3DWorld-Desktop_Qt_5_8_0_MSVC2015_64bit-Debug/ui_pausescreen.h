@@ -25,10 +25,12 @@ class Ui_PauseScreen
 {
 public:
     QGridLayout *gridLayout;
+    QPushButton *settingsButton;
     QPushButton *quitButton;
-    QPushButton *continueButton;
     QSpacerItem *verticalSpacer;
     QSpacerItem *verticalSpacer_2;
+    QPushButton *continueButton;
+    QPushButton *keybindsButton;
 
     void setupUi(QFrame *PauseScreen)
     {
@@ -39,6 +41,13 @@ public:
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         gridLayout->setContentsMargins(9, 9, -1, 9);
+        settingsButton = new QPushButton(PauseScreen);
+        settingsButton->setObjectName(QStringLiteral("settingsButton"));
+        settingsButton->setMinimumSize(QSize(0, 40));
+        settingsButton->setMaximumSize(QSize(300, 16777215));
+
+        gridLayout->addWidget(settingsButton, 2, 0, 1, 1);
+
         quitButton = new QPushButton(PauseScreen);
         quitButton->setObjectName(QStringLiteral("quitButton"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
@@ -49,7 +58,15 @@ public:
         quitButton->setMinimumSize(QSize(0, 40));
         quitButton->setMaximumSize(QSize(300, 16777215));
 
-        gridLayout->addWidget(quitButton, 2, 0, 1, 1);
+        gridLayout->addWidget(quitButton, 4, 0, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer, 0, 0, 1, 1);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_2, 5, 0, 1, 1);
 
         continueButton = new QPushButton(PauseScreen);
         continueButton->setObjectName(QStringLiteral("continueButton"));
@@ -60,13 +77,12 @@ public:
 
         gridLayout->addWidget(continueButton, 1, 0, 1, 1);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        keybindsButton = new QPushButton(PauseScreen);
+        keybindsButton->setObjectName(QStringLiteral("keybindsButton"));
+        keybindsButton->setMinimumSize(QSize(0, 40));
+        keybindsButton->setMaximumSize(QSize(300, 16777215));
 
-        gridLayout->addItem(verticalSpacer, 0, 0, 1, 1);
-
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer_2, 3, 0, 1, 1);
+        gridLayout->addWidget(keybindsButton, 3, 0, 1, 1);
 
 
         retranslateUi(PauseScreen);
@@ -77,8 +93,10 @@ public:
     void retranslateUi(QFrame *PauseScreen)
     {
         PauseScreen->setWindowTitle(QApplication::translate("PauseScreen", "Form", Q_NULLPTR));
+        settingsButton->setText(QApplication::translate("PauseScreen", "Settings", Q_NULLPTR));
         quitButton->setText(QApplication::translate("PauseScreen", "Quit", Q_NULLPTR));
         continueButton->setText(QApplication::translate("PauseScreen", "Continue", Q_NULLPTR));
+        keybindsButton->setText(QApplication::translate("PauseScreen", "Key Bindings", Q_NULLPTR));
     } // retranslateUi
 
 };

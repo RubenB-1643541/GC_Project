@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/qss">
+        <file>StyleSheets/pausescreen.qss</file>
+        <file>StyleSheets/keybindsscreen.qss</file>
+        <file>StyleSheets/settingsscreen.qss</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>Images/basic_orange.png</file>
+    </qresource>
+</RCC>

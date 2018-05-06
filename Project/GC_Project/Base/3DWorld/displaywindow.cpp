@@ -1,6 +1,5 @@
 #include "displaywindow.h"
 #include "ui_displaywindow.h"
-#include "Model/modelrender.h"
 #include <QDebug>
 
 namespace __3DWorld__ {
@@ -10,43 +9,55 @@ namespace __3DWorld__ {
 ////////////////////////////////////////////////////////
 DisplayWindow::DisplayWindow(QWidget *parent) :
     QMainWindow(parent) {
+    _settings = new Settings();
+
     _views = new QStackedWidget(this);
-    _open_gl_view = new OpenGLView();
+    _open_gl_view = new OpenGLView(_settings);
     _pause_screen = new PauseScreen();
+    _settings_screen = new SettingsScreen(_settings);
+    _keybinds_screen = new KeyBindsScreen();
 
     _views->addWidget(_open_gl_view);
     _views->addWidget(_pause_screen);
+    _views->addWidget(_settings_screen);
+    _views->addWidget(_keybinds_screen);
 
     this->setCentralWidget(_views);
     this->setMinimumSize(1280, 720);
 
     // Connections
-    connect(_open_gl_view, SIGNAL(escapePressed()), this, SLOT(setPauseScreen()));
-    connect(_pause_screen, SIGNAL(continueButtonPressed()), this, SLOT(setOpenGLView()));
-
-    // Models
-    ModelRender * render = new ModelRender(_open_gl_view);
-    render->LoadModel("bobomb battlefeild.obj");
-
-    ModelRender * render2 = new ModelRender(_open_gl_view);
-    render2->LoadModel("spider.obj");
-    _open_gl_view->addModelRenderer(render2);
-    _open_gl_view->addModelRenderer(render);
+    connect(_open_gl_view, SIGNAL(escapePressed()), this, SLOT(swapToPauseScreen()));
+    connect(_keybinds_screen, SIGNAL(backButtonPressed()), this, SLOT(swapToPauseScreen()));
+    connect(_settings_screen, SIGNAL(saveButtonPressed()), this, SLOT(swapToPauseScreen()));
+    connect(_pause_screen, SIGNAL(continueButtonPressed()), this, SLOT(swapToOpenGLView()));
+    connect(_pause_screen, SIGNAL(settingsButtonPressed()), this, SLOT(swapToSettingsScreen()));
+    connect(_pause_screen, SIGNAL(keybindsButtonPressed()), this, SLOT(swapToKeybindsScreen()));
 }
 
 DisplayWindow::~DisplayWindow() {
+    delete _settings;
+    delete _open_gl_view;
+    delete _pause_screen;
+    delete _settings_screen;
+    delete _keybinds_screen;
 
+    delete _views;
 }
 
 ////////////////////////////////////////////////////////
 /// Change displayed widget
 ////////////////////////////////////////////////////////
-void DisplayWindow::setPauseScreen() {
+void DisplayWindow::swapToPauseScreen() {
     _views->setCurrentWidget(_pause_screen);
 }
-
-void DisplayWindow::setOpenGLView() {
+void DisplayWindow::swapToOpenGLView() {
     _views->setCurrentWidget(_open_gl_view);
+}
+void DisplayWindow::swapToSettingsScreen() {
+    _views->setCurrentWidget(_settings_screen);
+}
+void DisplayWindow::swapToKeybindsScreen() {
+    _views->setCurrentWidget(_keybinds_screen);
 }
 
 }
