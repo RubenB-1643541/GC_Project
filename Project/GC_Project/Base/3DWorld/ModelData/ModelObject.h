@@ -27,6 +27,8 @@ class ModelObject {
 public:
     ModelObject(QString Path);
     void draw(ShadingMode s_mode, FrameMode f_mode);
+    GLuint initialize();
+
 
 
 private:

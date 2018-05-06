@@ -88,7 +88,7 @@ void OpenGLView::resizeGL(int w, int h) {
     //for (ModelRender* renderer: _model_renderers) {
         //renderer->Resize(w, h);
     //}
-
+    _model_renderers.at(0)->move(Point3D(0, -40, 0));
 
     return;
 }
@@ -102,12 +102,6 @@ void OpenGLView::paintGL() {
 
     // Update Camera
     updateCamera();
-
-    // Draw Models
-    //for (ModelRender* renderer: _model_renderers) {
-        //renderer->SetView(_camera->getLooksAt(), _camera->getPosition());
-        //renderer->Paint();
-    //}
 
     // begin Test
     /*

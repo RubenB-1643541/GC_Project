@@ -32,8 +32,6 @@ SOURCES += main.cpp\
     Point3D.cpp \
     Vector3D.cpp \
     openglview.cpp \
-    model.cpp \
-    modelobject.cpp \
     Model/modelloader.cpp \
     CameraMouseHandler.cpp \
     pausescreen.cpp \
@@ -41,7 +39,6 @@ SOURCES += main.cpp\
     ModelData/Model.cpp \
     ModelData/ModelObject.cpp \
     ModelData/ModelRenderer.cpp
-    model.cpp \
 
 
 HEADERS  += displaywindow.h \
@@ -51,8 +48,6 @@ HEADERS  += displaywindow.h \
     Point3D.h \
     Vector3D.h \
     openglview.h \
-    model.h \
-    modelobject.h \
     Model/modeldata.h \
     Model/modelloader.h \
     CameraMouseHandler.h \
@@ -61,7 +56,6 @@ HEADERS  += displaywindow.h \
     ModelData/Model.h \
     ModelData/ModelObject.h \
     ModelData/ModelRenderer.h
-    model.h \
 
 
 FORMS    += displaywindow.ui \

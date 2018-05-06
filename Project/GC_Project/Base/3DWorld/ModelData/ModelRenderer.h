@@ -19,6 +19,7 @@ public:
     ModelRenderer(ModelObject * model);
     void setModelObj(ModelObject * model);
     void draw(ShadingMode s_mode, FrameMode f_mode);
+    void move(Point3D point) {_model->move(point);}
 
 private:
     Model * _model = NULL;
