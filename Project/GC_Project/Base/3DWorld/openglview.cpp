@@ -128,6 +128,9 @@ void OpenGLView::paintGL() {
 
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
+
+    _entities->UpdateEntities();
+
     return;
 }
 
@@ -192,7 +195,7 @@ void OpenGLView::mouseMoveEvent(QMouseEvent *event) {
 void OpenGLView::update() {
     _shading_mode = _settings->getShadingMode();
     _render_mode = _settings->getRenderMode();
-    _entities->UpdateEntities();
+
 }
 
 ////////////////////////////////////////////////////////
