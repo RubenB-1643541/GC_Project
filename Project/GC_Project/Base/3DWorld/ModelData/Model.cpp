@@ -7,6 +7,16 @@ Model::Model() {
     _angle = 0;
     _rotation = Point3D(0, 0, 0);
     _size = 1;
+    _type = STATIC;
+}
+
+Model::Model(TYPE type) {
+    _type = type;
+}
+
+Model::Model(ModelObject *obj, TYPE type) {
+    setModelObj(obj);
+    _type = type;
 }
 
 void Model::setModelObj(ModelObject *obj) {

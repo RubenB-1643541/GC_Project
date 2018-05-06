@@ -14,6 +14,7 @@
 #include "ModelData/ModelRenderer.h"
 #include "Settings.h"
 #include "mvc.hpp"
+#include "Entities/entitycollection.h"
 
 
 namespace __3DWorld__ {
@@ -22,6 +23,8 @@ namespace __3DWorld__ {
  * @author Wald Habets
  * @brief The OpenGLView class
  */
+class EntityCreator;
+
 class OpenGLView :
 public QOpenGLWidget,
 public ViewInterface {
@@ -80,10 +83,14 @@ private:
 
     QVector<ModelRenderer *> _model_renderers;
 
+    EntityCollection * _entities;
+
+
     ////////////////////////////////////////////////////////
     /// Static
     ////////////////////////////////////////////////////////
     static const int TIMER_INTERVAL = 16;
+
 };
 
 }

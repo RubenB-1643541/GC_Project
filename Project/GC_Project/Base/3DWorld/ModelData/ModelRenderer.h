@@ -4,6 +4,7 @@
 #include "ModelData/Model.h"
 #include "ModelData/ModelObject.h"
 
+
 namespace __3DWorld__ {
 
 /**
@@ -17,6 +18,7 @@ class ModelRenderer {
 public:
     ModelRenderer();
     ModelRenderer(ModelObject * model);
+    ModelRenderer(Model * model);
     void setModelObj(ModelObject * model);
     void draw(GLenum s_mode, GLenum f_mode);
     void move(Point3D point) {_model->move(point);}

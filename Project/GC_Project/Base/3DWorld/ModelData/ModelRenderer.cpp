@@ -10,6 +10,10 @@ ModelRenderer::ModelRenderer(ModelObject *model) {
     setModelObj(model);
 }
 
+ModelRenderer::ModelRenderer(Model *model) {
+    _model = model;
+}
+
 void ModelRenderer::setModelObj(ModelObject *model) {
     if(_model == NULL) {
         _model = new Model();

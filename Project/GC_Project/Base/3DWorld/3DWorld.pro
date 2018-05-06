@@ -42,7 +42,11 @@ SOURCES += main.cpp\
     SettingsScreen.cpp \
     Settings.cpp \
     KeyBindsScreen.cpp \
-    modelloader.cpp
+    modelloader.cpp \
+    Entities/spider.cpp \
+    ModelData/modelentity.cpp \
+    Entities/entitycollection.cpp \
+    enititycreator.cpp
 
 HEADERS  += displaywindow.h \
     Camera.h \
@@ -63,7 +67,11 @@ HEADERS  += displaywindow.h \
     KeyBindsScreen.h \
     mvc.hpp \
     Settings.h \
-    modelloader.h
+    modelloader.h \
+    ModelData/modelentity.h \
+    Entities/spider.h \
+    Entities/entitycollection.h \
+    enititycreator.h
 
 FORMS    += displaywindow.ui \
     pausescreen.ui \

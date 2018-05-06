@@ -30,6 +30,7 @@ DisplayWindow::DisplayWindow(QWidget *parent) :
     connect(_open_gl_view, SIGNAL(escapePressed()), this, SLOT(setPauseScreen()));
     connect(_pause_screen, SIGNAL(continueButtonPressed()), this, SLOT(setOpenGLView()));
 
+    /*
     ModelObject * temp_model1 = new ModelObject("Models/Bobomb/bobomb battlefeild.obj");
     ModelRenderer * renderer1 = new ModelRenderer(temp_model1);
     _open_gl_view->addModelRenderer(renderer1);
@@ -38,7 +39,7 @@ DisplayWindow::DisplayWindow(QWidget *parent) :
     ModelObject * temp_model2 = new ModelObject("Models/Spider/spider.obj");
     ModelRenderer * renderer2 = new ModelRenderer(temp_model2);
     _open_gl_view->addModelRenderer(renderer2);
-
+    */
 
     connect(_open_gl_view, SIGNAL(escapePressed()), this, SLOT(swapToPauseScreen()));
     connect(_keybinds_screen, SIGNAL(backButtonPressed()), this, SLOT(swapToPauseScreen()));

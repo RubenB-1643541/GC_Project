@@ -1,5 +1,7 @@
 #include "openglview.h"
 #include <QDebug>
+#include "enititycreator.h"
+#include "Entities/entitycollection.h"
 
 namespace __3DWorld__ {
 
@@ -16,6 +18,10 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
 
     _settings = settings;
     _settings->addView(this);
+
+    _entities = new EntityCollection();
+    EntityCreator * creator = new EntityCreator(_entities, this);
+
     update();
 
     setFocusPolicy(Qt::StrongFocus);
@@ -27,6 +33,7 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
     _camera_key_handler = new CameraKeyHandler(_camera);
     _camera_mouse_handler = new CameraMouseHandler(_camera);
     _headlamp = new HeadLamp();
+
 
     // eventueel eigen file formaat
     // met models en hun meta data (rotatie, schalering, etc...
@@ -185,6 +192,7 @@ void OpenGLView::mouseMoveEvent(QMouseEvent *event) {
 void OpenGLView::update() {
     _shading_mode = _settings->getShadingMode();
     _render_mode = _settings->getRenderMode();
+    _entities->UpdateEntities();
 }
 
 ////////////////////////////////////////////////////////
