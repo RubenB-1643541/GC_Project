@@ -6,6 +6,10 @@
 
 namespace Frost {
 
+/**
+ * @author Wald Habets
+ * @brief The QSSFile class
+ */
 class QSSFile {
 public:
     QSSFile(const QString filename);

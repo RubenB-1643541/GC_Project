@@ -32,14 +32,17 @@ SOURCES += main.cpp\
     Point3D.cpp \
     Vector3D.cpp \
     openglview.cpp \
-    Model/modelloader.cpp \
     CameraMouseHandler.cpp \
     pausescreen.cpp \
     qssfile.cpp \
     ModelData/Model.cpp \
     ModelData/ModelObject.cpp \
-    ModelData/ModelRenderer.cpp
-
+    ModelData/ModelRenderer.cpp \
+    CameraMouseHandler.cpp \
+    SettingsScreen.cpp \
+    Settings.cpp \
+    KeyBindsScreen.cpp \
+    modelloader.cpp
 
 HEADERS  += displaywindow.h \
     Camera.h \
@@ -49,17 +52,23 @@ HEADERS  += displaywindow.h \
     Vector3D.h \
     openglview.h \
     Model/modeldata.h \
-    Model/modelloader.h \
     CameraMouseHandler.h \
     pausescreen.h \
     qssfile.h \
     ModelData/Model.h \
     ModelData/ModelObject.h \
-    ModelData/ModelRenderer.h
-
+    ModelData/ModelRenderer.h \
+    CameraMouseHandler.h \
+    SettingsScreen.h \
+    KeyBindsScreen.h \
+    mvc.hpp \
+    Settings.h \
+    modelloader.h
 
 FORMS    += displaywindow.ui \
-    pausescreen.ui
+    pausescreen.ui \
+    SettingsScreen.ui \
+    KeyBindsScreen.ui
 
 win32: LIBS += -L"C:/Program Files/Assimp/lib/x64/" -lassimp
 
@@ -67,4 +76,6 @@ INCLUDEPATH += "C:/Program Files/Assimp/include"
 DEPENDPATH += "C:/Program Files/Assimp/include"
 
 RESOURCES += \
-    stylesheets.qrc
+    resources.qrc
+
+DISTFILES +=

@@ -11,7 +11,7 @@ void Model::setModelObj(ModelObject *obj) {
 
 }
 
-void Model::draw(ShadingMode s_mode, FrameMode f_mode) {
+void Model::draw(GLenum s_mode, GLenum f_mode) {
 
     glPushMatrix();
     glMateriali(GL_FRONT, GL_SHININESS, 20);

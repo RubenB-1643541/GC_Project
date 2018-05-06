@@ -17,7 +17,7 @@ void ModelRenderer::setModelObj(ModelObject *model) {
     _model->setModelObj(model);
 }
 
-void ModelRenderer::draw(ShadingMode s_mode, FrameMode f_mode) {
+void ModelRenderer::draw(GLenum s_mode, GLenum f_mode) {
     _model->draw(s_mode, f_mode);
 }
 

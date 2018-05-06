@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/qss">
-        <file>pausescreen.qss</file>
-    </qresource>
-    <qresource prefix="/images">
-        <file>Images/basic_orange.png</file>
-    </qresource>
-</RCC>

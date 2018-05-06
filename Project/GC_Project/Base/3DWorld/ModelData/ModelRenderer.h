@@ -18,7 +18,7 @@ public:
     ModelRenderer();
     ModelRenderer(ModelObject * model);
     void setModelObj(ModelObject * model);
-    void draw(ShadingMode s_mode, FrameMode f_mode);
+    void draw(GLenum s_mode, GLenum f_mode);
     void move(Point3D point) {_model->move(point);}
 
 private:

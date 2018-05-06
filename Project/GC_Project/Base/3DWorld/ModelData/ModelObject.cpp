@@ -7,7 +7,7 @@ ModelObject::ModelObject(QString path) {
     _meshes = _loader.getMeshes();
 }
 
-void ModelObject::draw(ShadingMode s_mode, FrameMode f_mode) {
+void ModelObject::draw(GLenum s_mode, GLenum f_mode) {
 
 
     glBegin(GL_TRIANGLES);

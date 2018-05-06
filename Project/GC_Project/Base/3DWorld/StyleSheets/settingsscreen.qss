@@ -1,0 +1,24 @@
+QWidget#SettingsScreen {
+	background-color: #524C40;
+}
+QLabel {
+	color: white;
+	font-size: 18px;
+}
+QPushButton, QComboBox {
+	font-size: 22px;
+	font-weight: 600;
+	background-color: #BD985C;
+	color: white;
+}
+QComboBox {
+	border: none;
+}
+QComboBox:focus {
+	background-color: #BD985C;
+	color: white;
+}
+QPushButton:hover {
+	background-color: #fba81e;
+	color: white;
+}

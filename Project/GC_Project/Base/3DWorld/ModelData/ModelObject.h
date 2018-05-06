@@ -1,11 +1,13 @@
 #ifndef MODEL_OBJECT
 #define MODEL_OBJECT
 
-#include "Model/modelloader.h"
 
+#include <QString>
 #include <windows.h> // Needed to compile gl.h
 #include <gl/GL.h>
 #include <gl/GLU.h>
+#include <modelloader.h>
+#include "Settings.h"
 
 namespace __3DWorld__ {
 
@@ -14,19 +16,12 @@ namespace __3DWorld__ {
  * @brief
  */
 
-enum ShadingMode {
-    FLAT = GL_FLAT,
-    SMOOTH = GL_SMOOTH
-};
-enum FrameMode {
-    WIREFRAME = GL_LINE,
-    FILL = GL_FILL
-};
+
 
 class ModelObject {
 public:
     ModelObject(QString Path);
-    void draw(ShadingMode s_mode, FrameMode f_mode);
+    void draw(GLenum s_mode, GLenum f_mode);
     GLuint initialize();
 
 

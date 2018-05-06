@@ -7,6 +7,9 @@
 
 #include "openglview.h"
 #include "pausescreen.h"
+#include "SettingsScreen.h"
+#include "KeyBindsScreen.h"
+#include "Settings.h"
 
 namespace __3DWorld__ {
 
@@ -26,8 +29,10 @@ public slots:
     ////////////////////////////////////////////////////////
     /// Change displayed widget
     ////////////////////////////////////////////////////////
-    void setPauseScreen();
-    void setOpenGLView();
+    void swapToPauseScreen();
+    void swapToOpenGLView();
+    void swapToSettingsScreen();
+    void swapToKeybindsScreen();
 private:
     // Stacked widget
     QStackedWidget* _views;
@@ -35,6 +40,11 @@ private:
     // Views
     OpenGLView* _open_gl_view;
     PauseScreen* _pause_screen;
+    SettingsScreen* _settings_screen;
+    KeyBindsScreen* _keybinds_screen;
+
+    // Data
+    Settings* _settings;
 };
 
 }
