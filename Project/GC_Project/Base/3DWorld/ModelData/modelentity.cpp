@@ -25,8 +25,35 @@ void ModelEntity::rotateTo(float angle, Point3D rotation) {
     _model->rotate(angle, rotation);
 }
 
+void ModelEntity::rotate(Point3D rotation, float angle) {
+    Point3D current = _model->getRotation();
+    //X
+    _model->rotate(angle + current.x(), rotation);
+
+}
+
+void ModelEntity::rotateX(float angle) {
+    Point3D current = _model->getRotation();
+    _model->rotate(angle + current.x(), Point3D(1,0,0));
+}
+
+void ModelEntity::rotateY(float angle) {
+    Point3D current = _model->getRotation();
+    _model->rotate(angle + current.y(), Point3D(0,1,0));
+}
+
+void ModelEntity::rotateZ(float angle) {
+    Point3D current = _model->getRotation();
+    _model->rotate(angle + current.z(), Point3D(0,0,1));
+}
+
 void ModelEntity::sizeTo(float size) {
     _model->scale(size);
+}
+
+void ModelEntity::scale(float size) {
+    float current = _model->getSize();
+    sizeTo(current * size);
 }
 
 

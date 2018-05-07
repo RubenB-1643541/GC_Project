@@ -46,7 +46,8 @@ SOURCES += main.cpp\
     Entities/spider.cpp \
     ModelData/modelentity.cpp \
     Entities/entitycollection.cpp \
-    enititycreator.cpp
+    enititycreator.cpp \
+    ModelData/texture.cpp
 
 HEADERS  += displaywindow.h \
     Camera.h \
@@ -71,7 +72,8 @@ HEADERS  += displaywindow.h \
     ModelData/modelentity.h \
     Entities/spider.h \
     Entities/entitycollection.h \
-    enititycreator.h
+    enititycreator.h \
+    ModelData/texture.h
 
 FORMS    += displaywindow.ui \
     pausescreen.ui \
@@ -87,3 +89,8 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES +=
+
+win32: LIBS += -L$$PWD/../SOIL/lib/ -lSOIL
+
+INCLUDEPATH += $$PWD/../SOIL/src
+DEPENDPATH += $$PWD/../SOIL/src

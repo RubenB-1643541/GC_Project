@@ -12,6 +12,8 @@ public:
 
 private:
     int _timer;
+    int _timer2;
+    int _timer_rotate;
 
 
 };
