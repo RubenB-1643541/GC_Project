@@ -47,7 +47,8 @@ SOURCES += main.cpp\
     ModelData/modelentity.cpp \
     Entities/entitycollection.cpp \
     enititycreator.cpp \
-    ModelData/texture.cpp
+    ModelData/texture.cpp \
+    datafilewriter.cpp
 
 HEADERS  += displaywindow.h \
     Camera.h \
@@ -73,7 +74,8 @@ HEADERS  += displaywindow.h \
     Entities/spider.h \
     Entities/entitycollection.h \
     enititycreator.h \
-    ModelData/texture.h
+    ModelData/texture.h \
+    datafilewriter.h
 
 FORMS    += displaywindow.ui \
     pausescreen.ui \

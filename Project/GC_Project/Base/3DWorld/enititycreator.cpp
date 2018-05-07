@@ -10,8 +10,23 @@ EntityCreator::EntityCreator(EntityCollection * collection, OpenGLView * view)
     _collection = collection;
     _view = view;
 
-    createOverWordl();
-    createSpider();
+    //createOverWordl();
+    //createSpider();
+    loadData();
+}
+
+bool EntityCreator::loadData() {
+    QFile file("WorldData/WorldData.json");
+    if(!file.open(QIODevice::ReadOnly)) {
+        qWarning("Data could not be loaded");
+        return false;
+    }
+    QByteArray saveData = file.readAll();
+    QJsonDocument document = QJsonDocument::fromJson(saveData);
+    _object = document.object();
+    loadOverWorld(_object["over_world"].toObject());
+    if(_object.contains("entities") && _object["entities"].isArray())
+        loadEntities(_object["entities"].toArray());
 }
 
 void EntityCreator::createOverWordl() {
@@ -32,6 +47,61 @@ void EntityCreator::createSpider() {
 
     Spider * spider_entity = new Spider(spider_model);
     _collection->AddEntity(spider_entity);
+}
+
+void EntityCreator::loadOverWorld(QJsonObject obj) {
+    ModelObject * overworld_obj = new ModelObject(obj["data"].toString());
+    Model * overworld_model = new Model(overworld_obj, TYPE::STATIC);
+    overworld_model->move(loadPosition(obj["position"].toObject()));
+    overworld_model->scale(obj["size"].toDouble());
+    overworld_model->rotate(loadRotationAngl(obj["rotation"].toObject()), loadRotationVec(obj["rotation"].toObject()));
+    ModelRenderer * overworld_renderer = new ModelRenderer(overworld_model);
+    _view->addModelRenderer(overworld_renderer);
+}
+
+void EntityCreator::loadEntities(QJsonArray array) {
+    for(int i = 0; i < array.size() ; ++i) {
+        loadEntity(array.at(i).toObject());
+    }
+}
+
+void EntityCreator::loadEntity(QJsonObject obj) {
+    ModelObject * entity_model_obj = new ModelObject(obj["data"].toString());
+    Model * entity_model = new Model(entity_model_obj, TYPE::DYNAMIC);
+    entity_model->scale(obj["size"].toDouble());
+    entity_model->rotate(loadRotationAngl(obj["rotation"].toObject()), loadRotationVec(obj["rotation"].toObject()));
+    entity_model->move(loadPosition(obj["position"].toObject()));
+    ModelRenderer * entity_renderer = new ModelRenderer(entity_model);
+    _view->addModelRenderer(entity_renderer);
+
+    loadEntityBehavior(obj["behavior"].toString(), entity_model);
+}
+
+void EntityCreator::loadEntityBehavior(QString behavior, Model *model) {
+    if(behavior == "Spider") {
+        Spider * spider_entity = new Spider(model);
+        _collection->AddEntity(spider_entity);
+    }
+}
+
+Point3D EntityCreator::loadPosition(QJsonObject obj) {
+    Point3D pos;
+    pos.setX(obj["x"].toDouble());
+    pos.setY(obj["y"].toDouble());
+    pos.setZ(obj["z"].toDouble());
+    return pos;
+}
+
+Point3D EntityCreator::loadRotationVec(QJsonObject obj) {
+    Point3D rot;
+    rot.setX(obj["x"].toDouble());
+    rot.setY(obj["y"].toDouble());
+    rot.setZ(obj["z"].toDouble());
+    return rot;
+}
+
+float EntityCreator::loadRotationAngl(QJsonObject obj) {
+    return obj["angle"].toDouble();
 }
 
 }

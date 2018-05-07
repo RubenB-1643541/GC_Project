@@ -1,0 +1,35 @@
+{
+    "entities": [
+        {
+            "behavior": "Spider",
+            "data": "Models/Spider/spider.obj",
+            "position": {
+                "x": 21,
+                "y": 25.5,
+                "z": 7
+            },
+            "rotation": {
+                "angle": 180,
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "size": 0.05
+        }
+    ],
+    "over_world": {
+        "data": "Models/Bobomb/bobomb battlefeild.obj",
+        "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "rotation": {
+            "angle": 0,
+            "x": 0,
+            "y": 0,
+            "z": 0
+        },
+        "size": 1
+    }
+}
