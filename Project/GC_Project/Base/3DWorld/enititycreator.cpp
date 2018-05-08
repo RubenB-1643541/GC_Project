@@ -3,65 +3,63 @@
 
 namespace __3DWorld__ {
 
-
-
-EntityCreator::EntityCreator(EntityCollection * collection, OpenGLView * view)
-{
-    _collection = collection;
+EntityCreator::EntityCreator(OpenGLView *view) {
+    _collection = nullptr;
     _view = view;
-
-    //createOverWordl();
-    //createSpider();
-    loadData();
 }
 
-bool EntityCreator::loadData() {
-    QFile file("WorldData/WorldData.json");
+EntityCreator::EntityCreator(EntityCollection * collection, OpenGLView * view) {
+    _collection = collection;
+    _view = view;
+}
+
+bool EntityCreator::loadData(std::string path) {
+    // "WorldData/WorldData.json"
+    QFile file(path.c_str());
     if(!file.open(QIODevice::ReadOnly)) {
         qWarning("Data could not be loaded");
         return false;
     }
+
     QByteArray saveData = file.readAll();
     QJsonDocument document = QJsonDocument::fromJson(saveData);
     _object = document.object();
-    loadOverWorld(_object["over_world"].toObject());
-    if(_object.contains("entities") && _object["entities"].isArray())
+
+    if (_object.contains("models") && _object["models"].isArray()) {
+        loadModels(_object["models"].toArray());
+    } else { qDebug() << "Error: could not load models"; }
+    if (_object.contains("textures") && _object["textures"].isArray()) {
+        loadTextures(_object["textures"].toArray());
+    } else { qDebug() << "Error: could not load textures"; }
+    if (_object.contains("entities") && _object["entities"].isArray()) {
         loadEntities(_object["entities"].toArray());
+    } else { qDebug() << "Error: could not load entities"; }
 }
 
-void EntityCreator::createOverWordl() {
-    /*
-    ModelObject * overworld_model = new ModelObject("Models/Bobomb/bobomb battlefeild.obj");
-    ModelRenderer * overworld_renderer = new ModelRenderer(overworld_model);
-    _view->addModelRenderer(overworld_renderer);
-    */
+void EntityCreator::loadModels(QJsonArray array) {
+    _models.resize(array.size());
+    qDebug() << _models.size();
+    for(int i = 0; i < array.size() ; ++i) {
+        loadModel(array.at(i).toObject());
+    }
+}
+void EntityCreator::loadModel(QJsonObject obj) {
+    if (obj["id"].toInt() < _models.size()) {
+        _models[obj["id"].toInt()] = DisplayList::create(obj["path"].toString().toStdString());
+    }
 }
 
-void EntityCreator::createSpider() {
-    /*
-    ModelObject * spider_model_obj = new ModelObject("Models/Spider/spider.obj");
-    Model * spider_model = new Model(spider_model_obj, TYPE::DYNAMIC);
-    spider_model->scale(0.05);
-    spider_model->rotate(180, Point3D(0, 1, 0));
-    spider_model->move(Point3D(21, 25.5, 7));
-    ModelRenderer * spider_renderer = new ModelRenderer(spider_model);
-    _view->addModelRenderer(spider_renderer);
-
-    Spider * spider_entity = new Spider(spider_model);
-    _collection->AddEntity(spider_entity);
-    */
+void EntityCreator::loadTextures(QJsonArray array) {
+    _textures.resize(array.size());
+    for(int i = 0; i < array.size() ; ++i) {
+        loadTexture(array.at(i).toObject());
+    }
 }
 
-void EntityCreator::loadOverWorld(QJsonObject obj) {
-    /*
-    ModelObject * overworld_obj = new ModelObject(obj["data"].toString());
-    Model * overworld_model = new Model(overworld_obj, TYPE::STATIC);
-    overworld_model->move(loadPosition(obj["position"].toObject()));
-    overworld_model->scale(obj["size"].toDouble());
-    overworld_model->rotate(loadRotationAngl(obj["rotation"].toObject()), loadRotationVec(obj["rotation"].toObject()));
-    ModelRenderer * overworld_renderer = new ModelRenderer(overworld_model);
-    _view->addModelRenderer(overworld_renderer);
-    */
+void EntityCreator::loadTexture(QJsonObject obj) {
+    if (obj["id"].toInt() < _models.size()) {
+        _textures[obj["id"].toInt()] = Texture::create(obj["path"].toString().toStdString());
+    }
 }
 
 void EntityCreator::loadEntities(QJsonArray array) {
@@ -71,17 +69,32 @@ void EntityCreator::loadEntities(QJsonArray array) {
 }
 
 void EntityCreator::loadEntity(QJsonObject obj) {
-    /*
-    ModelObject * entity_model_obj = new ModelObject(obj["data"].toString());
-    Model * entity_model = new Model(entity_model_obj, TYPE::DYNAMIC);
-    entity_model->scale(obj["size"].toDouble());
-    entity_model->rotate(loadRotationAngl(obj["rotation"].toObject()), loadRotationVec(obj["rotation"].toObject()));
-    entity_model->move(loadPosition(obj["position"].toObject()));
-    ModelRenderer * entity_renderer = new ModelRenderer(entity_model);
-    _view->addModelRenderer(entity_renderer);
+    // Get model
+    GLuint model   = _models[obj["model_id"].toInt()];
 
-    loadEntityBehavior(obj["behavior"].toString(), entity_model);
-    */
+    Model* entity;
+    if (obj["texture_id"].toInt() > -1) {
+        GLuint texture = _textures[obj["texture_id"].toInt()];
+        entity = new Model(model, texture);
+    } else {
+        entity = new Model(model);
+    }
+
+    // Set Tranformation info
+    entity->translate(
+        loadPosition(obj["position"].toObject())
+    );
+    entity->rotate(
+        loadRotationAngl(obj["rotation"].toObject()),
+        loadRotationVec(obj["rotation"].toObject())
+    );
+    entity->scale(
+        obj["size"].toDouble()
+    );
+
+    _view->addModelRenderer(new ModelRenderer(entity));
+
+    //loadEntityBehavior(obj["behavior"].toString(), entity_model);
 }
 
 void EntityCreator::loadEntityBehavior(QString behavior, Model *model) {

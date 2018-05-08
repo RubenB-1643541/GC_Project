@@ -85,6 +85,7 @@ private:
 
     QVector<ModelRenderer *> _model_renderers;
 
+    EntityCreator* _creator;
     EntityCollection * _entities;
 
 

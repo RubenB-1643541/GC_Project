@@ -24,6 +24,7 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
 
     //_entities = new EntityCollection();
     //EntityCreator * creator = new EntityCreator(_entities, this);
+    _creator = new EntityCreator(this);
 
     update();
 
@@ -80,13 +81,16 @@ void OpenGLView::initializeGL() {
     // 87CEEB
     glClearColor(0.53, 0.81, 0.92 ,1.0f);
 
+    _creator->loadData("WorldData/WorldData.json");
+
     // Temp
-    GLuint l_world = DisplayList::create("bobomb battlefeild.obj");
-    GLuint l_tree  = DisplayList::create("tree.obj");
-    GLuint l_star  = DisplayList::create("star.obj");
-    GLuint t_tree = Texture::create("leafs.png");
-    GLuint t_world = Texture::create("stone.png");
-    GLuint t_star = Texture::create("body.png");
+    /*
+    GLuint l_world = DisplayList::create("resources/models/mario_world_1.obj");
+    GLuint l_tree  = DisplayList::create("resources/models/tree.obj");
+    GLuint l_star  = DisplayList::create("resources/models/star.obj");
+    GLuint t_tree =  Texture::create("resources/textures/green.png");
+    GLuint t_world = Texture::create("resources/textures/stone.png");
+    GLuint t_star =  Texture::create("resources/textures/star.png");
     Model* world = new Model(l_world, t_world);
     world->rotate(0, Point3D(0, 0, 1));
     addModelRenderer(new ModelRenderer(world));
@@ -111,6 +115,7 @@ void OpenGLView::initializeGL() {
     tree3->rotate(-90, Point3D(1, 0, 0));
     tree3->scale(0.1);
     addModelRenderer(new ModelRenderer(tree3));
+    */
 
     _timer->start(TIMER_INTERVAL);
     return;

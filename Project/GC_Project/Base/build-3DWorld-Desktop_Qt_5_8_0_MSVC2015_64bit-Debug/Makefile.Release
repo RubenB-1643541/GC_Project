@@ -501,6 +501,8 @@ release\moc_displaywindow.cpp: C:\Qt\5.8\msvc2015_64\include\QtWidgets\QMainWind
 		..\3DWorld\mvc.hpp \
 		..\3DWorld\Entities\entitycollection.h \
 		..\3DWorld\DisplayList.h \
+		..\3DWorld\Texture.h \
+		..\SOIL\src\SOIL.h \
 		..\3DWorld\pausescreen.h \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QFrame \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QPushButton \
@@ -701,6 +703,8 @@ release\moc_openglview.cpp: C:\Qt\5.8\msvc2015_64\include\QtWidgets\QOpenGLWidge
 		..\3DWorld\mvc.hpp \
 		..\3DWorld\Entities\entitycollection.h \
 		..\3DWorld\DisplayList.h \
+		..\3DWorld\Texture.h \
+		..\SOIL\src\SOIL.h \
 		..\3DWorld\openglview.h \
 		release\moc_predefs.h \
 		C:\Qt\5.8\msvc2015_64\bin\moc.exe
@@ -1276,6 +1280,8 @@ release\main.obj: ..\3DWorld\main.cpp ../3DWorld/displaywindow.h \
 		../3DWorld/mvc.hpp \
 		../3DWorld/Entities/entitycollection.h \
 		../3DWorld/DisplayList.h \
+		../3DWorld/Texture.h \
+		..\SOIL\src\SOIL.h \
 		../3DWorld/pausescreen.h \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QFrame \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QPushButton \
@@ -1496,6 +1502,8 @@ release\displaywindow.obj: ..\3DWorld\displaywindow.cpp ../3DWorld/displaywindow
 		../3DWorld/mvc.hpp \
 		../3DWorld/Entities/entitycollection.h \
 		../3DWorld/DisplayList.h \
+		../3DWorld/Texture.h \
+		..\SOIL\src\SOIL.h \
 		../3DWorld/pausescreen.h \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QFrame \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QPushButton \
@@ -1803,6 +1811,8 @@ release\openglview.obj: ..\3DWorld\openglview.cpp ../3DWorld/openglview.h \
 		../3DWorld/mvc.hpp \
 		../3DWorld/Entities/entitycollection.h \
 		../3DWorld/DisplayList.h \
+		../3DWorld/Texture.h \
+		..\SOIL\src\SOIL.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QDebug \
 		../3DWorld/enititycreator.h \
 		../3DWorld/Entities/spider.h \
@@ -3039,6 +3049,8 @@ release\enititycreator.obj: ..\3DWorld\enititycreator.cpp ../3DWorld/enititycrea
 		../3DWorld/Settings.h \
 		../3DWorld/mvc.hpp \
 		../3DWorld/DisplayList.h \
+		../3DWorld/Texture.h \
+		..\SOIL\src\SOIL.h \
 		../3DWorld/Entities/spider.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QJsonDocument \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\qjsondocument.h \
@@ -3216,7 +3228,70 @@ release\DisplayList.obj: ..\3DWorld\DisplayList.cpp ../3DWorld/DisplayList.h \
 		../3DWorld/Point3D.h \
 		../3DWorld/Vector3D.h
 
-release\Texture.obj: ..\3DWorld\Texture.cpp ../3DWorld/Texture.h
+release\Texture.obj: ..\3DWorld\Texture.cpp ../3DWorld/Texture.h \
+		..\SOIL\src\SOIL.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\QDebug \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qdebug.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qalgorithms.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qglobal.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qconfig.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qtcore-config.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qsysinfo.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qlogging.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qflags.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qtypetraits.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qatomic.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qmutex.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qnumeric.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qversiontagging.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qhash.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qchar.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qiterator.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qlist.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qrefcount.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qarraydata.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qpair.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qbytearray.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qnamespace.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qstring.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qstringlist.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qregexp.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qmap.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qtextstream.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qiodevice.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qobject.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qcoreevent.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qmetatype.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qobject_impl.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qlocale.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qvariant.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qshareddata.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qvector.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qpoint.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qset.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qsharedpointer_impl.h
 
 release\qrc_resources.obj: release\qrc_resources.cpp 
 

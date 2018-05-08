@@ -1,35 +1,97 @@
 {
+	"models": [
+		{
+			"id": 0,
+			"path": "resources/models/mario_world_1.obj"
+		}, {
+			"id": 1,
+			"path": "resources/models/tree.obj"
+		}, {
+			"id": 2,
+			"path": "resources/models/star.obj"
+		}, {
+			"id": 3,
+			"path": "resources/models/bench.obj"
+		}, {
+			"id": 4,
+			"path": "resources/models/spider.obj"
+		}
+	],
+	"textures": [
+		{
+			"id": 0,
+			"path": "resources/textures/stone.png"
+		}, {
+			"id": 1,
+			"path": "resources/textures/green.png"
+		}, {
+			"id": 2,
+			"path": "resources/textures/star.png"
+		}, {
+			"id": 3,
+			"path": "resources/textures/wood.bmp"
+		}, {
+			"id": 4,
+			"path": "resources/textures/spider.png"
+		}
+	],
     "entities": [
-        {
-            "behavior": "Spider",
-            "data": "Models/Spider/spider.obj",
-            "position": {
-                "x": 21,
-                "y": 25.5,
-                "z": 7
-            },
-            "rotation": {
-                "angle": 180,
-                "x": 0,
-                "y": 1,
-                "z": 0
-            },
-            "size": 0.05
-        }
-    ],
-    "over_world": {
-        "data": "Models/Bobomb/bobomb battlefeild.obj",
-        "position": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-        },
-        "rotation": {
-            "angle": 0,
-            "x": 0,
-            "y": 0,
-            "z": 0
-        },
-        "size": 1
-    }
+		{
+			"name": "world",
+			"model_id": 0,
+			"texture_id": 0,
+			"position": { "x": 0, "y": 0, "z": 0 },
+			"rotation": { "angle": 0, "x": 0, "y": 0, "z": 0 },
+			"size": 1
+		}, {
+			"name": "star",
+			"model_id": 2,
+			"texture_id": 2,
+			"position": { "x": 40, "y": 40, "z": 40 },
+			"rotation": { "angle": 45, "x": 0, "y": 1, "z": 0 },
+			"size": 2.0
+		}, {
+			"name": "tree1",
+			"model_id": 1,
+			"texture_id": 1,
+			"position": { "x": 15, "y": 12, "z": 30 },
+			"rotation": { "angle": -90, "x": 1, "y": 0, "z": 0 },
+			"size": 0.1
+		}, {
+			"name": "tree2",
+			"model_id": 1,
+			"texture_id": 1,
+			"position": { "x": -25, "y": 12, "z": 10 },
+			"rotation": { "angle": -90, "x": 1, "y": 0, "z": 0 },
+			"size": 0.1
+		}, {
+			"name": "tree3",
+			"model_id": 1,
+			"texture_id": 1,
+			"position": { "x": 35, "y": 17, "z": -25 },
+			"rotation": { "angle": -90, "x": 1, "y": 0, "z": 0 },
+			"size": 0.1
+		}, {
+			"name": "bench1",
+			"model_id": 3,
+			"texture_id": 3,
+			"position": { "x": -26, "y": 13.5, "z": -7 },
+			"rotation": { "angle": 152, "x": 0, "y": 1, "z": 0 },
+			"size": 0.3
+		}, {
+			"name": "bench2",
+			"model_id": 3,
+			"texture_id": 3,
+			"position": { "x": -30, "y": 13.5, "z": -1 },
+			"rotation": { "angle": -28, "x": 0, "y": 1, "z": 0 },
+			"size": 0.3
+		}, {
+			"name": "spider",
+			"model_id": 4,
+			"texture_id": 4,
+			"position": { "x": 23, "y": 25.7, "z": 7 },
+			"rotation": { "angle": -28, "x": 0, "y": 1, "z": 0 },
+			"size": 0.05
+		}
+    ]
 }
