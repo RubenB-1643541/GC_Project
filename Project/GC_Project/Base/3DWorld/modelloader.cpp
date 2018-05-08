@@ -10,20 +10,20 @@ ModelLoader::ModelLoader()
 
 void ModelLoader::load(std::string path) {
     Assimp::Importer import;
-        const aiScene *scene = import.ReadFile(
-            path,
-            aiProcess_Triangulate | // Build object from triangles
-            aiProcess_FlipUVs |
-            aiProcess_GenNormals    // Generate vertex normals
-        );
+    const aiScene *scene = import.ReadFile(
+        path,
+        aiProcess_Triangulate | // Build object from triangles
+        aiProcess_FlipUVs |
+        aiProcess_GenNormals    // Generate vertex normals
+    );
 
-        if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
-        {
-            qDebug() << "ERROR::ASSIMP::" << import.GetErrorString();
-            return;
-        }
+    if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+    {
+        qDebug() << "ERROR::ASSIMP::" << import.GetErrorString();
+        return;
+    }
 
-        processNode(scene->mRootNode, scene);
+    processNode(scene->mRootNode, scene);
 }
 void ModelLoader::processNode(aiNode *node, const aiScene *scene)
 {

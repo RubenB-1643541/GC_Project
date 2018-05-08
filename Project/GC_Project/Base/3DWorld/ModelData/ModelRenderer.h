@@ -1,31 +1,31 @@
-#ifndef MODEL_RENDER
-#define MODEL_RENDER
+#ifndef PRIMITIVEMODEL_H
+#define PRIMITIVEMODEL_H
 
-#include "ModelData/Model.h"
-#include "ModelData/ModelObject.h"
+#include "modelloader.h"
+#include "model.h"
 
+#include <windows.h> // Needed to compile gl.h
+#include <gl/GL.h>
+#include <gl/GLU.h>
 
 namespace __3DWorld__ {
 
 /**
  * @author Wald Habets
- * @brief
+ * @brief The PrimitiveModel class
  */
-
-
-
 class ModelRenderer {
 public:
-    ModelRenderer();
-    ModelRenderer(ModelObject * model);
-    ModelRenderer(Model * model);
-    void setModelObj(ModelObject * model);
+    ModelRenderer(Model* model);
     void draw(GLenum s_mode, GLenum f_mode);
-    void move(Point3D point) {_model->move(point);}
-
 private:
-    Model * _model = NULL;
+
+    Model* _model;
+    ModelLoader _loader;
+
+    std::vector<MLMesh> _meshes;
 };
+
 }
 
-#endif MODEL_RENDER
+#endif // PRIMITIVEMODEL_H

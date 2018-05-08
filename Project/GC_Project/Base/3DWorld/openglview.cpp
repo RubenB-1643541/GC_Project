@@ -12,6 +12,9 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
     this->setMouseTracking(true);
     this->setCursor(Qt::BlankCursor);
 
+    qDebug() << isValid();
+    makeCurrent();
+
     // Timer for updating view
     _timer = new QTimer();
     connect(_timer, SIGNAL(timeout()), this, SLOT(update()));
@@ -19,8 +22,8 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
     _settings = settings;
     _settings->addView(this);
 
-    _entities = new EntityCollection();
-    EntityCreator * creator = new EntityCreator(_entities, this);
+    //_entities = new EntityCollection();
+    //EntityCreator * creator = new EntityCreator(_entities, this);
 
     update();
 
@@ -38,7 +41,6 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
     // eventueel eigen file formaat
     // met models en hun meta data (rotatie, schalering, etc...
     // dan file parsen en zo models toevoegen
-    //addModelRenderer(new ModelRenderer("bobomb battlefeild.obj"));
 
     return;
 }
@@ -55,17 +57,22 @@ void OpenGLView::initializeGL() {
 
     // enable
     glEnable(GL_LIGHTING);
+    //glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
     glEnable(GL_COLOR_MATERIAL);
-    glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
-    glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE);
+    //glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE);
     glEnable(GL_LIGHT0);
 
     // Global lighting
 
-    GLfloat diffuse[] = { 1.0, 0.5, 0.0, 0.5 };     // orange
+    GLfloat diffuse[] = { 0.98, 0.98, 0.62, 0.1 };     // sun yellow
     glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-    GLfloat light_position[] = { 1, 1000, 1, 1 };
+    //GLfloat specular[] = { 0.98, 0.98, 0.62, 0.1 };     // sun yellow
+    //glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+    //GLfloat ambient[] = { 1.0, 0.8, 0.0, 1.0 };     // sun yellow
+    //glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+    GLfloat light_position[] = { 35, 40, 35, 1.0 };
     glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+    //glLighti(GL_LIGHT0, GL_SPOT_CUTOFF, 90);
 
     glEnable(GL_DEPTH_TEST);
 
@@ -73,6 +80,37 @@ void OpenGLView::initializeGL() {
     // 87CEEB
     glClearColor(0.53, 0.81, 0.92 ,1.0f);
 
+    // Temp
+    GLuint l_world = DisplayList::create("bobomb battlefeild.obj");
+    GLuint l_tree  = DisplayList::create("tree.obj");
+    GLuint l_star  = DisplayList::create("star.obj");
+    GLuint t_tree = Texture::create("leafs.png");
+    GLuint t_world = Texture::create("stone.png");
+    GLuint t_star = Texture::create("body.png");
+    Model* world = new Model(l_world, t_world);
+    world->rotate(0, Point3D(0, 0, 1));
+    addModelRenderer(new ModelRenderer(world));
+    Model* star = new Model(l_star, t_star);
+    star->translate(Point3D(40, 40, 40));
+    star->rotate(-30, Point3D(1, 0, 0)); // gets overriden
+    star->rotate(45, Point3D(0, 1, 0));
+    star->scale(2.0);
+    addModelRenderer(new ModelRenderer(star));
+    Model* tree1 = new Model(l_tree, t_tree);
+    tree1->translate(Point3D(15, 12, 30));
+    tree1->rotate(-90, Point3D(1, 0, 0));
+    tree1->scale(0.1);
+    addModelRenderer(new ModelRenderer(tree1));
+    Model* tree2 = new Model(l_tree, t_tree);
+    tree2->translate(Point3D(-25, 12, 10));
+    tree2->rotate(-90, Point3D(1, 0, 0));
+    tree2->scale(0.1);
+    addModelRenderer(new ModelRenderer(tree2));
+    Model* tree3 = new Model(l_tree, t_tree);
+    tree3->translate(Point3D(35, 17, -25));
+    tree3->rotate(-90, Point3D(1, 0, 0));
+    tree3->scale(0.1);
+    addModelRenderer(new ModelRenderer(tree3));
 
     _timer->start(TIMER_INTERVAL);
     return;
@@ -93,10 +131,6 @@ void OpenGLView::resizeGL(int w, int h) {
         /* far clipping  */ 1000.0
     );
 
-    //_model_renderers.at(0)->move(Point3D(0, -40, 0));
-
-
-
     return;
 }
 
@@ -104,18 +138,10 @@ void OpenGLView::paintGL() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glMatrixMode(GL_MODELVIEW);
-
     glPushMatrix();
 
     // Update Camera
     updateCamera();
-
-
-
-    for(ModelRenderer * renderer : _model_renderers) {
-        renderer->draw(ShadingMode::SMOOTH, RenderMode::FILL);
-    }
-
 
     // Draw Models
     for (ModelRenderer* renderer: _model_renderers) {
@@ -125,11 +151,10 @@ void OpenGLView::paintGL() {
         );
     }
 
-
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
 
-    _entities->UpdateEntities();
+    //_entities->UpdateEntities();
 
     return;
 }
@@ -160,6 +185,7 @@ void OpenGLView::keyPressEvent(QKeyEvent* event) {
     else if (event->text() == 'd') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Right); }
     else if (event->text() == 'l') { _headlamp->toggle(); }
     else if (event->key() == Qt::Key_Escape) { emit escapePressed(); }
+    else if (event->text() == 'g') { glDisable(GL_LIGHT0); }
     return;
 }
 void OpenGLView::keyReleaseEvent(QKeyEvent* event) {
@@ -195,7 +221,6 @@ void OpenGLView::mouseMoveEvent(QMouseEvent *event) {
 void OpenGLView::update() {
     _shading_mode = _settings->getShadingMode();
     _render_mode = _settings->getRenderMode();
-
 }
 
 ////////////////////////////////////////////////////////

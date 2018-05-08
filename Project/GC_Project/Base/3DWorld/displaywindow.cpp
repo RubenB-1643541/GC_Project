@@ -26,28 +26,12 @@ DisplayWindow::DisplayWindow(QWidget *parent) :
     this->setMinimumSize(1280, 720);
 
     // Connections
-
-    connect(_open_gl_view, SIGNAL(escapePressed()), this, SLOT(setPauseScreen()));
-    connect(_pause_screen, SIGNAL(continueButtonPressed()), this, SLOT(setOpenGLView()));
-
-    /*
-    ModelObject * temp_model1 = new ModelObject("Models/Bobomb/bobomb battlefeild.obj");
-    ModelRenderer * renderer1 = new ModelRenderer(temp_model1);
-    _open_gl_view->addModelRenderer(renderer1);
-
-
-    ModelObject * temp_model2 = new ModelObject("Models/Spider/spider.obj");
-    ModelRenderer * renderer2 = new ModelRenderer(temp_model2);
-    _open_gl_view->addModelRenderer(renderer2);
-    */
-
     connect(_open_gl_view, SIGNAL(escapePressed()), this, SLOT(swapToPauseScreen()));
     connect(_keybinds_screen, SIGNAL(backButtonPressed()), this, SLOT(swapToPauseScreen()));
     connect(_settings_screen, SIGNAL(saveButtonPressed()), this, SLOT(swapToPauseScreen()));
     connect(_pause_screen, SIGNAL(continueButtonPressed()), this, SLOT(swapToOpenGLView()));
     connect(_pause_screen, SIGNAL(settingsButtonPressed()), this, SLOT(swapToSettingsScreen()));
     connect(_pause_screen, SIGNAL(keybindsButtonPressed()), this, SLOT(swapToKeybindsScreen()));
-
 }
 
 DisplayWindow::~DisplayWindow() {

@@ -36,7 +36,6 @@ SOURCES += main.cpp\
     pausescreen.cpp \
     qssfile.cpp \
     ModelData/Model.cpp \
-    ModelData/ModelObject.cpp \
     ModelData/ModelRenderer.cpp \
     CameraMouseHandler.cpp \
     SettingsScreen.cpp \
@@ -47,8 +46,9 @@ SOURCES += main.cpp\
     ModelData/modelentity.cpp \
     Entities/entitycollection.cpp \
     enititycreator.cpp \
-    ModelData/texture.cpp \
-    datafilewriter.cpp
+    datafilewriter.cpp \
+    DisplayList.cpp \
+    Texture.cpp
 
 HEADERS  += displaywindow.h \
     Camera.h \
@@ -57,12 +57,10 @@ HEADERS  += displaywindow.h \
     Point3D.h \
     Vector3D.h \
     openglview.h \
-    Model/modeldata.h \
     CameraMouseHandler.h \
     pausescreen.h \
     qssfile.h \
     ModelData/Model.h \
-    ModelData/ModelObject.h \
     ModelData/ModelRenderer.h \
     CameraMouseHandler.h \
     SettingsScreen.h \
@@ -74,8 +72,9 @@ HEADERS  += displaywindow.h \
     Entities/spider.h \
     Entities/entitycollection.h \
     enititycreator.h \
-    ModelData/texture.h \
-    datafilewriter.h
+    datafilewriter.h \
+    DisplayList.h \
+    Texture.h
 
 FORMS    += displaywindow.ui \
     pausescreen.ui \

@@ -6,6 +6,7 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 #include <QKeyEvent>
+#include <QOpenGLContext>
 
 #include "Camera.h"
 #include "CameraKeyHandler.h"
@@ -15,7 +16,8 @@
 #include "Settings.h"
 #include "mvc.hpp"
 #include "Entities/entitycollection.h"
-
+#include "DisplayList.h"
+#include "Texture.h"
 
 namespace __3DWorld__ {
 

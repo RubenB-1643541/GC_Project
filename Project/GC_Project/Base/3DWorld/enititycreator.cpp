@@ -30,13 +30,15 @@ bool EntityCreator::loadData() {
 }
 
 void EntityCreator::createOverWordl() {
+    /*
     ModelObject * overworld_model = new ModelObject("Models/Bobomb/bobomb battlefeild.obj");
     ModelRenderer * overworld_renderer = new ModelRenderer(overworld_model);
     _view->addModelRenderer(overworld_renderer);
-
+    */
 }
 
 void EntityCreator::createSpider() {
+    /*
     ModelObject * spider_model_obj = new ModelObject("Models/Spider/spider.obj");
     Model * spider_model = new Model(spider_model_obj, TYPE::DYNAMIC);
     spider_model->scale(0.05);
@@ -47,9 +49,11 @@ void EntityCreator::createSpider() {
 
     Spider * spider_entity = new Spider(spider_model);
     _collection->AddEntity(spider_entity);
+    */
 }
 
 void EntityCreator::loadOverWorld(QJsonObject obj) {
+    /*
     ModelObject * overworld_obj = new ModelObject(obj["data"].toString());
     Model * overworld_model = new Model(overworld_obj, TYPE::STATIC);
     overworld_model->move(loadPosition(obj["position"].toObject()));
@@ -57,6 +61,7 @@ void EntityCreator::loadOverWorld(QJsonObject obj) {
     overworld_model->rotate(loadRotationAngl(obj["rotation"].toObject()), loadRotationVec(obj["rotation"].toObject()));
     ModelRenderer * overworld_renderer = new ModelRenderer(overworld_model);
     _view->addModelRenderer(overworld_renderer);
+    */
 }
 
 void EntityCreator::loadEntities(QJsonArray array) {
@@ -66,6 +71,7 @@ void EntityCreator::loadEntities(QJsonArray array) {
 }
 
 void EntityCreator::loadEntity(QJsonObject obj) {
+    /*
     ModelObject * entity_model_obj = new ModelObject(obj["data"].toString());
     Model * entity_model = new Model(entity_model_obj, TYPE::DYNAMIC);
     entity_model->scale(obj["size"].toDouble());
@@ -75,6 +81,7 @@ void EntityCreator::loadEntity(QJsonObject obj) {
     _view->addModelRenderer(entity_renderer);
 
     loadEntityBehavior(obj["behavior"].toString(), entity_model);
+    */
 }
 
 void EntityCreator::loadEntityBehavior(QString behavior, Model *model) {
