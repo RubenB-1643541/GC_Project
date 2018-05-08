@@ -15,6 +15,7 @@
 #include "Settings.h"
 #include "mvc.hpp"
 #include "Entities/entitycollection.h"
+#include "picking.h"
 
 
 namespace __3DWorld__ {
@@ -84,6 +85,8 @@ private:
 
     QVector<ModelRenderer *> _model_renderers;
     EntityCollection * _entities;
+
+    Picking * _picker;
 
 
     ////////////////////////////////////////////////////////

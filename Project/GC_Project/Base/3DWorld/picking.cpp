@@ -5,6 +5,7 @@ namespace __3DWorld__ {
 Picking::Picking()
 {
     _buffer_size = 512;
+    _started = false;
 }
 
 void Picking::createBuffer() {
@@ -13,6 +14,8 @@ void Picking::createBuffer() {
 }
 
 void Picking::startPicking() {
+    _started = true;
+    qDebug() << "Picking started";
     glRenderMode(GL_SELECT);
     glInitNames();
     GLint viewport[4];
@@ -33,6 +36,8 @@ void Picking::endPicking() {
     glPopMatrix();
 
     _hits = glRenderMode(GL_RENDER);
+    _started = false;
+    qDebug() << "Picking finished";
 }
 
 void Picking::procesHits() {
@@ -58,6 +63,7 @@ void Picking::procesHits() {
             ++ptr;
         }
     }
+    qDebug() << "Picking result" << _first_hit;
 }
 
 }

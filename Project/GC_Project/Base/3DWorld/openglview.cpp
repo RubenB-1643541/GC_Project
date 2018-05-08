@@ -34,7 +34,7 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
     _camera_mouse_handler = new CameraMouseHandler(_camera);
     _headlamp = new HeadLamp();
 
-
+    _picker = new Picking();
     // eventueel eigen file formaat
     // met models en hun meta data (rotatie, schalering, etc...
     // dan file parsen en zo models toevoegen
@@ -131,6 +131,12 @@ void OpenGLView::paintGL() {
 
     _entities->UpdateEntities();
 
+    if(_picker->isPicking()) {
+        _picker->endPicking();
+        _picker->procesHits();
+        //_picker->getResult();
+    }
+
     return;
 }
 
@@ -190,8 +196,9 @@ void OpenGLView::mouseMoveEvent(QMouseEvent *event) {
 }
 
 void OpenGLView::mouseReleaseEvent(QMouseEvent *event) {
-    if(event->button() == Qt::MouseButton::RightButton) {
-        qDebug() << "Right mouse button pressed";
+    if(event->button() == Qt::MouseButton::LeftButton) {
+        qDebug() << "Left mouse button pressed";
+        _picker->startPicking();
     }
 }
 
