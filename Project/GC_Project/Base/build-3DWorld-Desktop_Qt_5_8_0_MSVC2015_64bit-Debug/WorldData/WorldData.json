@@ -5,7 +5,7 @@
             "data": "Models/Spider/spider.obj",
             "position": {
                 "x": 21,
-                "y": 25.5,
+                "y": 10.5,
                 "z": 7
             },
             "rotation": {
@@ -15,13 +15,29 @@
                 "z": 0
             },
             "size": 0.05
+        },
+        {
+            "behavior": "Thwomp",
+            "data": "Models/Mario64/Characters/Thwomp/Thwomp.obj",
+            "position": {
+                "x": -25,
+                "y": 0,
+                "z": 15
+            },
+            "rotation": {
+                "angle": 180,
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "size": 0.5
         }
     ],
     "over_world": {
         "data": "Models/Bobomb/bobomb battlefeild.obj",
         "position": {
             "x": 0,
-            "y": 0,
+            "y": -15,
             "z": 0
         },
         "rotation": {

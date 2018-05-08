@@ -82,6 +82,10 @@ void EntityCreator::loadEntityBehavior(QString behavior, Model *model) {
         Spider * spider_entity = new Spider(model);
         _collection->AddEntity(spider_entity);
     }
+    else if(behavior == "Thwomp") {
+        Thwomp * thwomp_entity = new Thwomp(model);
+        _collection->AddEntity(thwomp_entity);
+    }
 }
 
 Point3D EntityCreator::loadPosition(QJsonObject obj) {

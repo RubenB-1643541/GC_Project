@@ -20,7 +20,7 @@ public:
     Model(TYPE type);
     Model(ModelObject * obj, TYPE type);
     void setModelObj(ModelObject * obj);
-    void draw(GLenum s_mode, GLenum f_mode);
+    void draw();
     void move(Point3D position);
     void rotate(float angle, Point3D vertex);
     void scale(float size);

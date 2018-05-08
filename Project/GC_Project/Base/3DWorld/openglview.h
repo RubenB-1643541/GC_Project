@@ -53,6 +53,7 @@ public:
     void keyPressEvent(QKeyEvent* event);
     void keyReleaseEvent(QKeyEvent* event);
     void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent * event);
 
     ////////////////////////////////////////////////////////
     /// settings
@@ -82,7 +83,6 @@ private:
     HeadLamp* _headlamp;
 
     QVector<ModelRenderer *> _model_renderers;
-
     EntityCollection * _entities;
 
 

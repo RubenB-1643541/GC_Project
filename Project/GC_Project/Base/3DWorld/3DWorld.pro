@@ -48,7 +48,9 @@ SOURCES += main.cpp\
     Entities/entitycollection.cpp \
     enititycreator.cpp \
     ModelData/texture.cpp \
-    datafilewriter.cpp
+    datafilewriter.cpp \
+    Entities/thwomp.cpp \
+    picking.cpp
 
 HEADERS  += displaywindow.h \
     Camera.h \
@@ -75,7 +77,9 @@ HEADERS  += displaywindow.h \
     Entities/entitycollection.h \
     enititycreator.h \
     ModelData/texture.h \
-    datafilewriter.h
+    datafilewriter.h \
+    Entities/thwomp.h \
+    picking.h
 
 FORMS    += displaywindow.ui \
     pausescreen.ui \

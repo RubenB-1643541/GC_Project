@@ -38,6 +38,9 @@ void DataFileWriter::WriteEntities(QJsonArray &array) {
     QJsonObject spider;
     WriteSpider(spider);
     array.append(spider);
+    QJsonObject thwomp;
+    WriteThwomp(thwomp);
+    array.append(thwomp);
 }
 
 void DataFileWriter::WriteSpider(QJsonObject &obj) {
@@ -50,6 +53,17 @@ void DataFileWriter::WriteSpider(QJsonObject &obj) {
     SetRotation(rotation, 180, __3DWorld__::Point3D(0, 1, 0));
     obj["rotation"] = rotation;
     obj["behavior"] = "Spider";
+}
+void DataFileWriter::WriteThwomp(QJsonObject &obj) {
+    obj["data"] = "Models/Mario64/Characters/Thwomp/Thwomp.obj";
+    obj["size"] = 1;
+    QJsonObject position;
+    SetPosition(position, __3DWorld__::Point3D(0, 25.5, 7));
+    obj["position"] = position;
+    QJsonObject rotation;
+    SetRotation(rotation, 180, __3DWorld__::Point3D(0, 1, 0));
+    obj["rotation"] = rotation;
+    obj["behavior"] = "Thwomp";
 }
 
 void DataFileWriter::SetPosition(QJsonObject &obj, __3DWorld__::Point3D pos) {

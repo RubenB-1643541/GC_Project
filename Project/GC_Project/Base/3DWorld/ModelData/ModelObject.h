@@ -21,7 +21,7 @@ namespace __3DWorld__ {
 class ModelObject {
 public:
     ModelObject(QString Path);
-    void draw(GLenum s_mode, GLenum f_mode);
+    void draw();
     GLuint initialize();
 
 

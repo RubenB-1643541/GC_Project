@@ -189,6 +189,12 @@ void OpenGLView::mouseMoveEvent(QMouseEvent *event) {
     )));
 }
 
+void OpenGLView::mouseReleaseEvent(QMouseEvent *event) {
+    if(event->button() == Qt::MouseButton::RightButton) {
+        qDebug() << "Right mouse button pressed";
+    }
+}
+
 ////////////////////////////////////////////////////////
 /// settings
 ////////////////////////////////////////////////////////

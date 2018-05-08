@@ -6,7 +6,7 @@ namespace __3DWorld__ {
 
 Texture::Texture()
 {
-
+    _initialized = false;
 }
 
 void Texture::addTexture(QString path) {
@@ -24,7 +24,7 @@ void Texture::initialize() {
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-
+    _initialized = true;
 }
 
 void Texture::use() {

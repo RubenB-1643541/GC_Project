@@ -5,6 +5,7 @@
 #include "ModelData/ModelRenderer.h"
 #include "openglview.h"
 #include "Entities/spider.h"
+#include "Entities/thwomp.h"
 
 #include <QJsonDocument>
 #include <QJsonObject>

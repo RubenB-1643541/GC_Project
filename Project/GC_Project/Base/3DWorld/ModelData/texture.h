@@ -16,11 +16,13 @@ public:
     void addTexture(QString path);
     void initialize();
     void use();
+    bool isInitialized() {return _initialized;}
 
 private:
     QString _texture;
     GLuint _texture_id;
     int _width, _heigth;
+    bool _initialized = false;
 
 
 };

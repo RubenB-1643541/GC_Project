@@ -22,7 +22,16 @@ void ModelRenderer::setModelObj(ModelObject *model) {
 }
 
 void ModelRenderer::draw(GLenum s_mode, GLenum f_mode) {
-    _model->draw(s_mode, f_mode);
+    glPushMatrix();
+
+    glMateriali(GL_FRONT, GL_SHININESS, 20);
+
+    glShadeModel(s_mode);                       // Type of shader (flat, smooth)
+    glPolygonMode(GL_FRONT_AND_BACK, f_mode);   // Type of frame (wirefram, filled)
+
+    _model->draw();
+
+    glPopMatrix();
 }
 
 }
