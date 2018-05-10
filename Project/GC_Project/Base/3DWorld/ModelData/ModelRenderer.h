@@ -22,6 +22,8 @@ public:
     void setModelObj(ModelObject * model);
     void draw(GLenum s_mode, GLenum f_mode);
     void move(Point3D point) {_model->move(point);}
+    void drawModel();
+    void executePicking();
 
 private:
     Model * _model = NULL;

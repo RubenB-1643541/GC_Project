@@ -32,10 +32,6 @@ void Model::setModelObj(ModelObject *obj) {
 
 void Model::draw() {
     setPosition();
-    if(!_texture->isInitialized()) {
-        _texture->initialize();
-    }
-    _texture->use();
     _object->draw();
 }
 

@@ -34,4 +34,12 @@ void ModelRenderer::draw(GLenum s_mode, GLenum f_mode) {
     glPopMatrix();
 }
 
+void ModelRenderer::drawModel() {
+    _model->draw();
+}
+
+void ModelRenderer::executePicking() {
+
+}
+
 }

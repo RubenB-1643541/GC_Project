@@ -5,24 +5,31 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 #include <QDebug>
+#include <QMouseEvent>
 namespace __3DWorld__ {
 
 class Picking
 {
 public:
     Picking();
-    void startPicking();
+    void startPicking(QMouseEvent * event, int heigth, int width);
     void endPicking();
     void procesHits();
-    int getResult();
     bool isPicking() {return _started;}
+    void resetDrawing();
+    void startDrawing();
+    void endDrawing();
+    int getResult() {return _result;}
 private:
-    void createBuffer();
-    int _buffer_size;
-    GLuint * _selectBuffer;
     GLint _hits;
     int _first_hit;
     bool _started;
+    int _draw;
+    int _result;
+
+    using uint = unsigned int;
+    int _selectBufferSize = 100;
+    std::vector<uint> _selectBuffer = std::vector<uint>(_selectBufferSize);
 };
 
 }
