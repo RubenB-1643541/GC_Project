@@ -149,7 +149,7 @@ void OpenGLView::paintGL() {
     updateCamera();
 
     // Draw Models
-    for (ModelRenderer* renderer: _model_renderers) {
+    for (RendererInterface* renderer: _model_renderers) {
         renderer->draw(
             _shading_mode,
             _render_mode
@@ -168,7 +168,7 @@ void OpenGLView::paintGL() {
 /// Rending
 ////////////////////////////////////////////////////////
 
-void OpenGLView::addModelRenderer(ModelRenderer *renderer) {
+void OpenGLView::addModelRenderer(RendererInterface *renderer) {
     _model_renderers.append(renderer);
 }
 

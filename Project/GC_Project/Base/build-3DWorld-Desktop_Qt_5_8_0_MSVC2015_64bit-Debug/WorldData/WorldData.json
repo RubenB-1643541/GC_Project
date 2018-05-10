@@ -15,6 +15,9 @@
 		}, {
 			"id": 4,
 			"path": "resources/models/spider.obj"
+		}, {
+			"id": 5,
+			"path": "resources/models/mario.obj"
 		}
 	],
 	"textures": [
@@ -33,6 +36,14 @@
 		}, {
 			"id": 4,
 			"path": "resources/textures/spider.png"
+		}
+	],
+	"groups": [
+		{
+			"id": 0,
+			"position": { "x": 17, "y": 25.7, "z": 7 },
+			"rotation": { "angle": 0, "x": 0, "y": 0, "z": 0 },
+			"size": 1
 		}
 	],
     "entities": [
@@ -89,9 +100,18 @@
 			"name": "spider",
 			"model_id": 4,
 			"texture_id": 4,
-			"position": { "x": 23, "y": 25.7, "z": 7 },
+			"group_id": 0,
+			"position": { "x": 6, "y": 0, "z": 0 },
 			"rotation": { "angle": -28, "x": 0, "y": 1, "z": 0 },
 			"size": 0.05
+		}, {
+			"name": "mario",
+			"model_id": 5,
+			"texture_id": -1,
+			"group_id": 0,
+			"position": { "x": 0, "y": -2, "z": 0 },
+			"rotation": { "angle": 0, "x": 0, "y": 0, "z": 0 },
+			"size": 0.01
 		}
     ]
 }

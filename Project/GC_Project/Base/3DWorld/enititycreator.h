@@ -3,6 +3,7 @@
 
 #include "Entities/entitycollection.h"
 #include "ModelData/ModelRenderer.h"
+#include "ModelData/GroupRenderer.h"
 #include "openglview.h"
 #include "Entities/spider.h"
 
@@ -27,10 +28,12 @@ public:
 private:
     void loadModels(QJsonArray array);
     void loadTextures(QJsonArray array);
+    void loadGroups(QJsonArray array);
     void loadEntities(QJsonArray array);
 
     void loadModel(QJsonObject obj);
     void loadTexture(QJsonObject obj);
+    void loadGroup(QJsonObject obj);
     void loadEntity(QJsonObject obj);
 
     void loadEntityBehavior(QString behavior, Model * model);
@@ -40,6 +43,7 @@ private:
 
     std::vector<GLuint> _models;
     std::vector<GLuint> _textures;
+    std::vector<GroupRenderer*> _groups;
 
     EntityCollection * _collection;
     OpenGLView * _view;

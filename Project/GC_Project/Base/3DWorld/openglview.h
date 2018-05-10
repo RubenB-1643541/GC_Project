@@ -12,7 +12,7 @@
 #include "CameraKeyHandler.h"
 #include "CameraMouseHandler.h"
 #include "HeadLamp.h"
-#include "ModelData/ModelRenderer.h"
+#include "ModelData/RendererInterface.h"
 #include "Settings.h"
 #include "mvc.hpp"
 #include "Entities/entitycollection.h"
@@ -47,7 +47,7 @@ public:
     ////////////////////////////////////////////////////////
     /// Rendering
     ////////////////////////////////////////////////////////
-    void addModelRenderer(ModelRenderer* renderer);
+    void addModelRenderer(RendererInterface* renderer);
 
     ////////////////////////////////////////////////////////
     /// KeyEvents
@@ -83,7 +83,7 @@ private:
     CameraMouseHandler* _camera_mouse_handler;
     HeadLamp* _headlamp;
 
-    QVector<ModelRenderer *> _model_renderers;
+    QVector<RendererInterface*> _model_renderers;
 
     EntityCreator* _creator;
     EntityCollection * _entities;

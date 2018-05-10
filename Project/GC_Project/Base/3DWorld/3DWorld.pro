@@ -48,7 +48,9 @@ SOURCES += main.cpp\
     enititycreator.cpp \
     datafilewriter.cpp \
     DisplayList.cpp \
-    Texture.cpp
+    Texture.cpp \
+    ModelData/GroupRenderer.cpp \
+    ModelData/ModelGroup.cpp
 
 HEADERS  += displaywindow.h \
     Camera.h \
@@ -74,7 +76,10 @@ HEADERS  += displaywindow.h \
     enititycreator.h \
     datafilewriter.h \
     DisplayList.h \
-    Texture.h
+    Texture.h \
+    ModelData/RendererInterface.h \
+    ModelData/GroupRenderer.h \
+    ModelData/ModelGroup.h
 
 FORMS    += displaywindow.ui \
     pausescreen.ui \
