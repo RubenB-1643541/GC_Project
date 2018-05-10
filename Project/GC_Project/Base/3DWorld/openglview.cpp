@@ -40,6 +40,8 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
 
     _global_light = true;
 
+    _picker = new Picking();
+
     return;
 }
 
@@ -154,10 +156,16 @@ void OpenGLView::paintGL() {
         );
     }
 
+    _picker->resetDrawing();
+
+    if(_picker->isPicking()) {
+        _picker->endPicking();
+        _picker->procesHits();
+        //_picker->getResult();
+    }
+
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
-
-    //_entities->UpdateEntities();
 
     return;
 }
@@ -167,7 +175,7 @@ void OpenGLView::paintGL() {
 ////////////////////////////////////////////////////////
 
 void OpenGLView::addModelRenderer(RendererInterface *renderer) {
-    _model_renderers.append(renderer);
+    _model_renderers.push_back(renderer);
 }
 
 ////////////////////////////////////////////////////////
@@ -216,6 +224,37 @@ void OpenGLView::mouseMoveEvent(QMouseEvent *event) {
         width() / 2,
         height() / 2
     )));
+}
+
+void OpenGLView::mouseReleaseEvent(QMouseEvent *event) {
+    if(event->button() == Qt::MouseButton::LeftButton) {
+        qDebug() << "Left mouse button pressed";
+        picking(event);
+    }
+}
+
+////////////////////////////////////////////////////////
+/// picking
+////////////////////////////////////////////////////////
+
+void OpenGLView::picking(QMouseEvent * event) {
+    _picker->startPicking(event, height(), width());
+    _picker->resetDrawing();
+
+    for (RendererInterface* renderer: _model_renderers) {
+       _picker->startDrawing();
+       renderer->draw(_shading_mode, _render_mode);
+       _picker->endDrawing();
+    }
+    _picker->endPicking();
+    _picker->procesHits();
+    executeResult();
+}
+
+void OpenGLView::executeResult() {
+    int result = _picker->getResult();
+    //ModelRenderer * result_renderer = _model_renderers.at(result - 1);
+    //result_renderer->executePicking();
 }
 
 ////////////////////////////////////////////////////////

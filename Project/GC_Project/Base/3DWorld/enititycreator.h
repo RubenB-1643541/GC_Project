@@ -5,7 +5,6 @@
 #include "ModelData/ModelRenderer.h"
 #include "ModelData/GroupRenderer.h"
 #include "openglview.h"
-#include "Entities/spider.h"
 
 #include "Texture.h"
 #include "DisplayList.h"
@@ -36,7 +35,6 @@ private:
     void loadGroup(QJsonObject obj);
     void loadEntity(QJsonObject obj);
 
-    void loadEntityBehavior(QString behavior, Model * model);
     Point3D loadPosition(QJsonObject obj);
     Point3D loadRotationVec(QJsonObject obj);
     float loadRotationAngl(QJsonObject obj);

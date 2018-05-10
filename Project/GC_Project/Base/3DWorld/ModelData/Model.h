@@ -1,7 +1,6 @@
 #ifndef MODEL
 #define MODEL
 
-#include "modelentity.h"
 #include "modelloader.h"
 
 #include <windows.h>

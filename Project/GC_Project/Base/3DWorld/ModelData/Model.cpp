@@ -39,16 +39,4 @@ void Model::scale(float size) {
     _size = size;
 }
 
-/*
-void Model::setPosition() {
-    glTranslatef(_position.x(), _position.y(), _position.z());
-    //rotate x
-    glRotatef(_angle_x, 1, 0, 0);
-    //rotate y
-    glRotatef(_angle_y, 0, 1, 0);
-    //rotate z
-    glRotatef(_angle_z, 0, 0, 1);
-    glScalef(_size, _size, _size);
-}
-*/
 }

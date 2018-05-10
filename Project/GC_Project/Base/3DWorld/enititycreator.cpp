@@ -1,5 +1,6 @@
 #include "enititycreator.h"
 #include "openglview.h"
+#include "Texture.h"
 
 namespace __3DWorld__ {
 
@@ -142,13 +143,6 @@ void EntityCreator::loadEntity(QJsonObject obj) {
     }
 
     //loadEntityBehavior(obj["behavior"].toString(), entity_model);
-}
-
-void EntityCreator::loadEntityBehavior(QString behavior, Model *model) {
-    if(behavior == "Spider") {
-        Spider * spider_entity = new Spider(model);
-        _collection->AddEntity(spider_entity);
-    }
 }
 
 Point3D EntityCreator::loadPosition(QJsonObject obj) {

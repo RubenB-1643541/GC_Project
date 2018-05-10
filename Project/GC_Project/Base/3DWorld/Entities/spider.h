@@ -11,6 +11,8 @@ public:
     void update();
 
 private:
+    void test();
+    void cirkel();
     int _timer;
     int _timer2;
     int _timer_rotate;

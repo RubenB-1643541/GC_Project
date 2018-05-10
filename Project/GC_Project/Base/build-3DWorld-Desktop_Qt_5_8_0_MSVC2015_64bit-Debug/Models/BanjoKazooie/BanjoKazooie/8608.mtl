@@ -1,0 +1,18 @@
+newmtl material_0000
+map_Kd image_0000.png
+
+newmtl material_null
+
+newmtl material_0002
+map_Kd image_0002.png
+
+newmtl material_0004
+map_Kd image_0004.png
+
+newmtl material_0003
+map_Kd image_0003.png
+
+newmtl material_0001
+map_Kd image_0001.png
+
+

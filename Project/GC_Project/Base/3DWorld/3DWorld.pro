@@ -24,63 +24,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
-SOURCES += main.cpp\
-        displaywindow.cpp \
-    Camera.cpp \
-    CameraKeyHandler.cpp \
-    HeadLamp.cpp \
-    Point3D.cpp \
-    Vector3D.cpp \
-    openglview.cpp \
-    CameraMouseHandler.cpp \
-    pausescreen.cpp \
-    qssfile.cpp \
-    ModelData/Model.cpp \
-    ModelData/ModelRenderer.cpp \
-    CameraMouseHandler.cpp \
-    SettingsScreen.cpp \
-    Settings.cpp \
-    KeyBindsScreen.cpp \
-    modelloader.cpp \
-    Entities/spider.cpp \
-    ModelData/modelentity.cpp \
-    Entities/entitycollection.cpp \
-    enititycreator.cpp \
-    datafilewriter.cpp \
-    DisplayList.cpp \
-    Texture.cpp \
-    ModelData/GroupRenderer.cpp \
-    ModelData/ModelGroup.cpp
-
-HEADERS  += displaywindow.h \
-    Camera.h \
-    CameraKeyHandler.h \
-    HeadLamp.h \
-    Point3D.h \
-    Vector3D.h \
-    openglview.h \
-    CameraMouseHandler.h \
-    pausescreen.h \
-    qssfile.h \
-    ModelData/Model.h \
-    ModelData/ModelRenderer.h \
-    CameraMouseHandler.h \
-    SettingsScreen.h \
-    KeyBindsScreen.h \
-    mvc.hpp \
-    Settings.h \
-    modelloader.h \
-    ModelData/modelentity.h \
-    Entities/spider.h \
-    Entities/entitycollection.h \
-    enititycreator.h \
-    datafilewriter.h \
-    DisplayList.h \
-    Texture.h \
-    ModelData/RendererInterface.h \
-    ModelData/GroupRenderer.h \
-    ModelData/ModelGroup.h
-
 FORMS    += displaywindow.ui \
     pausescreen.ui \
     SettingsScreen.ui \
@@ -100,3 +43,66 @@ win32: LIBS += -L$$PWD/../SOIL/lib/ -lSOIL
 
 INCLUDEPATH += $$PWD/../SOIL/src
 DEPENDPATH += $$PWD/../SOIL/src
+
+HEADERS += \
+    Camera.h \
+    CameraKeyHandler.h \
+    CameraMouseHandler.h \
+    datafilewriter.h \
+    DisplayList.h \
+    displaywindow.h \
+    enititycreator.h \
+    HeadLamp.h \
+    KeyBindsScreen.h \
+    modelloader.h \
+    openglview.h \
+    pausescreen.h \
+    picking.h \
+    Point3D.h \
+    qssfile.h \
+    Settings.h \
+    SettingsScreen.h \
+    Texture.h \
+    Vector3D.h \
+    mvc.hpp \
+    Entities/entitycollection.h \
+    Entities/spider.h \
+    Entities/thwomp.h \
+    ModelData/GroupRenderer.h \
+    ModelData/Model.h \
+    ModelData/modelentity.h \
+    ModelData/ModelGroup.h \
+    ModelData/ModelObject.h \
+    ModelData/ModelRenderer.h \
+    ModelData/RendererInterface.h
+
+SOURCES += \
+    Camera.cpp \
+    CameraKeyHandler.cpp \
+    CameraMouseHandler.cpp \
+    datafilewriter.cpp \
+    DisplayList.cpp \
+    displaywindow.cpp \
+    enititycreator.cpp \
+    HeadLamp.cpp \
+    KeyBindsScreen.cpp \
+    main.cpp \
+    modelloader.cpp \
+    openglview.cpp \
+    pausescreen.cpp \
+    picking.cpp \
+    Point3D.cpp \
+    qssfile.cpp \
+    Settings.cpp \
+    SettingsScreen.cpp \
+    Texture.cpp \
+    Vector3D.cpp \
+    Entities/entitycollection.cpp \
+    Entities/spider.cpp \
+    Entities/thwomp.cpp \
+    ModelData/GroupRenderer.cpp \
+    ModelData/Model.cpp \
+    ModelData/modelentity.cpp \
+    ModelData/ModelGroup.cpp \
+    ModelData/ModelObject.cpp \
+    ModelData/ModelRenderer.cpp

@@ -50,4 +50,3 @@ void ModelRenderer::draw(GLenum s_mode, GLenum f_mode) {
 
 }
 
-
