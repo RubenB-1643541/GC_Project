@@ -38,10 +38,7 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
     _camera_mouse_handler = new CameraMouseHandler(_camera);
     _headlamp = new HeadLamp();
 
-
-    // eventueel eigen file formaat
-    // met models en hun meta data (rotatie, schalering, etc...
-    // dan file parsen en zo models toevoegen
+    _global_light = true;
 
     return;
 }
@@ -62,7 +59,6 @@ void OpenGLView::initializeGL() {
     glEnable(GL_COLOR_MATERIAL);
     //glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE);
     glEnable(GL_LIGHT0);
-
     // Global lighting
 
     GLfloat diffuse[] = { 0.98, 0.98, 0.62, 0.1 };     // sun yellow
@@ -145,6 +141,8 @@ void OpenGLView::paintGL() {
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
 
+    if (_global_light) { glEnable(GL_LIGHT0); } else { glDisable(GL_LIGHT0); }
+
     // Update Camera
     updateCamera();
 
@@ -190,7 +188,7 @@ void OpenGLView::keyPressEvent(QKeyEvent* event) {
     else if (event->text() == 'd') { _camera_key_handler->keyDown(CameraKeyHandler::Key::Strafe_Right); }
     else if (event->text() == 'l') { _headlamp->toggle(); }
     else if (event->key() == Qt::Key_Escape) { emit escapePressed(); }
-    else if (event->text() == 'g') { glDisable(GL_LIGHT0); }
+    else if (event->text() == 'g') { _global_light = !_global_light; }
     return;
 }
 void OpenGLView::keyReleaseEvent(QKeyEvent* event) {

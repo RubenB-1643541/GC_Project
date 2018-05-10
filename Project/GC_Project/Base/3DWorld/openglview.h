@@ -88,6 +88,8 @@ private:
     EntityCreator* _creator;
     EntityCollection * _entities;
 
+    bool _global_light;
+
 
     ////////////////////////////////////////////////////////
     /// Static

@@ -397,8 +397,8 @@ public:
         label_16->setText(QApplication::translate("KeyBindsScreen", "Arrow Right", Q_NULLPTR));
         label_3->setText(QApplication::translate("KeyBindsScreen", "Look Up", Q_NULLPTR));
         label_18->setText(QApplication::translate("KeyBindsScreen", "Space", Q_NULLPTR));
-        label_24->setText(QApplication::translate("KeyBindsScreen", "N/A", Q_NULLPTR));
-        label_23->setText(QApplication::translate("KeyBindsScreen", "Toggle Lights", Q_NULLPTR));
+        label_24->setText(QApplication::translate("KeyBindsScreen", "G", Q_NULLPTR));
+        label_23->setText(QApplication::translate("KeyBindsScreen", "Toggle Global Light", Q_NULLPTR));
         label_22->setText(QApplication::translate("KeyBindsScreen", "L", Q_NULLPTR));
         label_21->setText(QApplication::translate("KeyBindsScreen", "Toggle Headlamp", Q_NULLPTR));
         backButton->setText(QApplication::translate("KeyBindsScreen", "Back", Q_NULLPTR));
