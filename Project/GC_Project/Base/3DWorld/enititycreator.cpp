@@ -142,7 +142,25 @@ void EntityCreator::loadEntity(QJsonObject obj) {
         _view->addModelRenderer(new ModelRenderer(entity));
     }
 
-    //loadEntityBehavior(obj["behavior"].toString(), entity_model);
+    if(obj.contains("behavior")) {
+        loadBehavior(obj["behavior"].toString(), entity);
+    }
+
+}
+
+void EntityCreator::loadBehavior(QString behavior, Model * model) {
+    ModelEntity * entity;
+    if(behavior == "Spider") {
+        qDebug() << "Behavior: Spider";
+        entity = new Spider(model);
+        _collection->AddEntity(entity);
+    }
+    else if(behavior == "Thwomp") {
+        qDebug() << "Behavior: Thwomp";
+        entity = new Thwomp(model);
+        _collection->AddEntity(entity);
+    }
+    return;
 }
 
 Point3D EntityCreator::loadPosition(QJsonObject obj) {

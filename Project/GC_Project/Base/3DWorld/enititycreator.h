@@ -9,6 +9,9 @@
 #include "Texture.h"
 #include "DisplayList.h"
 
+#include "Entities/spider.h"
+#include "Entities/thwomp.h"
+
 #include <Windows.h>
 #include <gl/GL.h>
 
@@ -34,6 +37,7 @@ private:
     void loadTexture(QJsonObject obj);
     void loadGroup(QJsonObject obj);
     void loadEntity(QJsonObject obj);
+    void loadBehavior(QString behavior, Model * model);
 
     Point3D loadPosition(QJsonObject obj);
     Point3D loadRotationVec(QJsonObject obj);
