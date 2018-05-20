@@ -5,31 +5,18 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 #include <QDebug>
-#include <QMouseEvent>
+#include "ModelData/RendererInterface.h"
+#include "Camera.h"
 namespace __3DWorld__ {
 
 class Picking
 {
 public:
     Picking();
-    void startPicking(QMouseEvent * event, int heigth, int width);
-    void endPicking();
-    void procesHits();
-    bool isPicking() {return _started;}
-    void resetDrawing();
-    void startDrawing();
-    void endDrawing();
-    int getResult() {return _result;}
+    int pick(const std::vector<RendererInterface*> &renderers, GLenum sm, GLenum rm);
+    void handleResult(std::vector<RendererInterface*> &renderers, int result);
 private:
-    GLint _hits;
-    int _first_hit;
-    bool _started;
-    int _draw;
-    int _result;
 
-    using uint = unsigned int;
-    int _selectBufferSize = 100;
-    std::vector<uint> _selectBuffer = std::vector<uint>(_selectBufferSize);
 };
 
 }

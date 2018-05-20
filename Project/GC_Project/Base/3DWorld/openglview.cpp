@@ -149,19 +149,16 @@ void OpenGLView::paintGL() {
     updateCamera();
 
     // Draw Models
+    if (!_picking) {
     for (RendererInterface* renderer: _model_renderers) {
         renderer->draw(
             _shading_mode,
             _render_mode
         );
     }
-
-    _picker->resetDrawing();
-
-    if(_picker->isPicking()) {
-        _picker->endPicking();
-        _picker->procesHits();
-        //_picker->getResult();
+    } else {
+        _picker->pick(_model_renderers, _shading_mode, _render_mode);
+        _picking = !_picking;
     }
 
     glMatrixMode(GL_MODELVIEW);
@@ -229,32 +226,9 @@ void OpenGLView::mouseMoveEvent(QMouseEvent *event) {
 void OpenGLView::mouseReleaseEvent(QMouseEvent *event) {
     if(event->button() == Qt::MouseButton::LeftButton) {
         qDebug() << "Left mouse button pressed";
-        picking(event);
+        _picking = !_picking;
+        //picking(event);
     }
-}
-
-////////////////////////////////////////////////////////
-/// picking
-////////////////////////////////////////////////////////
-
-void OpenGLView::picking(QMouseEvent * event) {
-    _picker->startPicking(event, height(), width());
-    _picker->resetDrawing();
-
-    for (RendererInterface* renderer: _model_renderers) {
-       _picker->startDrawing();
-       renderer->draw(_shading_mode, _render_mode);
-       _picker->endDrawing();
-    }
-    _picker->endPicking();
-    _picker->procesHits();
-    executeResult();
-}
-
-void OpenGLView::executeResult() {
-    int result = _picker->getResult();
-    //ModelRenderer * result_renderer = _model_renderers.at(result - 1);
-    //result_renderer->executePicking();
 }
 
 ////////////////////////////////////////////////////////

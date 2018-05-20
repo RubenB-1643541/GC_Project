@@ -478,12 +478,10 @@ debug\moc_displaywindow.cpp: C:\Qt\5.8\msvc2015_64\include\QtWidgets\QMainWindow
 		..\3DWorld\ModelData\RendererInterface.h \
 		..\3DWorld\Settings.h \
 		..\3DWorld\mvc.hpp \
-		..\3DWorld\Entities\entitycollection.h \
-		..\3DWorld\ModelData\modelentity.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\QVector \
 		..\3DWorld\DisplayList.h \
 		..\3DWorld\modelloader.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QString \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\QVector \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\QMatrix4x4 \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\qmatrix4x4.h \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\qvector3d.h \
@@ -521,7 +519,6 @@ debug\moc_displaywindow.cpp: C:\Qt\5.8\msvc2015_64\include\QtWidgets\QMainWindow
 		..\SOIL\src\SOIL.h \
 		..\3DWorld\picking.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QDebug \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\QMouseEvent \
 		..\3DWorld\pausescreen.h \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QFrame \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QPushButton \
@@ -796,12 +793,10 @@ debug\moc_openglview.cpp: C:\Qt\5.8\msvc2015_64\include\QtWidgets\QOpenGLWidget 
 		..\3DWorld\ModelData\RendererInterface.h \
 		..\3DWorld\Settings.h \
 		..\3DWorld\mvc.hpp \
-		..\3DWorld\Entities\entitycollection.h \
-		..\3DWorld\ModelData\modelentity.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\QVector \
 		..\3DWorld\DisplayList.h \
 		..\3DWorld\modelloader.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QString \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\QVector \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\QMatrix4x4 \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\qmatrix4x4.h \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\qvector3d.h \
@@ -839,7 +834,6 @@ debug\moc_openglview.cpp: C:\Qt\5.8\msvc2015_64\include\QtWidgets\QOpenGLWidget 
 		..\SOIL\src\SOIL.h \
 		..\3DWorld\picking.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QDebug \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\QMouseEvent \
 		..\3DWorld\openglview.h \
 		debug\moc_predefs.h \
 		C:\Qt\5.8\msvc2015_64\bin\moc.exe
@@ -1470,12 +1464,10 @@ debug\displaywindow.obj: ..\3DWorld\displaywindow.cpp ../3DWorld/displaywindow.h
 		../3DWorld/ModelData/RendererInterface.h \
 		../3DWorld/Settings.h \
 		../3DWorld/mvc.hpp \
-		../3DWorld/Entities/entitycollection.h \
-		../3DWorld/ModelData/modelentity.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\QVector \
 		../3DWorld/DisplayList.h \
 		../3DWorld/modelloader.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QString \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\QVector \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\QMatrix4x4 \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\qmatrix4x4.h \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\qvector3d.h \
@@ -1513,7 +1505,6 @@ debug\displaywindow.obj: ..\3DWorld\displaywindow.cpp ../3DWorld/displaywindow.h
 		..\SOIL\src\SOIL.h \
 		../3DWorld/picking.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QDebug \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\QMouseEvent \
 		../3DWorld/pausescreen.h \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QFrame \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QPushButton \
@@ -1536,7 +1527,25 @@ debug\displaywindow.obj: ..\3DWorld\displaywindow.cpp ../3DWorld/displaywindow.h
 		../3DWorld/qssfile.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QFile \
 		../3DWorld/KeyBindsScreen.h \
-		ui_displaywindow.h
+		ui_displaywindow.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\QVariant \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QAction \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qaction.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qactiongroup.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QApplication \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.8\msvc2015_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtGui\qinputmethod.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QButtonGroup \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qbuttongroup.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QHeaderView \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qheaderview.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qitemselectionmodel.h
 
 debug\enititycreator.obj: ..\3DWorld\enititycreator.cpp ../3DWorld/enititycreator.h \
 		../3DWorld/Entities/entitycollection.h \
@@ -1720,7 +1729,6 @@ debug\enititycreator.obj: ..\3DWorld\enititycreator.cpp ../3DWorld/enititycreato
 		..\SOIL\src\SOIL.h \
 		../3DWorld/picking.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QDebug \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\QMouseEvent \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QJsonDocument \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\qjsondocument.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\qjsonvalue.h \
@@ -1915,7 +1923,45 @@ debug\KeyBindsScreen.obj: ..\3DWorld\KeyBindsScreen.cpp ../3DWorld/KeyBindsScree
 		../3DWorld/qssfile.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QString \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QFile \
-		ui_KeyBindsScreen.h
+		ui_KeyBindsScreen.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\QVariant \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QAction \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qaction.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qactiongroup.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QApplication \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.8\msvc2015_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtGui\qinputmethod.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QButtonGroup \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qbuttongroup.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QGridLayout \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qgridlayout.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qlayout.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qlayoutitem.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qboxlayout.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QHeaderView \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qheaderview.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qabstractitemmodel.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qstyleoption.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt\5.8\msvc2015_64\include\QtGui\qvalidator.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qregularexpression.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qslider.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractslider.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qstyle.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qtabbar.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qrubberband.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QLabel \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qlabel.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QSpacerItem
 
 debug\main.obj: ..\3DWorld\main.cpp ../3DWorld/displaywindow.h \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QMainWindow \
@@ -2059,12 +2105,10 @@ debug\main.obj: ..\3DWorld\main.cpp ../3DWorld/displaywindow.h \
 		../3DWorld/ModelData/RendererInterface.h \
 		../3DWorld/Settings.h \
 		../3DWorld/mvc.hpp \
-		../3DWorld/Entities/entitycollection.h \
-		../3DWorld/ModelData/modelentity.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\QVector \
 		../3DWorld/DisplayList.h \
 		../3DWorld/modelloader.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QString \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\QVector \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\QMatrix4x4 \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\qmatrix4x4.h \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\qvector3d.h \
@@ -2102,7 +2146,6 @@ debug\main.obj: ..\3DWorld\main.cpp ../3DWorld/displaywindow.h \
 		..\SOIL\src\SOIL.h \
 		../3DWorld/picking.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QDebug \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\QMouseEvent \
 		../3DWorld/pausescreen.h \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QFrame \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QPushButton \
@@ -2140,7 +2183,8 @@ debug\main.obj: ..\3DWorld\main.cpp ../3DWorld/displaywindow.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\qjsonobject.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QJsonArray \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\qjsonarray.h \
-		../3DWorld/Entities/thwomp.h
+		../3DWorld/Entities/thwomp.h \
+		../3DWorld/ModelData/modelentity.h
 
 debug\modelloader.obj: ..\3DWorld\modelloader.cpp ../3DWorld/modelloader.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QString \
@@ -2383,12 +2427,10 @@ debug\openglview.obj: ..\3DWorld\openglview.cpp ../3DWorld/openglview.h \
 		../3DWorld/ModelData/RendererInterface.h \
 		../3DWorld/Settings.h \
 		../3DWorld/mvc.hpp \
-		../3DWorld/Entities/entitycollection.h \
-		../3DWorld/ModelData/modelentity.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\QVector \
 		../3DWorld/DisplayList.h \
 		../3DWorld/modelloader.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QString \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\QVector \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\QMatrix4x4 \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\qmatrix4x4.h \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\qvector3d.h \
@@ -2426,8 +2468,9 @@ debug\openglview.obj: ..\3DWorld\openglview.cpp ../3DWorld/openglview.h \
 		..\SOIL\src\SOIL.h \
 		../3DWorld/picking.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QDebug \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\QMouseEvent \
 		../3DWorld/enititycreator.h \
+		../3DWorld/Entities/entitycollection.h \
+		../3DWorld/ModelData/modelentity.h \
 		../3DWorld/ModelData/ModelRenderer.h \
 		..\3DWorld\ModelData\model.h \
 		../3DWorld/ModelData/GroupRenderer.h \
@@ -2548,6 +2591,42 @@ debug\pausescreen.obj: ..\3DWorld\pausescreen.cpp ../3DWorld/pausescreen.h \
 		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractbutton.h \
 		C:\Qt\5.8\msvc2015_64\include\QtGui\qicon.h \
 		ui_pausescreen.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\QVariant \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QAction \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qaction.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qactiongroup.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QApplication \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.8\msvc2015_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtGui\qinputmethod.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QButtonGroup \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qbuttongroup.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QGridLayout \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qgridlayout.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qlayout.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qlayoutitem.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qboxlayout.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QHeaderView \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qheaderview.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qabstractitemmodel.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractitemdelegate.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qstyleoption.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractspinbox.h \
+		C:\Qt\5.8\msvc2015_64\include\QtGui\qvalidator.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qregularexpression.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qslider.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractslider.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qstyle.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qtabbar.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qtabwidget.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qrubberband.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QSpacerItem \
 		../3DWorld/qssfile.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QString \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QFile
@@ -2615,24 +2694,10 @@ debug\picking.obj: ..\3DWorld\picking.cpp ../3DWorld/picking.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\qcontiguouscache.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\qsharedpointer.h \
 		C:\Qt\5.8\msvc2015_64\include\QtCore\qsharedpointer_impl.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\QMouseEvent \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qevent.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qtguiglobal.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qtgui-config.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qwindowdefs.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qwindowdefs_win.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qregion.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qrect.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qmargins.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qsize.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qdatastream.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qkeysequence.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qurl.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qurlquery.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qfile.h \
-		C:\Qt\5.8\msvc2015_64\include\QtCore\qfiledevice.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qvector2d.h \
-		C:\Qt\5.8\msvc2015_64\include\QtGui\qtouchdevice.h
+		../3DWorld/ModelData/RendererInterface.h \
+		../3DWorld/Camera.h \
+		../3DWorld/Vector3D.h \
+		../3DWorld/Point3D.h
 
 debug\Point3D.obj: ..\3DWorld\Point3D.cpp ../3DWorld/Point3D.h
 
@@ -2819,7 +2884,33 @@ debug\SettingsScreen.obj: ..\3DWorld\SettingsScreen.cpp ../3DWorld/SettingsScree
 		C:\Qt\5.8\msvc2015_64\include\QtCore\QFile \
 		../3DWorld/Settings.h \
 		../3DWorld/mvc.hpp \
-		ui_SettingsScreen.h
+		ui_SettingsScreen.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\QVariant \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QAction \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qaction.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qactiongroup.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QApplication \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qeventloop.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\5.8\msvc2015_64\include\QtGui\qguiapplication.h \
+		C:\Qt\5.8\msvc2015_64\include\QtGui\qinputmethod.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QButtonGroup \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qbuttongroup.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QGridLayout \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qgridlayout.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qlayout.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qlayoutitem.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qboxlayout.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QHeaderView \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qheaderview.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractitemview.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qabstractscrollarea.h \
+		C:\Qt\5.8\msvc2015_64\include\QtCore\qitemselectionmodel.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QLabel \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\qlabel.h \
+		C:\Qt\5.8\msvc2015_64\include\QtWidgets\QSpacerItem
 
 debug\Texture.obj: ..\3DWorld\Texture.cpp ../3DWorld/Texture.h \
 		..\SOIL\src\SOIL.h \

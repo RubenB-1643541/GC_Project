@@ -13,6 +13,7 @@ namespace __3DWorld__ {
 class RendererInterface {
 public:
     virtual void draw(GLenum s_mode, GLenum f_mode) = 0;
+    virtual void onPick() = 0;
 };
 
 }

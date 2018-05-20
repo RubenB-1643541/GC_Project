@@ -4,11 +4,15 @@ namespace __3DWorld__ {
 
 GroupRenderer::GroupRenderer(ModelGroup* group) {
     _group = group;
+    _is_active = false;
 }
 
 void GroupRenderer::draw(GLenum s_mode, GLenum f_mode) {
     if (_model_renderers.empty()) {
         return;
+    }
+    if (_is_active) {
+        executeBehavior();
     }
     glPushMatrix();
 
@@ -33,8 +37,16 @@ void GroupRenderer::draw(GLenum s_mode, GLenum f_mode) {
     glPopMatrix();
 }
 
+void GroupRenderer::onPick() {
+    _is_active = !_is_active;
+}
+
 void GroupRenderer::addModelRenderer(ModelRenderer *model_renderer) {
     _model_renderers.push_back(model_renderer);
+}
+
+void GroupRenderer::executeBehavior() {
+
 }
 
 }

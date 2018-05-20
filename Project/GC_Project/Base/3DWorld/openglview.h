@@ -15,7 +15,6 @@
 #include "ModelData/RendererInterface.h"
 #include "Settings.h"
 #include "mvc.hpp"
-#include "Entities/entitycollection.h"
 #include "DisplayList.h"
 #include "Texture.h"
 #include "picking.h"
@@ -59,11 +58,6 @@ public:
     void mouseReleaseEvent(QMouseEvent * event);
 
     ////////////////////////////////////////////////////////
-    /// picking
-    ////////////////////////////////////////////////////////
-    void picking(QMouseEvent * event);
-    void executeResult();
-    ////////////////////////////////////////////////////////
     /// settings
     ////////////////////////////////////////////////////////
     void update();
@@ -93,9 +87,9 @@ private:
     std::vector<RendererInterface*> _model_renderers;
 
     EntityCreator* _creator;
-    EntityCollection * _entities;
 
     bool _global_light;
+    bool _picking = false;
 
     Picking * _picker;
 

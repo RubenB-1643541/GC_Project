@@ -18,8 +18,13 @@ public RendererInterface {
 public:
     ModelRenderer(Model* model);
     void draw(GLenum s_mode, GLenum f_mode);
+    void onPick();
 private:
+    void executeBehavior();
+
     Model* _model;
+
+    bool _is_active;
 };
 
 }
