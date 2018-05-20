@@ -11,6 +11,7 @@ class Thwomp : public ModelEntity
 public:
     Thwomp(Model * model);
     void update();
+    void pick();
 private:
     void up();
     void down();

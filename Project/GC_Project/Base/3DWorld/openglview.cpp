@@ -24,7 +24,8 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
 
     //_entities = new EntityCollection();
     //EntityCreator * creator = new EntityCreator(_entities, this);
-    _creator = new EntityCreator(this);
+    _entities = new EntityCollection();
+    _creator = new EntityCreator(_entities, this);
 
     update();
 
@@ -41,6 +42,7 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
     _global_light = true;
 
     _picker = new Picking();
+    _picking = false;
 
     return;
 }
@@ -163,7 +165,7 @@ void OpenGLView::paintGL() {
 
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
-
+    _entities->UpdateEntities();
     return;
 }
 

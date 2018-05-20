@@ -60,7 +60,8 @@
 			"texture_id": 2,
 			"position": { "x": 40, "y": 40, "z": 40 },
 			"rotation": { "angle": 45, "x": 0, "y": 1, "z": 0 },
-			"size": 2.0
+			"size": 2.0,
+			"behavior": "Star"
 		}, {
 			"name": "tree1",
 			"model_id": 1,
@@ -103,7 +104,8 @@
 			"group_id": 0,
 			"position": { "x": 6, "y": 0, "z": 0 },
 			"rotation": { "angle": -28, "x": 0, "y": 1, "z": 0 },
-			"size": 0.05
+			"size": 0.05,
+			"behavior": "Spider"
 		}, {
 			"name": "mario",
 			"model_id": 5,
@@ -111,7 +113,8 @@
 			"group_id": 0,
 			"position": { "x": 0, "y": -2, "z": 0 },
 			"rotation": { "angle": 0, "x": 0, "y": 0, "z": 0 },
-			"size": 0.01
+			"size": 0.01,
+			"behavior": "Thwomp"
 		}
     ]
 }

@@ -26,6 +26,9 @@ public:
     Point3D getTranslation() { return _position; }
     Point3D getRotation() {return Point3D(_angle_x, _angle_y, _angle_z);}
     float getSize() {return _size;}
+    void togglePick();
+    bool isPicked() {return _picked;}
+    void setPicked(bool b) {_picked = b;}
 
     GLuint index;
     GLuint _texture_id;
@@ -39,6 +42,8 @@ private:
     float _size;
 
     std::vector<MLMesh> _meshes;
+
+    bool _picked;
 };
 }
 

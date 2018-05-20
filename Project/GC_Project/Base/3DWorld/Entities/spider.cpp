@@ -9,6 +9,9 @@ Spider::Spider(Model *model) :ModelEntity(model) {
 }
 
 void Spider::update() {
+    if(selected()) {
+        pick();
+    }
     cirkel();
 
 
@@ -62,6 +65,10 @@ void Spider::test() {
         _timer_rotate = 0;
         rotateY(10);
     }
+}
+
+void Spider::pick() {
+    move(Point3D(0,1,0),5);
 }
 
 }

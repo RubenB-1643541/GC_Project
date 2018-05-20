@@ -43,4 +43,8 @@ void Thwomp::up() {
     ++_current;
 }
 
+void Thwomp::pick() {
+
+}
+
 }

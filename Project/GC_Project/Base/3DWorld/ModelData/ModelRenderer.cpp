@@ -52,7 +52,7 @@ void ModelRenderer::draw(GLenum s_mode, GLenum f_mode) {
     glPopMatrix();
 }
 void ModelRenderer::onPick() {
-    _is_active = !_is_active;
+    _model->setPicked(true);
 }
 
 void ModelRenderer::executeBehavior() {

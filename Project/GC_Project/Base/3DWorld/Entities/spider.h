@@ -9,7 +9,7 @@ class Spider : public ModelEntity {
 public:
     Spider(Model * model);
     void update();
-
+    void pick();
 private:
     void test();
     void cirkel();

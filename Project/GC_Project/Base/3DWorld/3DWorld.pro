@@ -74,7 +74,8 @@ HEADERS += \
     ModelData/ModelGroup.h \
     ModelData/ModelObject.h \
     ModelData/ModelRenderer.h \
-    ModelData/RendererInterface.h
+    ModelData/RendererInterface.h \
+    Entities/star.h
 
 SOURCES += \
     Camera.cpp \
@@ -105,4 +106,5 @@ SOURCES += \
     ModelData/modelentity.cpp \
     ModelData/ModelGroup.cpp \
     ModelData/ModelObject.cpp \
-    ModelData/ModelRenderer.cpp
+    ModelData/ModelRenderer.cpp \
+    Entities/star.cpp
