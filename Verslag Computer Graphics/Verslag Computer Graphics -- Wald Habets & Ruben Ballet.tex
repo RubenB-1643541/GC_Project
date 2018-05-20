@@ -16,11 +16,11 @@ Dit bestand bevat het verslag van het project OpenGL, door Wald Habets en Ruben 
 
 Deze sectie bespreekt de implementatie van de vereisten samen met de hierbij nodigge toelichting.
 
-\paragraph{Weergave van een 3D omgeving}Als 3D omgeving de eerste wereld van het spel Mario64 gekozen.
+\paragraph{Weergave van een 3D omgeving}Als 3D omgeving de eerste level van het spel Mario64, Bob-omb Battlefield, gekozen.
 
 \paragraph{Display Lists}Alle objecten worden in de wereld geïnstantiëerd met behulp van display lists, ook de objecten die maar één maal geïnstantiëerd moeten worden. Er is voor deze aanpak gekozen omwille van de manier waarop objecten worden ingeladen in het programma. Door display lists te gebruiken voor alle objecten, kunnen deze objecten worden ingeladen op een uniforme manier. Bij het inladen hoeven we ons dus geen zorgen te maken of een object slechts eenmalig of meerdere keren voorkomt.
 \par
-Het aanmaken van een display list gebeurt op dezelfde manier als besproken in de cursus (via glNewList, glBegin(GL\_TRIANGLES) en glCallList). De elementen die voor elk object worden opgenomen in de displaylist zijn de vertices met voor elke vertex de bijhorende normaal en texture-coördinaat. Transformaties worden niet opgenomen in de display list, zodat op deze manier elke instantie van een object zijn eigen positie, grootte en rotatie kan hebben.
+Het aanmaken van een display list gebeurt op dezelfde manier als besproken in de cursus (via glNewList, glBegin(GL\_TRIANGLES) en glCallList). De elementen die voor elk object worden opgenomen in de display list zijn de vertices met voor elke vertex de bijhorende normaal en texture-coördinaat. Transformaties worden niet opgenomen in de display list, zodat op deze manier elke instantie van een object zijn eigen positie, grootte en rotatie kan hebben.
 
 \paragraph{File Formaat \& Hiërarchische relaties}Alle objecten zijn .obj-bestanden die worden ingeladen met behulp van de Assimp-library. Welke objecten moeten worden ingeladen, hun textures, positie, rotatie, schalering en onderlinge relatie wordt beschreven in een .json-bestand. Bij het opstarten van het programma wordt dit bestand ingelezen en op basis hiervan wordt de wereld gegenereerd.
 \par
@@ -54,7 +54,7 @@ Het aanmaken en binden van textures gebeurt op dezelfde manier als besproken in 
 \par
 De camera bestaad uit 3 klassen: één die de positie en rotatie omvat, één die de input van het toetsenbord afhandelt en één die de input van de muis afhandelt.
 \par
-De camera zelf bestaat houdt 2 punten en 4 vectoren bij, waarop alle manipulaties gebeuren. Deze 2 punten zijn de positie en het punt waar naar gekeken wordt. De 4 vectoren zijn:
+De camera zelf houdt 2 punten en 4 vectoren bij, waarop alle manipulaties gebeuren. Deze 2 punten zijn de positie en het punt waar naar gekeken wordt. De 4 vectoren zijn:
 \begin{itemize}
 	\item een forward-vector die altijd naar voor is gericht (t.o.v. de camera, evenwijdig met xz)
 	\item een right-vector die altijd naar rechts is gericht (t.o.v. de camera, evenwijdig met xz)
@@ -65,5 +65,6 @@ Het gebruik van deze 4 vectoren staat ons toe om alle mogelijke bewegingen op ee
 
 \paragraph{Lichtbronnen}Het programma bevat 2 lichtbronnen, één vast in de wereld en één gemonteerd op de camera. De gemonteerde lichtbron wordt beschreven door de klasse \textit{Headlamp}. Ook de lichtbronnen volgen het model van de cursus (glEnable, glDisable en glLightfv).
 \paragraph{Picking}
+Picking doen we op de manier beschreven in de cursus. We maken een viewport op de positie van de muis. Dan tekenen we alle objecten uit en koppelen we een id aan elk object. De id's van de objecten die binnen de viewport vallen worden in een buffer geladen. Vervolgens kunnen we doorheen de buffer gaan en kijken welk object het laatst is getekend, dus aan de voorgrond licht. Wanneer we het model hebben dat geselecteerd is, wordt er een boolean op true gezet. Het behavior van dat model kan dan kijken of het model is gehit en dan zijn behavior aanpassen.
 
 \end{document}
