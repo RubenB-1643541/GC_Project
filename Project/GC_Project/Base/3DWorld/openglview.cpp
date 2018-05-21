@@ -185,7 +185,6 @@ void OpenGLView::mouseReleaseEvent(QMouseEvent *event) {
     if(event->button() == Qt::MouseButton::LeftButton) {
         qDebug() << "Left mouse button pressed";
         _picking = !_picking;
-        //picking(event);
     }
 }
 
