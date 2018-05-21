@@ -2,10 +2,11 @@
 #define MODELENTITY_H
 
 #include "Point3D.h"
+#include "ModelData/entity.h"
 
 namespace __3DWorld__ {
 class Model;
-class ModelEntity {
+class ModelEntity : public Entity {
 public:
     ModelEntity(Model * model);
     virtual void update() = 0;
@@ -23,6 +24,7 @@ public:
 
 private:
     Model * _model;
+
 };
 
 

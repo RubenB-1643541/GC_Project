@@ -4,7 +4,6 @@ namespace __3DWorld__ {
 
 GroupRenderer::GroupRenderer(ModelGroup* group) {
     _group = group;
-    _is_active = false;
 }
 
 void GroupRenderer::draw(GLenum s_mode, GLenum f_mode) {
@@ -35,7 +34,6 @@ void GroupRenderer::draw(GLenum s_mode, GLenum f_mode) {
 }
 
 void GroupRenderer::onPick() {
-    _is_active = !_is_active;
 }
 
 void GroupRenderer::addModelRenderer(ModelRenderer *model_renderer) {

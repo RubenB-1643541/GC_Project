@@ -2,6 +2,7 @@
 #define ENTITYCOLLECTION_H
 
 #include "ModelData/modelentity.h"
+#include "ModelData/entity.h"
 #include <QVector>
 
 namespace __3DWorld__ {
@@ -12,11 +13,11 @@ class EntityCollection
 {
 public:
     EntityCollection();
-    void AddEntity(ModelEntity * entity);
+    void AddEntity(Entity * entity);
     void UpdateEntities();
 
 private:
-    QVector<ModelEntity *> * _entities = NULL;
+    QVector<Entity *> * _entities = NULL;
 };
 
 }

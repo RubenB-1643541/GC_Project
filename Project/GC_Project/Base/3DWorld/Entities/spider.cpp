@@ -12,7 +12,7 @@ void Spider::update() {
     if(selected()) {
         pick();
     }
-   cirkel();
+   //cirkel();
 
 
 

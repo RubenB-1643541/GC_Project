@@ -5,10 +5,10 @@ namespace __3DWorld__ {
 
 EntityCollection::EntityCollection()
 {
-    _entities = new QVector<ModelEntity *>;
+    _entities = new QVector<Entity *>;
 }
 
-void EntityCollection::AddEntity(ModelEntity *entity) {
+void EntityCollection::AddEntity(Entity *entity) {
     _entities->push_back(entity);
 }
 

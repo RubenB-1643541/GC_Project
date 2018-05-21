@@ -103,6 +103,17 @@ void EntityCreator::loadGroup(QJsonObject obj) {
     qDebug() << "LoadGroup:" << obj["group_id"].toInt();
     _groups[obj["id"].toInt()] = group_renderer;
     _view->addModelRenderer(group_renderer);
+    if(_collection != nullptr && obj.contains("behavior")) {
+        loadGroupBehavior(obj["behavior"].toString(), group);
+    }
+}
+
+void EntityCreator::loadGroupBehavior(QString behavior, ModelGroup *model) {
+    GroupEntity * entity;
+    if(behavior == "RunAway") {
+        entity = new RunAway(model);
+    }
+    _collection->AddEntity(entity);
 }
 
 void EntityCreator::loadEntities(QJsonArray array) {

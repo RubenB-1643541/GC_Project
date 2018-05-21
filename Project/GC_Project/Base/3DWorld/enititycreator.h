@@ -4,6 +4,7 @@
 #include "Entities/entitycollection.h"
 #include "ModelData/ModelRenderer.h"
 #include "ModelData/GroupRenderer.h"
+#include "ModelData/groupentity.h"
 #include "openglview.h"
 
 #include "Texture.h"
@@ -13,6 +14,7 @@
 #include "Entities/thwomp.h"
 #include "Entities/star.h"
 #include "Entities/mario.h"
+#include "Entities/runaway.h"
 
 #include <Windows.h>
 #include <gl/GL.h>
@@ -38,6 +40,7 @@ private:
     void loadModel(QJsonObject obj);
     void loadTexture(QJsonObject obj);
     void loadGroup(QJsonObject obj);
+    void loadGroupBehavior(QString behavior, ModelGroup * model);
     void loadEntity(QJsonObject obj);
     void loadEntityBehavior(QString behavior, Model * model);
 

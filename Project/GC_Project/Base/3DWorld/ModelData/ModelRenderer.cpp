@@ -4,7 +4,6 @@ namespace __3DWorld__ {
 
 ModelRenderer::ModelRenderer(Model* model) {
     _model = model;
-    _is_active = false;
 }
 void ModelRenderer::draw(GLenum s_mode, GLenum f_mode) {
     glPushMatrix();
