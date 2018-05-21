@@ -11,9 +11,6 @@ void GroupRenderer::draw(GLenum s_mode, GLenum f_mode) {
     if (_model_renderers.empty()) {
         return;
     }
-    if (_is_active) {
-        executeBehavior();
-    }
     glPushMatrix();
 
     // Group Transformations
@@ -43,10 +40,6 @@ void GroupRenderer::onPick() {
 
 void GroupRenderer::addModelRenderer(ModelRenderer *model_renderer) {
     _model_renderers.push_back(model_renderer);
-}
-
-void GroupRenderer::executeBehavior() {
-
 }
 
 }

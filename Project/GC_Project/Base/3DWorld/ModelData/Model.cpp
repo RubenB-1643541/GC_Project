@@ -10,6 +10,7 @@ Model::Model(GLuint list_index) {
     _angle_y = 0;
     _angle_z = 0;
     _size = 1;
+    _picked = false;
 }
 Model::Model(GLuint list_index, GLuint texture_id) {
     index = list_index;
@@ -19,6 +20,7 @@ Model::Model(GLuint list_index, GLuint texture_id) {
     _angle_y = 0;
     _angle_z = 0;
     _size = 1;
+    _picked = false;
 }
 
 std::vector<MLMesh> Model::getMeshes() const {
@@ -37,6 +39,10 @@ void Model::rotate(float angle, Point3D vector) {
 
 void Model::scale(float size) {
     _size = size;
+}
+
+void Model::togglePick() {
+    _picked = !_picked;
 }
 
 }

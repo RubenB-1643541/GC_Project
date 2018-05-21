@@ -7,9 +7,6 @@ ModelRenderer::ModelRenderer(Model* model) {
     _is_active = false;
 }
 void ModelRenderer::draw(GLenum s_mode, GLenum f_mode) {
-    if (_is_active) {
-        executeBehavior();
-    }
     glPushMatrix();
 
     // Material for light interaction
@@ -52,11 +49,7 @@ void ModelRenderer::draw(GLenum s_mode, GLenum f_mode) {
     glPopMatrix();
 }
 void ModelRenderer::onPick() {
-    _is_active = !_is_active;
-}
-
-void ModelRenderer::executeBehavior() {
-
+    _model->setPicked(true);
 }
 
 }

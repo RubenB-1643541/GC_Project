@@ -18,6 +18,7 @@
 #include "DisplayList.h"
 #include "Texture.h"
 #include "picking.h"
+#include "Entities/entitycollection.h"
 
 namespace __3DWorld__ {
 
@@ -85,6 +86,7 @@ private:
     HeadLamp* _headlamp;
 
     std::vector<RendererInterface*> _model_renderers;
+    EntityCollection * _entities;
 
     EntityCreator* _creator;
 

@@ -22,12 +22,8 @@ public:
     void onPick();
     void addModelRenderer(ModelRenderer* model_renderer);
 private:
-    void executeBehavior();
-
     ModelGroup* _group;
     std::vector<ModelRenderer*> _model_renderers;
-
-    bool _is_active;
 };
 
 }

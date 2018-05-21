@@ -22,9 +22,8 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
     _settings = settings;
     _settings->addView(this);
 
-    //_entities = new EntityCollection();
-    //EntityCreator * creator = new EntityCreator(_entities, this);
-    _creator = new EntityCreator(this);
+    _entities = new EntityCollection();
+    _creator = new EntityCreator(_entities, this);
 
     update();
 
@@ -41,6 +40,7 @@ OpenGLView::OpenGLView(Settings* settings) : QOpenGLWidget() {
     _global_light = true;
 
     _picker = new Picking();
+    _picking = false;
 
     return;
 }
@@ -57,21 +57,14 @@ void OpenGLView::initializeGL() {
 
     // enable
     glEnable(GL_LIGHTING);
-    //glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
     glEnable(GL_COLOR_MATERIAL);
-    //glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE);
     glEnable(GL_LIGHT0);
-    // Global lighting
 
+    // Global lighting
     GLfloat diffuse[] = { 0.98, 0.98, 0.62, 0.1 };     // sun yellow
     glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-    //GLfloat specular[] = { 0.98, 0.98, 0.62, 0.1 };     // sun yellow
-    //glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
-    //GLfloat ambient[] = { 1.0, 0.8, 0.0, 1.0 };     // sun yellow
-    //glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
     GLfloat light_position[] = { 35, 40, 35, 1.0 };
     glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-    //glLighti(GL_LIGHT0, GL_SPOT_CUTOFF, 90);
 
     glEnable(GL_DEPTH_TEST);
 
@@ -80,40 +73,6 @@ void OpenGLView::initializeGL() {
     glClearColor(0.53, 0.81, 0.92 ,1.0f);
 
     _creator->loadData("WorldData/WorldData.json");
-
-    // Temp
-    /*
-    GLuint l_world = DisplayList::create("resources/models/mario_world_1.obj");
-    GLuint l_tree  = DisplayList::create("resources/models/tree.obj");
-    GLuint l_star  = DisplayList::create("resources/models/star.obj");
-    GLuint t_tree =  Texture::create("resources/textures/green.png");
-    GLuint t_world = Texture::create("resources/textures/stone.png");
-    GLuint t_star =  Texture::create("resources/textures/star.png");
-    Model* world = new Model(l_world, t_world);
-    world->rotate(0, Point3D(0, 0, 1));
-    addModelRenderer(new ModelRenderer(world));
-    Model* star = new Model(l_star, t_star);
-    star->translate(Point3D(40, 40, 40));
-    star->rotate(-30, Point3D(1, 0, 0)); // gets overriden
-    star->rotate(45, Point3D(0, 1, 0));
-    star->scale(2.0);
-    addModelRenderer(new ModelRenderer(star));
-    Model* tree1 = new Model(l_tree, t_tree);
-    tree1->translate(Point3D(15, 12, 30));
-    tree1->rotate(-90, Point3D(1, 0, 0));
-    tree1->scale(0.1);
-    addModelRenderer(new ModelRenderer(tree1));
-    Model* tree2 = new Model(l_tree, t_tree);
-    tree2->translate(Point3D(-25, 12, 10));
-    tree2->rotate(-90, Point3D(1, 0, 0));
-    tree2->scale(0.1);
-    addModelRenderer(new ModelRenderer(tree2));
-    Model* tree3 = new Model(l_tree, t_tree);
-    tree3->translate(Point3D(35, 17, -25));
-    tree3->rotate(-90, Point3D(1, 0, 0));
-    tree3->scale(0.1);
-    addModelRenderer(new ModelRenderer(tree3));
-    */
 
     _timer->start(TIMER_INTERVAL);
     return;
@@ -149,21 +108,20 @@ void OpenGLView::paintGL() {
     updateCamera();
 
     // Draw Models
-    if (!_picking) {
     for (RendererInterface* renderer: _model_renderers) {
         renderer->draw(
             _shading_mode,
             _render_mode
         );
     }
-    } else {
+    if (_picking) {
         _picker->pick(_model_renderers, _shading_mode, _render_mode);
         _picking = !_picking;
     }
 
     glMatrixMode(GL_MODELVIEW);
     glPopMatrix();
-
+    _entities->UpdateEntities();
     return;
 }
 

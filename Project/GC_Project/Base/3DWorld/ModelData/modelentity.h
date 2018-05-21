@@ -9,6 +9,7 @@ class ModelEntity {
 public:
     ModelEntity(Model * model);
     virtual void update() = 0;
+    virtual void pick() = 0;
     void moveTo(Point3D position);
     void move(Point3D(direction), int distance);
     void rotateTo(float angle, Point3D rotation);
@@ -18,6 +19,7 @@ public:
     void rotateZ(float angle);
     void sizeTo(float size);
     void scale(float size);
+    bool selected();
 
 private:
     Model * _model;

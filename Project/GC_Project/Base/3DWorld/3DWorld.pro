@@ -48,7 +48,6 @@ HEADERS += \
     Camera.h \
     CameraKeyHandler.h \
     CameraMouseHandler.h \
-    datafilewriter.h \
     DisplayList.h \
     displaywindow.h \
     enititycreator.h \
@@ -74,13 +73,14 @@ HEADERS += \
     ModelData/ModelGroup.h \
     ModelData/ModelObject.h \
     ModelData/ModelRenderer.h \
-    ModelData/RendererInterface.h
+    ModelData/RendererInterface.h \
+    Entities/star.h \
+    Entities/mario.h
 
 SOURCES += \
     Camera.cpp \
     CameraKeyHandler.cpp \
     CameraMouseHandler.cpp \
-    datafilewriter.cpp \
     DisplayList.cpp \
     displaywindow.cpp \
     enititycreator.cpp \
@@ -105,4 +105,6 @@ SOURCES += \
     ModelData/modelentity.cpp \
     ModelData/ModelGroup.cpp \
     ModelData/ModelObject.cpp \
-    ModelData/ModelRenderer.cpp
+    ModelData/ModelRenderer.cpp \
+    Entities/star.cpp \
+    Entities/mario.cpp

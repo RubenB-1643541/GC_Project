@@ -49,9 +49,7 @@ int Picking::pick(const std::vector<RendererInterface*> &renderers, GLenum sm, G
     GLuint *ptr = (GLuint*)select_buffer;
 
     for (GLint i = 0; i < hits; i++) {
-        GLuint thing = *ptr; qDebug() << "thing" << thing;
         GLuint min_z = *(ptr + 1); qDebug() << "min:" << min_z;
-        GLuint max_z = *(ptr + 2);
         GLuint name = *(ptr + 3); qDebug() << "name:" << name;
 
         if (min_z < smallestZ) {

@@ -3,8 +3,8 @@
 namespace __3DWorld__ {
 
 Camera::Camera() :
-	_p_position(Point3D(0.0, 0.0, 0.0)), 
-    _p_looks_at(Point3D(0.0, 0.0, 1.0)),
+    _p_position(Point3D(-30.0, 13.0, 28.0)),
+    _p_looks_at(Point3D(-30.0, 13.0, 29.0)),
     _max_up_down_at_90(true),
     _r_current_up_down_radians(0) {
 	_v_looks_at = Vector3D(_p_position, _p_looks_at);
