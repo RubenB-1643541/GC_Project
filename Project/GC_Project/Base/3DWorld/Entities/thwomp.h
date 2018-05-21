@@ -18,6 +18,7 @@ private:
     int _timer;
     int _high, _low, _current;
     bool _up;
+    bool _disappear;
 };
 
 }

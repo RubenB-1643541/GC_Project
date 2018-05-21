@@ -18,6 +18,9 @@
 		}, {
 			"id": 5,
 			"path": "resources/models/mario.obj"
+		}, {
+			"id": 6,
+			"path": "resources/models/thwomp.obj"
 		}
 	],
 	"textures": [
@@ -36,6 +39,9 @@
 		}, {
 			"id": 4,
 			"path": "resources/textures/spider.png"
+		}, {
+			"id": 5,
+			"path": "resources/textures/thwomp.bmp"
 		}
 	],
 	"groups": [
@@ -102,9 +108,9 @@
 			"model_id": 4,
 			"texture_id": 4,
 			"group_id": 0,
-			"position": { "x": 6, "y": 0, "z": 0 },
-			"rotation": { "angle": -28, "x": 0, "y": 1, "z": 0 },
-			"size": 0.05,
+			"position": { "x": 0, "y": 5, "z": -25 },
+			"rotation": { "angle": 0, "x": 0, "y": 1, "z": 0 },
+			"size": 0.025,
 			"behavior": "Spider"
 		}, {
 			"name": "mario",
@@ -114,6 +120,22 @@
 			"position": { "x": 0, "y": -2, "z": 0 },
 			"rotation": { "angle": 0, "x": 0, "y": 0, "z": 0 },
 			"size": 0.01,
+			"behavior": "Mario"
+		}, {
+			"name": "thwomp",
+			"model_id": 6,
+			"texture_id": 5,
+			"position": { "x": 5, "y": 14, "z": 9 },
+			"rotation": { "angle": 45, "x": 0, "y": 1, "z": 0 },
+			"size": 0.5,
+			"behavior": "Thwomp"
+		}, {
+			"name": "thwomp2",
+			"model_id": 6,
+			"texture_id": 5,
+			"position": { "x": 20, "y": 14, "z": 20 },
+			"rotation": { "angle": 80, "x": 0, "y": 1, "z": 0 },
+			"size": 0.25,
 			"behavior": "Thwomp"
 		}
     ]

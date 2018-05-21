@@ -75,7 +75,8 @@ HEADERS += \
     ModelData/ModelObject.h \
     ModelData/ModelRenderer.h \
     ModelData/RendererInterface.h \
-    Entities/star.h
+    Entities/star.h \
+    Entities/mario.h
 
 SOURCES += \
     Camera.cpp \
@@ -107,4 +108,5 @@ SOURCES += \
     ModelData/ModelGroup.cpp \
     ModelData/ModelObject.cpp \
     ModelData/ModelRenderer.cpp \
-    Entities/star.cpp
+    Entities/star.cpp \
+    Entities/mario.cpp

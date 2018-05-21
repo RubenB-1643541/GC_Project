@@ -159,6 +159,9 @@ void EntityCreator::loadEntityBehavior(QString behavior, Model * model) {
     else if(behavior == "Star") {
         entity = new Star(model);
     }
+    else if(behavior == "Mario") {
+        entity = new Mario(model);
+    }
     _collection->AddEntity(entity);
 }
 

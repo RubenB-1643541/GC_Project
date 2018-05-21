@@ -12,6 +12,7 @@
 #include "Entities/spider.h"
 #include "Entities/thwomp.h"
 #include "Entities/star.h"
+#include "Entities/mario.h"
 
 #include <Windows.h>
 #include <gl/GL.h>
